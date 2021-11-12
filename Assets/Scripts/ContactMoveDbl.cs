@@ -136,10 +136,7 @@ public class ContactMoveDbl : MonoBehaviour
         ParentPosition.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = enabled;
         OriginalPosAFT.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = enabled;
         gameObject.GetComponent<BoxCollider>().enabled = enabled;
-
-
-
-
+        
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -211,7 +208,7 @@ public class ContactMoveDbl : MonoBehaviour
         dragging = false;
         CheckPalletPositions();
 
-        if (CanLoadACP == true)
+        if (CanLoadACP)
 
         {
             Debug.Log("CAN ACTUALLY LOAD");
@@ -239,7 +236,7 @@ public class ContactMoveDbl : MonoBehaviour
             Debug.Log("The mouse is up");
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.transform.position = ReturnPosition;
-            //PalletArray.TurnPalletArrayColliderson();
+           
         }
 
 

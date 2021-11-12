@@ -253,7 +253,7 @@ public class Raycast : MonoBehaviour
                     if (SelectedPanelisLive == false)
 
                     {
-                        Debug.Log("HERE");
+                        
                         UsingMouse = true;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
@@ -263,14 +263,10 @@ public class Raycast : MonoBehaviour
                     else if (SelectedPanelisLive == true)
 
                     {
-
-                        Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanelTPL(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel = GameObject.Find("SelectedPanelDBL(Clone)").gameObject.transform.GetChild(1).gameObject;
                         OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
-
-
                     }
 
 

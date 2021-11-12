@@ -110,6 +110,9 @@ public class MoveDBL : MonoBehaviour
 
         {
             ParentPosition.GetComponent<MeshRenderer>().material = LogsBlue;
+            Index = ParentPosition.transform.GetSiblingIndex();
+            MoveObjectAFT = ParentPosition.transform.parent.transform.GetChild(Index + 1).transform.gameObject;
+            MoveObjectAFT.GetComponent<MeshRenderer>().material = LogsBlue;
             Debug.Log("Colour change to blue");
         }
 
