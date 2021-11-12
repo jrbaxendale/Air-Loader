@@ -277,32 +277,30 @@ public class Raycast : MonoBehaviour
 
 
 
-                if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("TRIPLELOGS(Clone)")))
+                if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("TRIPLELOGS(Clone)"))
 
                 {
 
 
-                    if (SelectedPanelisLive == false)
+                    switch (SelectedPanelisLive)
 
                     {
-                        Debug.Log("HERE");
-                        UsingMouse = true;
-                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
-                        CreateSelectedPanelTPL(); // creates a panel for the pallet selected.
+                        case false:
+                            Debug.Log("HERE");
+                            UsingMouse = true;
+                            CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                            CreateSelectedPanelTPL(); // creates a panel for the pallet selected.
 
-                    }
-
-                    else if (SelectedPanelisLive == true)
-
-                    {
-
-                        Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanelTPL(Clone)").gameObject.transform.GetChild(1).gameObject;
-                        OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
-                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
-                        CreateSelectedPanelTPL(); // creates a panel for the pallet selected.
+                            break;
+                        case true:
+                            Debug.Log("ACTUALLYHERE");
+                            OldSelectedPanel = GameObject.Find("SelectedPanelTPL(Clone)").gameObject.transform.GetChild(1).gameObject;
+                            OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
+                            CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                            CreateSelectedPanelTPL(); // creates a panel for the pallet selected.
 
 
+                            break;
                     }
 
 
