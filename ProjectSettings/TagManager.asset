@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - selectable
+  - ADS
+  - LOGS
+  - ACP
+  - empty
+  - loaded
+  - delete
+  - move
+  - AddSingleACP
+  - AddDoubleACP
+  - AddTripleACP
+  - AddQuadACP
+  - ignore
+  - IgnoreMe
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - LOGS
+  - ADS
+  - PAX
+  - GUIobjects
+  - boundingbox
+  - FlatFloor
+  - loaded
+  - empty
+  - nohit
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

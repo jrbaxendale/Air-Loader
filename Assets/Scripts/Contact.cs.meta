@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1567f807d347b984499171fc8df64881
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Invisible: {instanceID: 0}
+  - HighlightedACP: {fileID: 2100000, guid: 107c5bf0db0565b4ba028c7c91216a4f, type: 2}
+  - ADSMat: {instanceID: 0}
+  - Maincanvas: {instanceID: 0}
+  - LogsMat: {instanceID: 0}
+  - MakeACPBtn: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

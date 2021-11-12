@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="thetractor25" motionHint="static" trackingMode="scan"/>
+
+</Tracking>
+
+<Assembly name="thetractor25s_assembly" assemblyId="95b4037f6686434fa7ac4990e21ae1e4">
+<Part name="thetractor25" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint1" translation="-0.0123793 0.349079 2.96698" rotation="AD: 0.9998184978306573 0.058088770250918104 -0.3523809559722583 197.648" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>

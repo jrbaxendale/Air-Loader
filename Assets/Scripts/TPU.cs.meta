@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: beae8377ff120404788bc25f22abf5b2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TPUprefab: {fileID: 5438503906997013063, guid: d7fa579a3452d894f980135cd40a3e6e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

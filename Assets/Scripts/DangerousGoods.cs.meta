@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0b649a72cc96c5e46b9a3c67311cee38
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Crate: {fileID: 5471483209985980240, guid: 26c810db5ffd71c4f8419a7f0dca8460, type: 3}
+  - Barrel: {instanceID: 0}
+  - Box: {instanceID: 0}
+  - DGpallet: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

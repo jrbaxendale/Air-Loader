@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 04ba531693d839c45949f40264f137bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OldCollider: {instanceID: 0}
+  - HighlightedACP: {fileID: 2100000, guid: 107c5bf0db0565b4ba028c7c91216a4f, type: 2}
+  - ADSMat: {fileID: 2100000, guid: 5bfbfbd0a547b0f408b169df78a3279e, type: 2}
+  - LogsMat: {fileID: 2100000, guid: 896e7b927fafe6f479fad91a43e79d38, type: 2}
+  - Invisible: {instanceID: 0}
+  - ParentPosition: {instanceID: 0}
+  - ACPboxcollider: {instanceID: 0}
+  - PreviousPallet: {instanceID: 0}
+  - PreviousACPposition: {instanceID: 0}
+  - CurrentACPposition: {instanceID: 0}
+  - StartingPalletPlace: {instanceID: 0}
+  - PositionText: {instanceID: 0}
+  - SelectedPanel: {instanceID: 0}
+  - TheSelectedPanel: {instanceID: 0}
+  - BlueNormal: {fileID: 2100000, guid: afdd59077e0d3f7488053bf41abf4729, type: 2}
+  - GreenSeeThrough: {fileID: 2100000, guid: 7ad1f8fd0a0e86745b64dada9f72d3bc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

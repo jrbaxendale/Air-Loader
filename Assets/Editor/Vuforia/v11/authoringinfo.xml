@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="20.0" toolVersion="9.8.5">
+<ModelTarget name="newtractor" targetId="8823480d5ef64c759c432522e7d0e513" version="11.1" toolVersion="9.8.5" bbox="-0.584378 -0.003958 -0.464207 0.602480 0.547856 0.738329" previewImage="8823480d5ef64c759c432522e7d0e513_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="newtractors_assembly" assemblyId="2d5196c7d41e4f24bf35bb7ecbf11d02">
+<Part name="newtractor" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0002" translation="0.0965948 0.24442 1.49446" rotation="AD: 0.9998996666596819 0.040776603988467996 -0.3729370610320063 191.69" image="newtractor_viewpoint_0002.png" trained="yes">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

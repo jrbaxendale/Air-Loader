@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/LoadingScene/OutdoorsScene.unity
+    guid: f424a3e5c341af4499cd761d52f1c2dc
+  - enabled: 1
+    path: Assets/v10.unity
+    guid: 8f209b0412d270047875f56c0ad2a605
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8ac31d41b5f859643a1c5f23d076bbcd, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: b1309940eeb242c4892ef90b16cfbf3d, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 547cedff95dc2ca48bac8a20da290779, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: cfa98ebc265958644b2f1e56aea84427, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 21c2bb80a0ea2964ab3c4cfb767be883, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 06ae3a62987eca442a8d5e6546e70a6c, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0356124e549254d4c870356cb7c8e278, type: 2}

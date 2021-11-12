@@ -1,0 +1,57 @@
+# Blender MTL File: 'newtractor.blend'
+# Material Count: 5
+
+newmtl Material_1
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\jrbax\\AppData\\Local\\Temp\\DiffuseMap_2_NHEbIy.jpg
+
+newmtl Material_2
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\jrbax\\AppData\\Local\\Temp\\DiffuseMap_3_JgApDS.jpg
+
+newmtl Material_3
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\jrbax\\AppData\\Local\\Temp\\DiffuseMap_6_PrmsmS.jpg
+
+newmtl Material_4
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\jrbax\\AppData\\Local\\Temp\\DiffuseMap_1_ATyFil.jpg
+
+newmtl Material_5
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\jrbax\\AppData\\Local\\Temp\\DiffuseMap_0_sAXybC.jpg

@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: bb1cc016d908808468dc2c7ad5b56cbb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OldCollider: {instanceID: 0}
+  - DeleteBtnUI: {instanceID: 0}
+  - Invisible: {fileID: 2100000, guid: dcd9a21ba089f9e46b4060ea59ebdc66, type: 2}
+  - HighlightedACP: {fileID: 2100000, guid: 107c5bf0db0565b4ba028c7c91216a4f, type: 2}
+  - ADSMat: {fileID: 2100000, guid: e5e4484c668bf4441a9595a9e0adb751, type: 2}
+  - Maincanvas: {instanceID: 0}
+  - LogsMat: {fileID: 2100000, guid: 02adc5c355548874cb8e4ba8c1890f91, type: 2}
+  - Col1: {instanceID: 0}
+  - Col2: {instanceID: 0}
+  - Col3: {instanceID: 0}
+  - FwdPosition: {instanceID: 0}
+  - Position: {instanceID: 0}
+  - AftPosition: {instanceID: 0}
+  - Weight1: {instanceID: 0}
+  - Dest1: {instanceID: 0}
+  - ACPID: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

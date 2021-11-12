@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="newtractor" motionHint="static" trackingMode="default"/>
+
+</Tracking>
+
+<Assembly name="newtractors_assembly" assemblyId="2d5196c7d41e4f24bf35bb7ecbf11d02">
+<Part name="newtractor" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0002" translation="0.0965948 0.24442 1.49446" rotation="AD: 0.9998996666596819 0.040776603988467996 -0.3729370610320063 191.69" trained="yes">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>

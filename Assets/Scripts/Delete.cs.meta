@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 60d03b1156b82ef4a9fed1b05159de20
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - script: {instanceID: 0}
+  - DeleteObject: {instanceID: 0}
+  - DeleteObject2: {instanceID: 0}
+  - ADSMat: {fileID: 2100000, guid: 5bfbfbd0a547b0f408b169df78a3279e, type: 2}
+  - LOGSMat: {fileID: 2100000, guid: 896e7b927fafe6f479fad91a43e79d38, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

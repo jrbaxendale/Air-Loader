@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="20.0" toolVersion="9.3.3">
+<ModelTarget name="tractormod" targetId="5ea59c1401b04b288374ad4faa6dc1e1" version="11.1" toolVersion="9.3.3" bbox="-8.486722 -0.051977 -6.740907 7.291635 7.954840 7.817874" previewImage="5ea59c1401b04b288374ad4faa6dc1e1_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="tractormods_assembly" assemblyId="565cb59e90f549eb951412f9c9b59b61">
+<Part name="tractormod" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="-0.00923048 3.20717 20.7205" rotation="AD: 0.9992301434046251 0.10029490397354607 -0.4377842058179758 203.605" image="tractormod_viewpoint_0000.png" trained="yes">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

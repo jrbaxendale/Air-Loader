@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: ea6aedb3d1d29064e9c278571ce1b915
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ACPprefab: {fileID: 3052329003214742007, guid: 01dbd855031c84c4b9a776c6a784e7de, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

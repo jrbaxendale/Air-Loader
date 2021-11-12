@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="tractormod" motionHint="static" trackingMode="default"/>
+
+</Tracking>
+
+<Assembly name="tractormods_assembly" assemblyId="565cb59e90f549eb951412f9c9b59b61">
+<Part name="tractormod" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="-0.00923048 3.20717 20.7205" rotation="AD: 0.9992301434046251 0.10029490397354607 -0.4377842058179758 203.605" trained="yes">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>

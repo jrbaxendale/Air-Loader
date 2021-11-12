@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 297377b5d4d01834282c45616c026216
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ADSGreen: {fileID: 2100000, guid: 5bfbfbd0a547b0f408b169df78a3279e, type: 2}
+  - LogsBlue: {fileID: 2100000, guid: 896e7b927fafe6f479fad91a43e79d38, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
