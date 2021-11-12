@@ -27,13 +27,11 @@ public class ATGL : MonoBehaviour
         ATGLWeight = 3620;
         Added = false;
 
-
-
     }
 
 
 
-    public void AddATGL()
+    public void AddATGL() // this adds an ATGL to the load
 
 
     {
@@ -49,10 +47,7 @@ public class ATGL : MonoBehaviour
             circle.GetComponent<Image>().color = Color.green;
 
             Added = true;
-
-
-
-
+            
         }
 
 

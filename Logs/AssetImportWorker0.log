@@ -311,3 +311,11 @@ Received Import Request.
 Start importing Assets/HDRPDefaultResources/DefaultSettingsVolumeProfile.asset using Guid(fd98f838cea7ec145ba77726df308a23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ebb5d73bbcf954596980c0035fd686f') in 1.189785 seconds 
   Import took 2.295526 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 8636.145212 seconds.
+  path: Assets/Scripts/ATGL.cs
+  artifactKey: Guid(d88a160f0ea3e1347b3558f2665d7287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ATGL.cs using Guid(d88a160f0ea3e1347b3558f2665d7287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19a744c50c9659ef4c55dbb8f8b25ea3') in 0.049062 seconds 
+  Import took 0.543092 seconds .
+
