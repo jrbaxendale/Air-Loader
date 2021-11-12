@@ -43,8 +43,6 @@ public class MoveTPL : MonoBehaviour
         ADSGreen = (Material)Resources.Load("Materials/Empty ADS pos", typeof(Material)); // gets the ADS material
         LogsBlue = (Material)Resources.Load("Materials/Empty logs Position", typeof(Material)); // gets the logs material
         Invisible = (Material)Resources.Load("Materials/invisible", typeof(Material)); // gets the invisible material
-
-
     }
 
     private void Start()
@@ -59,16 +57,12 @@ public class MoveTPL : MonoBehaviour
         AlreadyInUse = false; // alreadyinuse means the pallet has been selected to move so the button wont do anything
         OriginalPosition = MoveObject.GetComponent<ACP_PayloadTPL>().OriginalPosition;
         SiblingIndex = 2;
-
-
     }
 
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, Mathf.Infinity);
-
-
     }
 
 
@@ -136,7 +130,7 @@ public class MoveTPL : MonoBehaviour
         MoveObjectAFT.transform.GetComponent<BoxCollider>().enabled = !enabled;
         MoveObjectAFT.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = enabled;
 
-        //ParentPosition.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
+
        
         MoveObject.transform.SetParent(null);
         Debug.Log("MoveObject parent changed");
@@ -151,8 +145,8 @@ public class MoveTPL : MonoBehaviour
         NewCXbutton.transform.SetSiblingIndex(0);
         NewCXbutton.GetComponent<Button>().onClick.AddListener(CxMoveThis);
         LiveMoveButton = NewCXbutton;
-        Debug.Log("CXMove Button added");
-        Debug.Log("Zule is " + gameObject.transform.GetChild(0).gameObject.name);
+     
+
 
         if (gameObject.transform.GetChild(1).gameObject.name == "MoveACPDBL")
 
