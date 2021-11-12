@@ -142,25 +142,56 @@ public class ContactMoveDbl : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
 
     {
-
-        PalletList.Add(collision.gameObject);
-        InCol = collision.collider.transform.gameObject;
-
-
-        col = true;
-
-        if (collision.transform != null && collision.transform.parent.transform.GetComponent<Renderer>() != null)
+        if (gameObject.name.Contains("ADS"))
         {
-            collision.transform.parent.transform.GetComponent<Renderer>().material = HighlightedACP;
 
+
+
+            PalletList.Add(collision.gameObject);
+            InCol = collision.collider.transform.gameObject;
+
+
+            col = true;
+
+            if (collision.transform != null && collision.transform.parent.transform.GetComponent<Renderer>() != null)
+            {
+                collision.transform.parent.transform.GetComponent<Renderer>().material = HighlightedACP;
+
+            }
+
+            IsItAdDBLPalletCheck();
         }
 
-        IsItAdDBLPalletCheck();
+        if (gameObject.name.Contains("LOG"))
+        {
+
+
+
+            PalletList.Add(collision.gameObject);
+            InCol = collision.collider.transform.gameObject;
+            int a = InCol.transform.parent.GetSiblingIndex();
+            PalletList.Add(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
+
+
+            col = true;
+
+            if (collision.transform != null && collision.transform.parent.transform.GetComponent<Renderer>() != null)
+            {
+                collision.transform.parent.transform.GetComponent<Renderer>().material = HighlightedACP;
+
+            }
+
+            IsItAdDBLPalletCheck();
+        }
+
+
 
     }
 
     private void OnCollisionStay(Collision collision)
     {
+       
+        
         if (collision.transform != null && collision.transform.parent.transform.GetComponent<Renderer>() != null)
         {
             collision.transform.parent.transform.GetComponent<Renderer>().material = HighlightedACP;
@@ -174,15 +205,24 @@ public class ContactMoveDbl : MonoBehaviour
 
     {
         OutCol = outcollision.collider.transform.gameObject;
+
+        if (gameObject.name.Contains("LOG"))
+
+        {
+           
+            InCol = outcollision.collider.transform.gameObject;
+            int a = InCol.transform.parent.GetSiblingIndex();
+            PalletList.Remove(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
+            
+        }
+
         if ((outcollision.transform.parent.name.Contains("ADS")))
         {
             outcollision.transform.parent.GetComponent<Renderer>().material = ADSMat; // returns the material of the collided object back to its original
-
-
-
+            
         }
 
-        else if (outcollision.transform.parent.name.Contains("logs"))
+        else if (outcollision.transform.parent.name.Contains("LOG"))
         {
             outcollision.transform.parent.GetComponent<Renderer>().material = LogsMat; // returns the material of the collided object back to its original
         }
@@ -865,8 +905,21 @@ public class ContactMoveDbl : MonoBehaviour
             rayPoint = ray.GetPoint(distance);
             dragging = true;
             rayPoint.x = Mathf.Clamp(rayPoint.x, -13.4f, 11.4f);
-            rayPoint.y = Mathf.Clamp(rayPoint.y, 0.2f, 0.2f);
-            rayPoint.z = Mathf.Clamp(rayPoint.z, 0, 0);
+
+            if (gameObject.name.Contains("ADS"))
+
+            {
+                rayPoint.y = Mathf.Clamp(rayPoint.y, 0.2f, 0.2f);
+                rayPoint.z = Mathf.Clamp(rayPoint.z, 0, 0);
+            }
+
+            if (gameObject.name.Contains("LOGS"))
+
+            {
+                rayPoint.y = Mathf.Clamp(rayPoint.y, 1.5F, 1.5f);
+                rayPoint.z = Mathf.Clamp(rayPoint.z, -1f, 2);
+            }
+
 
             transform.position = rayPoint;
 
@@ -927,9 +980,23 @@ public class ContactMoveDbl : MonoBehaviour
 
         gameObject.transform.SetParent(FwdPosition.transform); // sets the pallet parent to the collider
         gameObject.transform.parent.gameObject.GetComponent<BoxCollider>().enabled = !enabled;
-        gameObject.transform.localEulerAngles = new Vector3(0, 0, -180); // sets rotation
-        gameObject.transform.localPosition = new Vector3(0, -3.14f, 0.001f);// sets the position to higher than the mainfloor
 
+        if (gameObject.name.Contains("ADS"))
+
+        {
+            gameObject.transform.localEulerAngles = new Vector3(0, 0, -180); // sets rotation
+            gameObject.transform.localPosition = new Vector3(0, -3.14f, 0.001f);// sets the position to higher than the mainfloor
+
+        }
+       
+        else if (gameObject.name.Contains("LOG"))
+
+        {
+            gameObject.transform.localPosition = new Vector3(0, 0, 2.07f);// sets the position to higher than the mainfloor
+
+
+
+        }
         FwdPosition.transform.parent.transform.GetComponent<Renderer>().material = Invisible;
         AftPosition.transform.parent.transform.GetComponent<Renderer>().material = Invisible;
         int Index = FwdPosition.transform.parent.transform.GetSiblingIndex();
