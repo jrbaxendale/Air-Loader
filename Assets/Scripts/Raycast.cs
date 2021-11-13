@@ -590,8 +590,8 @@ public class Raycast : MonoBehaviour
         pause = true;
         GameObject TheSelectedPanel = Instantiate(SelectedPanelQD, MainCanvas.transform, false);
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintFWD.ToString(); // this is the pallet weight FWD
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintMID.ToString(); // this is the pallet weight MIDFWD
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintAFT.ToString(); // this is the pallet weight AFTMID
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintMIDFWD.ToString(); // this is the pallet weight MIDFWD
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintAFTMID.ToString(); // this is the pallet weight AFTMID
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(11).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintAFT.ToString(); // this is the pallet weight AFT
 
 
