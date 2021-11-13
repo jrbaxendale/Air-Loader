@@ -159,7 +159,7 @@ public class Raycast : MonoBehaviour
 
                     {
                         Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanel(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel = GameObject.Find("SelectedPanelDBL(Clone)").gameObject.transform.GetChild(1).gameObject;
                         OldSelectedPanel.GetComponent<ExitBtnDelete>().ExitDelete(); // this closes down the already live Selected Panel;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
@@ -232,25 +232,72 @@ public class Raycast : MonoBehaviour
 
                 }
 
+                else if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("QUADADS(Clone)")))
 
 
+                {
+                    if (SelectedPanelisLive == false)
+                    {
+                        Debug.Log("HERE");
+                        UsingMouse = true;
+                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                        CreateSelectedPanelQD(); // creates a panel for the pallet selected.
+
+                    }
+
+                    else if (SelectedPanelisLive == true)
+
+                    {
+                        Debug.Log("ACTUALLYHERE");
+                        OldSelectedPanel = GameObject.Find("SelectedPanelQD(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
+                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                        CreateSelectedPanelQD(); // creates a panel for the pallet selected.
 
 
-
-
-
+                    }
+                    
+                }
+                
             }
 
 
             if ((!EventSystem.current.IsPointerOverGameObject()) && (hit.collider != null) && (hit.collider.name.Contains("logs")))
 
             {
-
-                if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("LOGSdbl (Clone)")))
+                if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("ACP(Clone)")))
 
                 {
 
 
+                    if (SelectedPanelisLive == false)
+                    {
+                        Debug.Log("HERE");
+                        UsingMouse = true;
+                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                        CreateSelectedPanel(); // creates a panel for the pallet selected.
+
+                    }
+
+                    else if (SelectedPanelisLive == true)
+
+                    {
+                        Debug.Log("ACTUALLYHERE");
+                        OldSelectedPanel = GameObject.Find("SelectedPanel(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel.GetComponent<ExitBtnDelete>().ExitDelete(); // this closes down the already live Selected Panel;
+                        CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                        CreateSelectedPanel(); // creates a panel for the pallet selected.
+
+
+                    }
+
+                }
+
+
+                if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("LOGSdbl (Clone)")))
+
+                {
+                    
                     if (SelectedPanelisLive == false)
 
                     {
@@ -269,15 +316,9 @@ public class Raycast : MonoBehaviour
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
                     }
-
-
-
-
+                    
                 }
-
-
-
-
+                
                 if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("TRIPLELOGS(Clone)"))
 
                 {
@@ -309,13 +350,43 @@ public class Raycast : MonoBehaviour
 
                 }
 
+                if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("QUADLOGS(Clone)"))
+
+                {
+
+
+                    switch (SelectedPanelisLive)
+
+                    {
+                        case false:
+                            Debug.Log("HERE");
+                            UsingMouse = true;
+                            CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                            CreateSelectedPanelQD(); // creates a panel for the pallet selected.
+
+                            break;
+                        case true:
+                            Debug.Log("ACTUALLYHERE");
+                            OldSelectedPanel = GameObject.Find("SelectedPanelTPL(Clone)").gameObject.transform.GetChild(1).gameObject;
+                            OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
+                            CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
+                            CreateSelectedPanelQD(); // creates a panel for the pallet selected.
+
+
+                            break;
+                    }
+
+
+
+
+                }
+
             }
         }
 
     }
 
-
-
+    
 
     public void ExitFromPalletGUI()
     {
@@ -368,26 +439,7 @@ public class Raycast : MonoBehaviour
 
         SelectedPanelisLive = true;
         Debug.Log("Creating Selected Panel");
-
-        /*  if (UsingMouse == false)  // fire a ray from the touch position
-
-          {
-              Ray ray = Camera.main.ScreenPointToRay(TouchPosition);
-              Physics.Raycast(ray, out hit, Mathf.Infinity, ~nohit);
-              target = hit.transform;
-
-          }
-
-          if (UsingMouse == true) // fire a ray from the mouse position
-
-          {
-              Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-              Physics.Raycast(ray, out hit, Mathf.Infinity, ~nohit);
-              target = hit.transform;
-
-          }
-
-          */
+        
 
         if (target == null)
 
@@ -428,10 +480,7 @@ public class Raycast : MonoBehaviour
         else if ((target != null) && (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("ADSdoubleAFT(Clone)")))
 
         {
-
-
-
-
+            
             pause = true;
             GameObject TheSelectedPanel = Instantiate(SelectedPanelDBL, MainCanvas.transform, false);
             TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACPpayload>().palletint.ToString();
@@ -445,9 +494,7 @@ public class Raycast : MonoBehaviour
 
         }
 
-
-
-
+        
 
     }
 
