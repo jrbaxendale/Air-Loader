@@ -107,20 +107,17 @@ public class CreateDbleACP : MonoBehaviour
 
               TextMeshProUGUI destACP = DblprefabLOGS1.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>(); // this is the instantiated pallets destination display
               destACP.text = Dest.GetComponent<TextMeshProUGUI>().text;
-
-              TextMeshProUGUI destACP1 = DblprefabLOGS1.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>(); // this is the instantiated pallets destination display
-              destACP1.text = Dest.GetComponent<TextMeshProUGUI>().text;
-
+            
               TextMeshProUGUI weightfwd = DblprefabLOGS1.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>(); // weight2 is the weight display on the instantiated pallet
               weightfwd.text = Weight1.GetComponent<TextMeshProUGUI>().text; // weight1 is the input field for single pallet weight
 
-              TextMeshProUGUI weightaft = DblprefabLOGS1.transform.GetChild(0).GetChild(3).GetComponent<TMPro.TextMeshProUGUI>();
+              TextMeshProUGUI weightaft = DblprefabLOGS1.transform.GetChild(0).GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();
               weightaft.text = weight2.GetComponent<TextMeshProUGUI>().text;
 
-              TextMeshProUGUI ACPidFwd = DblprefabLOGS1.transform.GetChild(0).GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
+              TextMeshProUGUI ACPidFwd = DblprefabLOGS1.transform.GetChild(0).GetChild(3).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
               ACPidFwd.text = ACPID.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-              TextMeshProUGUI ACPidAft = DblprefabLOGS1.transform.GetChild(0).GetChild(5).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
+              TextMeshProUGUI ACPidAft = DblprefabLOGS1.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
               ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
               if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field

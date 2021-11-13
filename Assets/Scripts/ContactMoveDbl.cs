@@ -171,14 +171,15 @@ public class ContactMoveDbl : MonoBehaviour
             InCol = collision.collider.transform.gameObject;
             int a = InCol.transform.parent.GetSiblingIndex();
 
-            if (InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).gameObject.transform.childCount != 0)
+           if (InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).gameObject.transform.childCount == 0)
 
             {
                 PalletList.Add(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
-                InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject.GetComponent<Renderer>().material = HighlightedACP;
+                InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.GetComponent<Renderer>().material = HighlightedACP;
 
             }
 
+            
 
 
             col = true;
@@ -221,9 +222,7 @@ public class ContactMoveDbl : MonoBehaviour
             InCol = outcollision.collider.transform.gameObject;
             int a = InCol.transform.parent.GetSiblingIndex();
             PalletList.Remove(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
-            InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform
-                .gameObject
-                .GetComponent<Renderer>().material = LogsMat;
+            InCol.transform.parent.transform.parent.GetChild(a + 1).transform .gameObject.GetComponent<Renderer>().material = LogsMat;
         }
 
         if ((outcollision.transform.parent.name.Contains("ADS")))
@@ -933,11 +932,7 @@ public class ContactMoveDbl : MonoBehaviour
 
 
             transform.position = rayPoint;
-
-
-
-
-
+            
             Debug.Log("dragging");
             ParentPosition.transform.GetComponent<BoxCollider>().enabled = !enabled;
             int Index = ParentPosition.transform.GetSiblingIndex();
@@ -970,8 +965,7 @@ public class ContactMoveDbl : MonoBehaviour
         {
             dragging = false;
             CheckPalletPositions();
-
-           
+            
         }
 
 
@@ -996,7 +990,7 @@ public class ContactMoveDbl : MonoBehaviour
 
         {
             gameObject.transform.localEulerAngles = new Vector3(0, 0, -180); // sets rotation
-            gameObject.transform.localPosition = new Vector3(0, -3.14f, 0.001f);// sets the position to higher than the mainfloor
+            gameObject.transform.localPosition = new Vector3(0, -3.14f, 1.93f);// sets the position to higher than the mainfloor
 
         }
        
@@ -1120,12 +1114,10 @@ public class ContactMoveDbl : MonoBehaviour
 
             if (InCol.transform.parent.transform.gameObject == ParentPosition || InCol.transform.parent.transform.gameObject == OriginalPosAFT)
             {
-                Debug.Log("NOT HERE", ParentPosition);
-                Debug.Log("NOT HEREQ", OriginalPosAFT);
+               
                 return; // this ignores pallets loaded into the parent positions
             }
-
-
+            
 
             if ((InCol.transform.GetChild(0).transform.gameObject.name == "ADSdouble(Clone)") && (MovingRight == true))// so we have hit a double pallet
             {

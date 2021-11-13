@@ -136,7 +136,7 @@ public class MoveDBL : MonoBehaviour
         if (MoveObject.name.Contains("ADS"))
 
         {
-            MoveObject.transform.position = new Vector3(MoveObject.transform.position.x, 0.5f, MoveObject.transform.position.z);
+            MoveObject.transform.position = new Vector3(MoveObject.transform.position.x, 1.5f, MoveObject.transform.position.z);
         }
 
         if (MoveObject.name.Contains("LOG"))

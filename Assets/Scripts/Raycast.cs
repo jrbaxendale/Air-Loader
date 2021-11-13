@@ -467,7 +467,7 @@ public class Raycast : MonoBehaviour
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().palletintAFT.ToString(); // this is the pallet weight AFT
         int Pos = target.gameObject.transform.GetSiblingIndex();
         GameObject Obj = target.transform.parent.GetChild(Pos + 1).transform.GetChild(0).transform.GetChild(0).transform.gameObject;
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.name.ToString(); // this gets the pallet position of the aft pallet of double ADS
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.parent.name; // this gets the pallet position of the aft pallet of double ADS
 
         PalletArray.RemoveACPfromList(hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject); // removes the target pallet from the array
         PalletArray.RemoveACPfromList(Obj);
