@@ -222,7 +222,7 @@ public class ContactMoveDbl : MonoBehaviour
             
         }
 
-        else if (outcollision.transform.parent.name.Contains("LOG"))
+        else if (outcollision.transform.parent.name.Contains("log"))
         {
             outcollision.transform.parent.GetComponent<Renderer>().material = LogsMat; // returns the material of the collided object back to its original
         }

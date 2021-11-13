@@ -129,7 +129,7 @@ public class MoveDBL : MonoBehaviour
         ParentPosition.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
        // DestroyImmediate(MoveObjectAFT.transform.GetChild(0).transform.GetChild(0).transform.gameObject, true);
         
-        MoveObject.transform.SetParent(null);
+       
        
         Debug.Log("MoveObject parent changed");
 
@@ -142,12 +142,12 @@ public class MoveDBL : MonoBehaviour
         if (MoveObject.name.Contains("LOG"))
 
         {
-            MoveObject.transform.position = new Vector3(MoveObject.transform.position.x, 0.5f, MoveObject.transform.position.z);
+            MoveObject.transform.position = new Vector3(MoveObject.transform.position.x, MoveObject.transform.position.y, MoveObject.transform.position.z);
         }
 
+        MoveObject.transform.SetParent(null);
 
-
-        MoveObject.transform.position = new Vector3(MoveObject.transform.position.x, 0.5f, MoveObject.transform.position.z);
+       
         MoveObject.AddComponent<ContactMoveDbl>(); // adds contactmove script to the pallet;
         MoveObject.GetComponent<Rigidbody>().isKinematic = false; // this stops the object floating away
         MoveObject.GetComponent<BoxCollider>().enabled = !enabled;

@@ -14,6 +14,7 @@ public class PalletArray : MonoBehaviour
 
     public Material PalletChecked;
     public Material GreenSeeThrough;
+    public Material GreenNormal;
     public TextMeshProUGUI NumberDisplay;
 
     private void Awake()
@@ -247,29 +248,52 @@ public class PalletArray : MonoBehaviour
                     if (ACP.gameObject.GetComponent<ACP_PayloadDBL>().Checked == true)
 
                     {
-
-                        Debug.Log("ACP is Checked changecolournormal");
-                        Material[] mat = ACP.gameObject.GetComponent<Renderer>().materials;
-                        mat[0] = PalletChecked;
-                        mat[1] = PalletChecked;
-                        ACP.gameObject.GetComponent<Renderer>().materials = mat;
-                        ACP.transform.parent.transform.parent.gameObject.GetComponent<BoxCollider>().enabled = enabled;
+                        if (ACP.gameObject.name.Contains("ADS"))
+                        {
 
 
+                            Debug.Log("ACP is Checked changecolournormal");
+                            Material[] mat = ACP.gameObject.GetComponent<Renderer>().materials;
+                            mat[0] = PalletChecked;
+                            mat[1] = PalletChecked;
+                            ACP.gameObject.GetComponent<Renderer>().materials = mat;
+                            ACP.transform.parent.transform.parent.gameObject.GetComponent<BoxCollider>().enabled =
+                                enabled;
+                        }
+
+                        else if (ACP.gameObject.name.Contains("LOG"))
+
+                        {
+                            ACP.gameObject.GetComponent<Renderer>().material = PalletChecked;
+                            
+
+                        }
 
                     }
                     else if (ACP.gameObject.GetComponent<ACP_PayloadDBL>().Checked == false)
 
 
                     {
-                        Debug.Log("ACP is not checked changecolournormal");
-                        Material[] mat = ACP.gameObject.GetComponent<Renderer>().materials;
-                        mat[0] = BlueNormal;
-                        mat[1] = BlueNormal;
-                        ACP.gameObject.GetComponent<Renderer>().materials = mat;
-                        ACP.transform.parent.transform.parent.gameObject.GetComponent<BoxCollider>().enabled = enabled;
+                        if (ACP.gameObject.name.Contains("ADS"))
+
+                        {
+
+                            Debug.Log("ACP is not checked changecolournormal");
+                            Material[] mat = ACP.gameObject.GetComponent<Renderer>().materials;
+                            mat[0] = BlueNormal;
+                            mat[1] = BlueNormal;
+                            ACP.gameObject.GetComponent<Renderer>().materials = mat;
+                            ACP.transform.parent.transform.parent.gameObject.GetComponent<BoxCollider>().enabled =
+                                enabled;
+                        }
+
+                        else if (ACP.gameObject.name.Contains("LOG"))
+
+                        {
+                            ACP.gameObject.GetComponent<Renderer>().material = BlueNormal;
 
 
+                        }
                     }
 
                 }
