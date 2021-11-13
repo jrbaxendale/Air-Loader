@@ -162,7 +162,7 @@ public class ContactMoveDbl : MonoBehaviour
             IsItAdDBLPalletCheck();
         }
 
-        if (gameObject.name.Contains("LOG"))
+        else if (gameObject.name.Contains("LOG"))
         {
 
 
@@ -170,7 +170,15 @@ public class ContactMoveDbl : MonoBehaviour
             PalletList.Add(collision.gameObject);
             InCol = collision.collider.transform.gameObject;
             int a = InCol.transform.parent.GetSiblingIndex();
-            PalletList.Add(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
+
+            if (InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).gameObject.transform.childCount != 0)
+
+            {
+                PalletList.Add(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
+                InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject.GetComponent<Renderer>().material = HighlightedACP;
+
+            }
+
 
 
             col = true;
@@ -213,7 +221,9 @@ public class ContactMoveDbl : MonoBehaviour
             InCol = outcollision.collider.transform.gameObject;
             int a = InCol.transform.parent.GetSiblingIndex();
             PalletList.Remove(InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform.gameObject);
-            
+            InCol.transform.parent.transform.parent.GetChild(a + 1).transform.gameObject.transform.GetChild(0).transform
+                .gameObject
+                .GetComponent<Renderer>().material = LogsMat;
         }
 
         if ((outcollision.transform.parent.name.Contains("ADS")))
@@ -225,6 +235,7 @@ public class ContactMoveDbl : MonoBehaviour
         else if (outcollision.transform.parent.name.Contains("log"))
         {
             outcollision.transform.parent.GetComponent<Renderer>().material = LogsMat; // returns the material of the collided object back to its original
+
         }
 
         PalletList.Remove(outcollision.gameObject);

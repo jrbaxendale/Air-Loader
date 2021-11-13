@@ -182,8 +182,8 @@ public class DBLcheckButtons : MonoBehaviour
             switch (SelectedACP.gameObject.name)
 
             {
-                case "LOGSdbl(Clone)":
-                    SelectedACP.GetComponent<ACP_PayloadDBL>().Checked = false;
+                case "LOGSdbl (Clone)":
+                    SelectedACP.GetComponent<ACP_PayloadDBL>().Checked = true;
                     SelectedACP.GetComponent<Renderer>().material = GreenPallet;
 
                     break;
@@ -208,7 +208,7 @@ public class DBLcheckButtons : MonoBehaviour
             switch (SelectedACP.gameObject.name)
 
             {
-                case "LOGSdbl(Clone)":
+                case "LOGSdbl (Clone)":
                     SelectedACP.GetComponent<ACP_PayloadDBL>().Checked = false;
                     SelectedACP.GetComponent<Renderer>().material = BluePallet;
 
