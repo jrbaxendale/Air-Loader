@@ -8,10 +8,7 @@ using UnityEngine.UI;
 
 public class MakeQd : MonoBehaviour
 {
-    public GameObject ADSscript;
-    public GameObject LOGSscript;
-
-
+    
     public GameObject Weight1st;
     public GameObject Weight2nd;
     public GameObject Weight3rd;
@@ -29,10 +26,7 @@ public class MakeQd : MonoBehaviour
     public GameObject InputField2;
     public GameObject InputField3;
     public GameObject InputField4;
-
-
-
-
+    
     public GameObject QdprefabLogs;
     public GameObject QdprefabADS;
     public GameObject Maincanvas;

@@ -67,6 +67,7 @@ public class Raycast : MonoBehaviour
     public bool Demo;
     public GameObject SelectedPanelDBL;
     public GameObject SelectedPanelTPL;
+    public GameObject SelectedPanelQD;
 
 
 
@@ -515,6 +516,51 @@ public class Raycast : MonoBehaviour
         
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos + 1).transform.name.ToString(); // this is the AFT position
       
+        PalletArray.RemoveACPfromList(hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject); // removes the target pallet from the array
+        PalletArray.RemoveACPfromList(Obj);
+        int TheCount = PalletArray.Palletarray.Count;
+        Debug.Log("PALLET ARRAY NUMBER IS " + TheCount);
+
+
+        GetComponent<PalletArray>().ChangeColourDark(); // all the other pallets are in this array and will turn dark coloured
+
+        foreach (GameObject OBW in PalletArray.Palletarray)
+
+        {
+            OBW.transform.parent.transform.parent.transform.GetComponent<BoxCollider>().enabled = !enabled;
+
+        }
+
+
+    }
+
+    public void CreateSelectedPanelQD()  // This loads a SelectedPanel for the selected pallet
+
+
+    {
+
+        SelectedPanelisLive = true;
+        pause = true;
+        GameObject TheSelectedPanel = Instantiate(SelectedPanelQD, MainCanvas.transform, false);
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintFWD.ToString(); // this is the pallet weight FWD
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintMID.ToString(); // this is the pallet weight MIDFWD
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintAFT.ToString(); // this is the pallet weight AFTMID
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(11).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadQD>().palletintAFT.ToString(); // this is the pallet weight AFT
+
+
+        int Pos = target.gameObject.transform.GetSiblingIndex();
+        GameObject Obj = hit.transform.gameObject;
+
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos - 1).transform.name.ToString(); // this is the FWD position
+
+
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.name.ToString(); // this is the MIDFWD position
+
+
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos + 1).transform.name.ToString(); // this is the AFTMID position
+
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos + 2).transform.name.ToString(); // this is the AFT position
+
         PalletArray.RemoveACPfromList(hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject); // removes the target pallet from the array
         PalletArray.RemoveACPfromList(Obj);
         int TheCount = PalletArray.Palletarray.Count;

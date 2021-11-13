@@ -1392,6 +1392,8 @@ MonoBehaviour:
   LiveMoveButton: {fileID: 0}
   Initialized: 0
   Invisible: {fileID: 0}
+  MoveObjectAFT: {fileID: 0}
+  MoveObjectFWD: {fileID: 0}
   Index: 0
 --- !u!114 &4172515560950802828
 MonoBehaviour:
