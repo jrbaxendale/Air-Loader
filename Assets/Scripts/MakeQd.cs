@@ -15,15 +15,21 @@ public class MakeQd : MonoBehaviour
     public GameObject Weight1st;
     public GameObject Weight2nd;
     public GameObject Weight3rd;
+    public GameObject Weight4th;
 
 
     public GameObject DestIn;
     public GameObject ACPID1;
     public GameObject ACPID2;
     public GameObject ACPID3;
+    public GameObject ACPID4;
+
+
     public GameObject InputField1;
     public GameObject InputField2;
     public GameObject InputField3;
+    public GameObject InputField4;
+
 
 
 
@@ -57,19 +63,25 @@ public class MakeQd : MonoBehaviour
 
             QdprefabLOGS.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight3rd.GetComponent<TMP_InputField>().text;
 
+            QdprefabLOGS.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
+
             QdprefabLOGS.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = ACPID1.GetComponent<TMP_InputField>().text;
 
             QdprefabLOGS.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = ACPID2.GetComponent<TMP_InputField>().text;
 
             QdprefabLOGS.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID3.GetComponent<TMP_InputField>().text;
 
-            int weightint1 = Int32.Parse(InputField1.GetComponent<TMP_InputField>().text.ToString());
+            QdprefabLOGS.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
 
-            int weightint2 = Int32.Parse(InputField2.GetComponent<TMP_InputField>().text.ToString());
+            int weightint1 = int.Parse(InputField1.GetComponent<TMP_InputField>().text);
 
-            int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
+            int weightint2 = int.Parse(InputField2.GetComponent<TMP_InputField>().text);
 
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3;
+            int weightint3 = int.Parse(InputField3.GetComponent<TMP_InputField>().text);
+
+            int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
+
+            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3 + weightint4;
             
 
         }
@@ -95,25 +107,29 @@ public class MakeQd : MonoBehaviour
 
             QdprefabADS1.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight3rd.GetComponent<TMP_InputField>().text;
 
+            QdprefabADS1.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
+
+
             QdprefabADS1.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = ACPID1.GetComponent<TMP_InputField>().text;
 
             QdprefabADS1.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = ACPID2.GetComponent<TMP_InputField>().text;
 
             QdprefabADS1.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID3.GetComponent<TMP_InputField>().text;
 
-            int weightint1 = Int32.Parse(InputField1.GetComponent<TMP_InputField>().text.ToString());
-
-            int weightint2 = Int32.Parse(InputField2.GetComponent<TMP_InputField>().text.ToString());
-
-            int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
-
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3;
+            QdprefabADS1.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
 
 
+            int weightint1 = int.Parse(InputField1.GetComponent<TMP_InputField>().text);
+
+            int weightint2 = int.Parse(InputField2.GetComponent<TMP_InputField>().text);
+
+            int weightint3 = int.Parse(InputField3.GetComponent<TMP_InputField>().text);
+
+            int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
 
 
-
-
+            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3 + weightint4;
+            
 
         }
 
