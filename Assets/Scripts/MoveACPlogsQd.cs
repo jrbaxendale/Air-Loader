@@ -44,7 +44,7 @@ public class MoveACPlogsQd : MonoBehaviour
         Debug.Log("tag is now empty");
         placed = false;
         Debug.Log("placed = false");
-        MoveObject.AddComponent<ContactMoveQd>();
+        MoveObject.AddComponent<ContactMoveQD>();
 
     }
 

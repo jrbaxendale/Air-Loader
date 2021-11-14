@@ -77,7 +77,7 @@ public class MoveQdADS : MonoBehaviour
         Debug.Log("tag is now empty");
         placed = false;
         Debug.Log("placed = false");
-        MoveObject.AddComponent<ContactMoveQd>();
+        MoveObject.AddComponent<ContactMoveQD>();
 
         int index = DeleteObject2.transform.GetSiblingIndex();
         Transform DeleteObject3 = DeleteObject2.transform.parent.GetChild(index + 1);

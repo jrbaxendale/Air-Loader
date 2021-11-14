@@ -62,7 +62,10 @@ public class Raycast : MonoBehaviour
     public GameObject SelectedPanel;
     public GameObject WhichPanel;
     public GameObject SingleACPpanel;
+
+    [SerializeField]
     public static bool SelectedPanelisLive;
+
     public static GameObject OldSelectedPanel;
     public bool Demo;
     public GameObject SelectedPanelDBL;
@@ -249,8 +252,8 @@ public class Raycast : MonoBehaviour
 
                     {
                         Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanelQD(Clone)").gameObject.transform.GetChild(1).gameObject;
-                        OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
+                        OldSelectedPanel = GameObject.Find("SelectedPanelQD(Clone)").gameObject;
+                        OldSelectedPanel.transform.GetChild(2).GetComponent<CloseQDselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelQD(); // creates a panel for the pallet selected.
 
@@ -350,7 +353,7 @@ public class Raycast : MonoBehaviour
 
                 }
 
-                if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("QUADLOGS(Clone)"))
+                if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("QUADLOGSbase(Clone)"))
 
                 {
 
@@ -359,16 +362,16 @@ public class Raycast : MonoBehaviour
 
                     {
                         case false:
-                            Debug.Log("HERE");
+                           
                             UsingMouse = true;
                             CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                             CreateSelectedPanelQD(); // creates a panel for the pallet selected.
 
                             break;
                         case true:
-                            Debug.Log("ACTUALLYHERE");
-                            OldSelectedPanel = GameObject.Find("SelectedPanelTPL(Clone)").gameObject.transform.GetChild(1).gameObject;
-                            OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseTPLselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
+                          
+                            OldSelectedPanel = GameObject.Find("SelectedPanelQD(Clone)").gameObject;
+                            OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseQDselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
                             CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                             CreateSelectedPanelQD(); // creates a panel for the pallet selected.
 

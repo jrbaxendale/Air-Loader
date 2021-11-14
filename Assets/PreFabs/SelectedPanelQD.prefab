@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2777490874285460117}
   - component: {fileID: 2777490874285460112}
   - component: {fileID: 2777490874285460119}
-  - component: {fileID: 4329176934428107452}
+  - component: {fileID: 2598005293155142456}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4329176934428107452
+--- !u!114 &2598005293155142456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,11 +232,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2777490874285460116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bd9d797d339eba4cb42faff00e1e16b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f67f95f34f7a2b4aa90fc05914f81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainCanvas: {fileID: 0}
-  GreenPallet: {fileID: 2100000, guid: 5bfbfbd0a547b0f408b169df78a3279e, type: 2}
+  GreenPallet: {fileID: 2100000, guid: 0ef14b5eba0739f42a92e36d61f4d546, type: 2}
   BluePallet: {fileID: 2100000, guid: e66d182df7d1fa44dbef6baf57e63317, type: 2}
   SelectedACP: {fileID: 0}
   index: 0
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 8580151159451493459}
   - component: {fileID: 2092176928984547482}
   - component: {fileID: 695351373088556148}
-  - component: {fileID: 3933705707188597998}
+  - component: {fileID: 2617930944270414281}
   m_Layer: 5
   m_Name: SelectedPanelQD
   m_TagString: Untagged
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3933705707188597998
+--- !u!114 &2617930944270414281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,13 +732,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3120508878826354770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727e5179f3e3a7b4a8da4bd2ab2f0927, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b09e224a320643418826a11b112e667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   placed: 0
   col: 0
-  ADSGreen: {fileID: 2100000, guid: e5e4484c668bf4441a9595a9e0adb751, type: 2}
-  LogsBlue: {fileID: 2100000, guid: 896e7b927fafe6f479fad91a43e79d38, type: 2}
+  ADSGreen: {fileID: 2100000, guid: 0ef14b5eba0739f42a92e36d61f4d546, type: 2}
+  LogsBlue: {fileID: 2100000, guid: e66d182df7d1fa44dbef6baf57e63317, type: 2}
   BoxScaleZ: 0
   CXmoveButton: {fileID: 603025467590806766, guid: 483dfc6b0a31d9a4883d642e3f70d73d, type: 3}
   CurrentMoveButton: {fileID: 6286886968384045071}
@@ -747,11 +747,11 @@ MonoBehaviour:
   CurrentMoveObject: {fileID: 0}
   LiveMoveButton: {fileID: 0}
   Initialized: 0
-  Invisible: {fileID: 0}
+  Invisible: {fileID: 2100000, guid: dcd9a21ba089f9e46b4060ea59ebdc66, type: 2}
   MoveObjectAFT: {fileID: 0}
   MoveObjectFWD: {fileID: 0}
   Index: 0
---- !u!114 &6614900889157748548
+--- !u!114 &2954363263749427978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -760,12 +760,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3623857920492016546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a18d37acd13aaf409f025bb816b8a91, type: 3}
+  m_Script: {fileID: 11500000, guid: e2385f794fdf2f5449481c7057d954e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedACP: {fileID: 0}
   Maincanvas: {fileID: 0}
---- !u!114 &8012531997444557865
+--- !u!114 &2857947128044086533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -774,14 +774,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5258981796309521478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186782237555a924087dc0d134a08c29, type: 3}
+  m_Script: {fileID: 11500000, guid: 51a4bb6b34c1efe4ba1ad76ce654d2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   script: {fileID: 0}
   DeleteObject: {fileID: 0}
   DeleteObject2: {fileID: 0}
-  ADSMat: {fileID: 2100000, guid: e5e4484c668bf4441a9595a9e0adb751, type: 2}
-  LOGSMat: {fileID: 2100000, guid: 02adc5c355548874cb8e4ba8c1890f91, type: 2}
+  ADSMat: {fileID: 2100000, guid: 5bfbfbd0a547b0f408b169df78a3279e, type: 2}
+  LOGSMat: {fileID: 2100000, guid: 896e7b927fafe6f479fad91a43e79d38, type: 2}
   ParentPosition: {fileID: 0}
   Index: 0
   MoveObjectAFT: {fileID: 0}
@@ -1907,14 +1907,14 @@ PrefabInstance:
     - target: {fileID: 3791294265822405655, guid: 01017549bfec94044b61d0cca44899c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3933705707188597998}
+      objectReference: {fileID: 2617930944270414281}
     - target: {fileID: 3791294265822405655, guid: 01017549bfec94044b61d0cca44899c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MoveThis
       objectReference: {fileID: 0}
     - target: {fileID: 3791294265822405655, guid: 01017549bfec94044b61d0cca44899c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MoveTPL, Assembly-CSharp
+      value: MoveQD, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8537271271662363388, guid: 01017549bfec94044b61d0cca44899c9, type: 3}
       propertyPath: m_Name
@@ -1950,7 +1950,7 @@ PrefabInstance:
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4329176934428107452}
+      objectReference: {fileID: 2598005293155142456}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1961,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TPLcheckButtons, Assembly-CSharp
+      value: QDcheckButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2127,14 +2127,14 @@ PrefabInstance:
     - target: {fileID: 3213056486418932068, guid: f3137e20062c7d340a55f9710de0c247, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8012531997444557865}
+      objectReference: {fileID: 2857947128044086533}
     - target: {fileID: 3213056486418932068, guid: f3137e20062c7d340a55f9710de0c247, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DeleteThis
       objectReference: {fileID: 0}
     - target: {fileID: 3213056486418932068, guid: f3137e20062c7d340a55f9710de0c247, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DeleteTpl, Assembly-CSharp
+      value: DeleteQD, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4113702585328098795, guid: f3137e20062c7d340a55f9710de0c247, type: 3}
       propertyPath: m_Pivot.x
@@ -2282,7 +2282,7 @@ PrefabInstance:
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4329176934428107452}
+      objectReference: {fileID: 2598005293155142456}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2293,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TPLcheckButtons, Assembly-CSharp
+      value: QDcheckButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2471,14 +2471,14 @@ PrefabInstance:
     - target: {fileID: 2920538372471131450, guid: 41d73a6d5ae6f2e419a65d23d19fe5b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6614900889157748548}
+      objectReference: {fileID: 2954363263749427978}
     - target: {fileID: 2920538372471131450, guid: 41d73a6d5ae6f2e419a65d23d19fe5b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitDelete
       objectReference: {fileID: 0}
     - target: {fileID: 2920538372471131450, guid: 41d73a6d5ae6f2e419a65d23d19fe5b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CloseTPLselectedPanel, Assembly-CSharp
+      value: CloseQDselectedPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4477136027908957559, guid: 41d73a6d5ae6f2e419a65d23d19fe5b5, type: 3}
       propertyPath: m_Text
@@ -2599,7 +2599,7 @@ PrefabInstance:
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4329176934428107452}
+      objectReference: {fileID: 2598005293155142456}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2610,7 +2610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TPLcheckButtons, Assembly-CSharp
+      value: QDcheckButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2776,7 +2776,7 @@ PrefabInstance:
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4329176934428107452}
+      objectReference: {fileID: 2598005293155142456}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2787,7 +2787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TPLcheckButtons, Assembly-CSharp
+      value: QDcheckButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

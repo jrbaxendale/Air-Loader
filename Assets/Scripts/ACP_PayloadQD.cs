@@ -82,7 +82,7 @@ public class ACP_PayloadQD : MonoBehaviour
         palletintAFTMID = weightintAFTMID;
 
         OBJ4 = MainCanvas.transform.GetChild(4).transform.GetChild(16).gameObject;
-        weightintAFT = Int32.Parse(OBJ3.GetComponent<TMP_InputField>().text.ToString()); // this is the AFT weight of the pallet
+        weightintAFT = Int32.Parse(OBJ4.GetComponent<TMP_InputField>().text.ToString()); // this is the AFT weight of the pallet
         palletintAFT = weightintAFT;
 
 
