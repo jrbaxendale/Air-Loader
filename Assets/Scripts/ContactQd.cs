@@ -123,7 +123,32 @@ public class ContactQd : MonoBehaviour
     public void OnCollisionStay(Collision staycollision)
     {
         stay = staycollision;
-        
+
+        if (staycollision.transform != null && staycollision.transform.parent.transform.GetComponent<Renderer>() != null)
+        {
+            int a = staycollision.transform.parent.transform.GetSiblingIndex();
+
+            if (staycollision.transform.parent.transform.parent.GetChild(a - 1).transform.GetChild(0).transform.childCount == 0 &&
+                staycollision.transform.parent.transform.parent.GetChild(a + 1).transform.GetChild(0).transform.childCount == 0
+                && staycollision.transform.parent.transform.parent.GetChild(a + 2).transform.GetChild(0).transform.childCount == 0)
+
+
+            {
+                staycollision.transform.parent.transform.GetComponent<Renderer>().material = HighlightedACP;
+
+                staycollision.transform.parent.transform.parent.GetChild(a - 1).transform.GetComponent<Renderer>().material = HighlightedACP;
+
+                staycollision.transform.parent.transform.parent.GetChild(a + 1).transform.GetComponent<Renderer>().material = HighlightedACP;
+
+                staycollision.transform.parent.transform.parent.GetChild(a + 2).transform.GetComponent<Renderer>().material = HighlightedACP;
+
+            }
+
+        }
+
+
+
+
     }
 
     public void OnCollisionExit(Collision outcollision)
@@ -288,7 +313,7 @@ public class ContactQd : MonoBehaviour
 
         if (gameObject.name.Contains("ADS"))
         {
-            gameObject.transform.localPosition = new Vector3(0, 0, 0); // sets local position of the pallet to 0
+            gameObject.transform.localPosition = new Vector3(0, -3.15f, 2.06f); // sets local position of the pallet to 0
             
         }
         gameObject.tag = "loaded"; // pallet tag is loaded
