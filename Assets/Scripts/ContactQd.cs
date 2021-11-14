@@ -298,7 +298,7 @@ public class ContactQd : MonoBehaviour
         Debug.Log("LoadingQD");
         gameObject.transform.SetParent(Position.transform); // sets the pallet parent to the collider
         gameObject.GetComponent<ACP_PayloadQD>().OriginalPosition = gameObject.transform.parent.gameObject;
-        gameObject.transform.localPosition = new Vector3(0, 0, 2.06f); // sets local position of the pallet to 0
+        gameObject.transform.localPosition = new Vector3(0, -4, 2.06f); // sets local position of the pallet to 0
         gameObject.tag = "loaded"; // pallet tag is loaded
         gameObject.layer = LayerMask.NameToLayer("loaded"); // pallet layer is loaded
                                                             //gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().enabled = !enabled; // thjis turns of the orange glow animation

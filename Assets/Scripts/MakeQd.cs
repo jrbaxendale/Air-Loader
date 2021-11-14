@@ -45,6 +45,9 @@ public class MakeQd : MonoBehaviour
 
 
             QdprefabLOGS.transform.localPosition = new Vector3(0, 1.02f, -1.02f);
+            QdprefabLOGS.transform.eulerAngles = new Vector3(-90, 0, 360);
+                
+
             QdprefabLOGS.layer = LayerMask.NameToLayer("LOGS");
             PalletArray.AddACPtoList(QdprefabLOGS);
             Debug.Log("QdLOGSpalletcreated");
