@@ -66,21 +66,22 @@ public class ACP_PayloadQD : MonoBehaviour
         Added = false;
         FlightStation0 = FlightStationZero.FS0;
         MainCanvas = GameObject.Find("MainCanvas");
-        OBJ = MainCanvas.transform.GetChild(3).transform.GetChild(7).gameObject;
+
+        OBJ = MainCanvas.transform.GetChild(4).transform.GetChild(9).gameObject;
         weightint = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text.ToString()); // this is the fwd weight of the pallet
         Debug.Log("SOS" + weightint);
         PalletWeight = weightint; // this is static version of the pallet weight;
         palletintFWD = weightint; // this is the fwd weight
 
-        OBJ2 = MainCanvas.transform.GetChild(3).transform.GetChild(9).gameObject;
+        OBJ2 = MainCanvas.transform.GetChild(4).transform.GetChild(11).gameObject;
         weightintMIDFWD = Int32.Parse(OBJ2.GetComponent<TMP_InputField>().text.ToString()); // this is the MID weight of the pallet
         palletintMIDFWD = weightintMIDFWD;
 
-        OBJ3 = MainCanvas.transform.GetChild(3).transform.GetChild(13).gameObject;
+        OBJ3 = MainCanvas.transform.GetChild(4).transform.GetChild(14).gameObject;
         weightintAFTMID = Int32.Parse(OBJ3.GetComponent<TMP_InputField>().text.ToString()); // this is the AFT weight of the pallet
         palletintAFTMID = weightintAFTMID;
 
-        OBJ4 = MainCanvas.transform.GetChild(3).transform.GetChild(13).gameObject;
+        OBJ4 = MainCanvas.transform.GetChild(4).transform.GetChild(16).gameObject;
         weightintAFT = Int32.Parse(OBJ3.GetComponent<TMP_InputField>().text.ToString()); // this is the AFT weight of the pallet
         palletintAFT = weightintAFT;
 

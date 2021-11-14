@@ -52,15 +52,15 @@ public class MakeQd : MonoBehaviour
             PalletArray.AddACPtoList(QdprefabLOGS);
             Debug.Log("QdLOGSpalletcreated");
 
-            QdprefabLOGS.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = DestIn.GetComponent<TMP_InputField>().text;
+            QdprefabLOGS.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = DestIn.GetComponent<TMP_InputField>().text;
 
-            QdprefabLOGS.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Weight1st.GetComponent<TMP_InputField>().text;
+            QdprefabLOGS.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = Weight1st.GetComponent<TMP_InputField>().text;
 
             QdprefabLOGS.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = Weight2nd.GetComponent<TMP_InputField>().text;
 
             QdprefabLOGS.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight3rd.GetComponent<TMP_InputField>().text;
 
-            QdprefabLOGS.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
+            QdprefabLOGS.transform.GetChild(0).GetChild(7).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
 
             QdprefabLOGS.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = ACPID1.GetComponent<TMP_InputField>().text;
 
@@ -68,7 +68,7 @@ public class MakeQd : MonoBehaviour
 
             QdprefabLOGS.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID3.GetComponent<TMP_InputField>().text;
 
-            QdprefabLOGS.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
+            QdprefabLOGS.transform.GetChild(0).GetChild(8).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
 
             int weightint1 = int.Parse(InputField1.GetComponent<TMP_InputField>().text);
 
@@ -96,15 +96,15 @@ public class MakeQd : MonoBehaviour
             Debug.Log("ADSQdpalletcreated");
 
 
-            QdprefabADS1.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = DestIn.GetComponent<TMP_InputField>().text;
+            QdprefabADS1.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = DestIn.GetComponent<TMP_InputField>().text;
 
-            QdprefabADS1.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Weight1st.GetComponent<TMP_InputField>().text;
+            QdprefabADS1.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = Weight1st.GetComponent<TMP_InputField>().text;
 
             QdprefabADS1.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = Weight2nd.GetComponent<TMP_InputField>().text;
 
             QdprefabADS1.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight3rd.GetComponent<TMP_InputField>().text;
 
-            QdprefabADS1.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
+            QdprefabADS1.transform.GetChild(0).GetChild(7).GetComponent<TextMeshProUGUI>().text = Weight4th.GetComponent<TMP_InputField>().text;
 
 
             QdprefabADS1.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = ACPID1.GetComponent<TMP_InputField>().text;
@@ -113,7 +113,7 @@ public class MakeQd : MonoBehaviour
 
             QdprefabADS1.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID3.GetComponent<TMP_InputField>().text;
 
-            QdprefabADS1.transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
+            QdprefabADS1.transform.GetChild(0).GetChild(8).GetComponent<TextMeshProUGUI>().text = ACPID4.GetComponent<TMP_InputField>().text;
 
 
             int weightint1 = int.Parse(InputField1.GetComponent<TMP_InputField>().text);

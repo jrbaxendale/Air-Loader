@@ -65,16 +65,7 @@ public class ContactQd : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-
-
-
-        //transform.position = new Vector3(0, 1.02f, -1.02f);
-
-
-
-    }
+  
 
 
     void OnMouseDown()
@@ -121,10 +112,7 @@ public class ContactQd : MonoBehaviour
                 collision.transform.parent.transform.parent.GetChild(a + 2).transform.GetComponent<Renderer>().material = HighlightedACP;
 
             }
-
-
-
-
+            
         }
 
         othertransform = collision; // othertransform is the gameobject( logs or ADS child collider) which the pallet has collided with
@@ -135,9 +123,7 @@ public class ContactQd : MonoBehaviour
     public void OnCollisionStay(Collision staycollision)
     {
         stay = staycollision;
-
-
-
+        
     }
 
     public void OnCollisionExit(Collision outcollision)
@@ -234,16 +220,11 @@ public class ContactQd : MonoBehaviour
 
 
                 }
-
-
-
+                
             }
         }
 
-
-
-
-
+        
     }
 
     void CheckPalletPositions()
@@ -298,7 +279,18 @@ public class ContactQd : MonoBehaviour
         Debug.Log("LoadingQD");
         gameObject.transform.SetParent(Position.transform); // sets the pallet parent to the collider
         gameObject.GetComponent<ACP_PayloadQD>().OriginalPosition = gameObject.transform.parent.gameObject;
-        gameObject.transform.localPosition = new Vector3(0, -4, 2.06f); // sets local position of the pallet to 0
+
+        if (gameObject.name.Contains("LOG"))
+        {
+            gameObject.transform.localPosition = new Vector3(0, -4, 2.06f); // sets local position of the pallet to 0
+
+        }
+
+        if (gameObject.name.Contains("ADS"))
+        {
+            gameObject.transform.localPosition = new Vector3(0, 0, 0); // sets local position of the pallet to 0
+            
+        }
         gameObject.tag = "loaded"; // pallet tag is loaded
         gameObject.layer = LayerMask.NameToLayer("loaded"); // pallet layer is loaded
                                                             //gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().enabled = !enabled; // thjis turns of the orange glow animation
@@ -307,10 +299,7 @@ public class ContactQd : MonoBehaviour
         othertransform.gameObject.layer = LayerMask.NameToLayer("nohit"); // this sets the pallet positions layer to 'nohit' 
         othertransform.transform.parent.gameObject.layer = LayerMask.NameToLayer("loaded"); // this sets the pallet position layer to loaded
         ParentName = gameObject.transform.parent.parent.name; // this is the name of the position the pallet is in.
-                                                              //PalletsWeight = gameObject.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text; // this is the weight of the pallet.
-                                                              // PalletsID = gameObject.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text; // this is the Pallet ID
-                                                              // PalletsDest = gameObject.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text; // this is the pallet destination
-                                                              // string Sgl = "Sgl"; // this is to identify that it is a single pallet
+                                                            
         Debug.Log(ParentName + "The Parent Name");
         // SaveManager.SaveTheLoad(ParentName, PalletsID, PalletsWeight, PalletsDest, Sgl); // this saves the pallet data
         placed = true; // this lets other pallets know that the position is occupied
@@ -328,9 +317,7 @@ public class ContactQd : MonoBehaviour
         FwdPosition.transform.parent.GetComponent<Renderer>().material = Invisible; // this turns the AFT pallet position material to invisible
         AftPosition.transform.parent.GetComponent<Renderer>().material = Invisible; // this turns the AFT pallet position material to invisible
         AftMidPosition.transform.parent.GetComponent<Renderer>().material = Invisible; // this turns the AFTmid pallet position material to invisible
-                                                                                    // gameObject.GetComponent<ACP_PayloadTPL>().GetTitle();
-
-
+                          
         Position.transform.parent.GetComponent<BoxCollider>().enabled = enabled; // this turns off the 
         FwdPosition.transform.parent.GetComponent<BoxCollider>().enabled = enabled;
         AftPosition.transform.parent.GetComponent<BoxCollider>().enabled = enabled;
@@ -345,8 +332,9 @@ public class ContactQd : MonoBehaviour
         Maincanvas.transform.GetChild(6).gameObject.SetActive(true); // this is config
         Maincanvas.transform.GetChild(7).gameObject.SetActive(true); // this is part one
         Maincanvas.transform.GetChild(8).gameObject.SetActive(true); // this is load view
+
         GameObject TemporaryChild = new GameObject(); // this is puts a empty gameobject in the aft pallet position of the triple
-        //PalletArray.AddACPtoList(TemporaryChild);
+     
         TemporaryChild.gameObject.transform.SetParent(AftPosition.transform); // this puts a gameobject in the aft position so other pallets no it is actually occupied
         TemporaryChild.gameObject.name = "QdAFT(Clone)"; // this matches the names of the double pallet positions so it is clear they are linked
 
@@ -356,20 +344,14 @@ public class ContactQd : MonoBehaviour
         TemporaryChildFwd.gameObject.name = "QdFwd(Clone)"; // this matches the names of the double pallet positions so it is clear they are linked
 
         GameObject TemporaryChildMid = new GameObject(); // this is puts a empty gameobject in the mid pallet position of the triple
-        // PalletArray.AddACPtoList(TemporaryChildFwd);
         TemporaryChildMid.gameObject.transform.SetParent(AftMidPosition.transform); // this puts a gameobject in the aft position so other pallets no it is actually occupied
         TemporaryChildMid.gameObject.name = "QdAftMid(Clone)"; // this matches the names of the double pallet positions so it is clear they are linked
-
-
-        GameObject Make = GameObject.FindGameObjectWithTag("AddQDACP"); // this finds the makeACP button
+        
+        GameObject Make = GameObject.FindGameObjectWithTag("AddQuadACP"); // this finds the makeACP button
         Make.gameObject.GetComponent<Button>().interactable = true; // this turns the makeACP button back on now the pallet is placed
         gameObject.GetComponent<ACP_PayloadQD>().StartPos = gameObject.transform.parent.transform.gameObject;
         Destroy(this); // destroys this script as it gets in the way of the MOVE and Delete scripts
-
-
-
-
-
+        
     }
 
 
