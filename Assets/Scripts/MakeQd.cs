@@ -30,8 +30,20 @@ public class MakeQd : MonoBehaviour
     public GameObject QdprefabLogs;
     public GameObject QdprefabADS;
     public GameObject Maincanvas;
+    public GameObject ACPdiscard;
 
+    public void DiscardPallet()
 
+    {
+        if (ACPdiscard != null)
+
+        {
+            Destroy(ACPdiscard);
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        else return;
+    }
     public void MakeQdpallet()
     {
         Maincanvas.GetComponent<RaycastOff>().TurnOffRaycast();
@@ -42,7 +54,7 @@ public class MakeQd : MonoBehaviour
 
         {
             GameObject QdprefabLOGS = Instantiate(QdprefabLogs) as GameObject;
-
+            ACPdiscard = QdprefabLOGS;
 
             QdprefabLOGS.transform.localPosition = new Vector3(0, 1.02f, -1.02f);
             QdprefabLOGS.transform.eulerAngles = new Vector3(-90, 0, 360);
@@ -88,6 +100,7 @@ public class MakeQd : MonoBehaviour
         else if (ActivateADSLOGS.ADSbool == true)
         {
             GameObject QdprefabADS1 = Instantiate(QdprefabADS) as GameObject;
+            ACPdiscard = QdprefabADS1;
             PalletArray.AddACPtoList(QdprefabADS1);
 
             QdprefabADS1.transform.localPosition = new Vector3(0, 1.02f, 0);

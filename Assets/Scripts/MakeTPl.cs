@@ -30,7 +30,20 @@ public class MakeTPl : MonoBehaviour
     public GameObject TplprefabLogs;
     public GameObject TPlprefabADS;
     public GameObject Maincanvas;
+    public GameObject ACPdiscard;
 
+    public void DiscardPallet()
+
+    {
+        if (ACPdiscard != null)
+
+        {
+            Destroy(ACPdiscard);
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        else return;
+    }
 
     public void MakeTplpallet()
     {
@@ -42,6 +55,7 @@ public class MakeTPl : MonoBehaviour
 
         {
            GameObject TPlprefabLOGS = Instantiate(TplprefabLogs) as GameObject;
+           ACPdiscard = TPlprefabLOGS;
 
 
             TPlprefabLOGS.transform.localPosition = new Vector3(0, 1.02f, -1.02f);
@@ -81,6 +95,7 @@ public class MakeTPl : MonoBehaviour
         else if (ActivateADSLOGS.ADSbool == true)
         {
             GameObject TplprefabADS1 = Instantiate(TPlprefabADS) as GameObject;
+            ACPdiscard = TplprefabADS1;
             PalletArray.AddACPtoList(TplprefabADS1);
 
             TplprefabADS1.transform.localPosition = new Vector3(0, 1.02f, 0);

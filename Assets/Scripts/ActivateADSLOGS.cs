@@ -53,19 +53,70 @@ public class ActivateADSLOGS : MonoBehaviour
     public Image circleADS;
     public Image circleLOGS;
     public Image circleFLAT;
+    public List<GameObject> ADSarray;
+    public bool ADSArrayBool;
 
     public void Awake()
     {
         circleADS.GetComponent<Image>().color = Color.green;
         circleLOGS.GetComponent<Image>().color = Color.green;
         ADSbool = true;
+        ADSArrayBool = true;
         LOGSbool = true;
+        ADSarray = new List<GameObject>();
+        ADSarray.Add(ADS1);
+        ADSarray.Add(ADS2);
+        ADSarray.Add(ADS3);
+        ADSarray.Add(ADS4);
+        ADSarray.Add(ADS5);
+        ADSarray.Add(ADS6);
+        ADSarray.Add(ADS7);
+        ADSarray.Add(ADS8);
+        ADSarray.Add(ADS9);
+        ADSarray.Add(ADS10);
+        ADSarray.Add(ADS11);
+
+    }
+
+   public void ActivateArrayADS()
+    {
+        if (ADSArrayBool == false)
+
+        {
+            ADSArrayBool = true;
+
+
+
+            foreach (GameObject g in ADSarray)
+            {
+                if (g.transform.GetChild(0).transform.childCount == 0)
+                {
+                    g.SetActive(true);
+
+                }
+
+                else return;
+            }
+        }
+
+        else if (ADSArrayBool)
+
+        {
+            ADSArrayBool = false;
+            
+
+            foreach (GameObject g in ADSarray)
+            { 
+                
+                g.SetActive(false);
+
+                
+            }
+        }
 
 
 
     }
-
-
 
 
     public void ActivateADS()
@@ -103,7 +154,7 @@ public class ActivateADSLOGS : MonoBehaviour
 
         }
 
-        if (ADS1.tag == "empty" && ADS1.activeSelf == true)
+      /*  if (ADS1.tag == "empty" && ADS1.activeSelf == true)
         {
 
             ADS1.SetActive(false);
@@ -234,7 +285,7 @@ public class ActivateADSLOGS : MonoBehaviour
 
             ADS11.SetActive(true);
         }
-
+      */
     }
 
 

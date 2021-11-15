@@ -72,7 +72,7 @@ public class Contact : MonoBehaviour
         if ((collision.transform.parent.name.Contains("ADS")) && (collision.transform.parent.tag != "ignore"))
         {
             collision.transform.parent.GetComponent<Renderer>().material = ADSMat; // returns the material of the collided object back to its original
-            Debug.Log("MEATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" + collision.transform.parent.transform.name);
+           
         }
        
         else if (collision.transform.parent.name.Contains("logs"))

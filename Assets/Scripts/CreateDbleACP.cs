@@ -8,8 +8,7 @@ using System;
 
 public class CreateDbleACP : MonoBehaviour
 
-
-
+    
 {
     public GameObject DblPrefabLOGS;
     public GameObject DblprefabADS;
@@ -31,10 +30,22 @@ public class CreateDbleACP : MonoBehaviour
 
     public GameObject InputFieldFWD;
     public GameObject InputFieldAFT;
+    public GameObject ACPdiscard;
 
     public static decimal weightint;
 
+    public void DiscardPallet()
 
+    {
+        if (ACPdiscard != null)
+
+        {
+            Destroy(ACPdiscard);
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        else return;
+    }
 
     public void MakeDoubleACP()
     {
@@ -45,6 +56,7 @@ public class CreateDbleACP : MonoBehaviour
 
 
             GameObject Dblprefab1ADS = Instantiate(DblprefabADS);
+            ACPdiscard = Dblprefab1ADS;
             gameObject.GetComponent<Button>().interactable = false;
 
             Debug.Log("Pallet Created");
@@ -97,6 +109,7 @@ public class CreateDbleACP : MonoBehaviour
 
         {
               GameObject DblprefabLOGS1 = Instantiate(DblPrefabLOGS);
+              ACPdiscard = DblprefabLOGS1; 
               gameObject.GetComponent<Button>().interactable = false;
 
               Debug.Log("Pallet Created");
