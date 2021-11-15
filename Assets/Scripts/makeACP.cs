@@ -51,8 +51,20 @@ public class makeACP : MonoBehaviour
     public GameObject WhichPallet;
     public GameObject ADSobj;
     public GameObject LOGSobj;
+    public GameObject ACPdiscard;
 
+    public void DiscardPallet()
 
+    {
+        if (ACPdiscard != null)
+
+        {
+            Destroy(ACPdiscard);
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        else return;
+    }
 
 
     public void makepallet()
@@ -83,6 +95,7 @@ public class makeACP : MonoBehaviour
 
             {
                 GameObject ACPprefab1 = Instantiate(ACPprefab); // instatiates a single pallet;
+                ACPdiscard = ACPprefab1;
                 gameObject.GetComponent<Button>().interactable = false;
                 ACPprefab1.transform.localPosition = new Vector3(0, 0.83f, 0); // positions the new pallet slightly above other items to prevent interferance
                // ACPprefab1.GetComponent<Dissolve>().show();
@@ -152,8 +165,10 @@ public class makeACP : MonoBehaviour
             {
                 GameObject ACPprefab1 = Instantiate(ACPprefab) as GameObject; // this instantiates a single pallet
                                                                               //gameObject.GetComponent<Button>().interactable = false;
+                ACPdiscard = ACPprefab1;
+                                                                              
                 Debug.Log("MADE A LOGS PALLET");
-
+                
                 ACPprefab1.transform.localPosition = new Vector3(0, 0.83f, 0); // this sets the initial position on the instantiated pallet slightly above everything else to prevent interference
 
                 ACPprefab1.layer = LayerMask.NameToLayer("LOGS"); // adds the pallet to the Logs Layer
