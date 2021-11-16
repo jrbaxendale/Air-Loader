@@ -20,6 +20,7 @@ public class ContactDbl : MonoBehaviour
     public Material ADSMat;
     public GameObject Maincanvas;
     public Material LogsMat;
+    public GameObject Sphere;
 
 
 
@@ -80,7 +81,7 @@ void Update()
 
                     Debug.Log("GetMouseUPWorking");
                     gameObject.transform.SetParent(othertransform.transform);
-                    gameObject.transform.localPosition = new Vector3(0, -4.42f, 0);
+                    gameObject.transform.localPosition = new Vector3(0, -3.213f, 0);
 
 
                     placed = true;
@@ -105,8 +106,11 @@ void Update()
                     othertransform.transform.parent.gameObject.layer = LayerMask.NameToLayer("loaded");
                     GameObject Make = GameObject.FindGameObjectWithTag("AddDoubleACP");
                     Make.gameObject.GetComponent<Button>().interactable = true;
-
-
+                    Sphere.transform.localPosition = new Vector3(0, 0, 0);
+                    Vector2 vec = new Vector2(Sphere.transform.localPosition.x, Sphere.transform.localPosition.y);
+                    Vector2 veb = new Vector2(FlightStationZero.FS0.transform.localPosition.x, FlightStationZero.FS0.transform.localPosition.y);
+                    Debug.Log("DISTANCE IS ...." + Vector2.Distance(vec, veb));
+                    
                 }
 
             }

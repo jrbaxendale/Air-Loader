@@ -54,7 +54,16 @@ public class ActivateADSLOGS : MonoBehaviour
     public Image circleLOGS;
     public Image circleFLAT;
     public List<GameObject> ADSarray;
-    public bool ADSArrayBool;
+
+    public static bool ADSArrayBool;
+    public Material Invisible;
+    public List<GameObject> LOGSarray;
+    [SerializeField]
+    public static bool LOGSarrayBool;
+    [SerializeField]
+    public static bool ADStextLower;
+    [SerializeField]
+    public static bool LOGStextLower;
 
     public void Awake()
     {
@@ -62,6 +71,7 @@ public class ActivateADSLOGS : MonoBehaviour
         circleLOGS.GetComponent<Image>().color = Color.green;
         ADSbool = true;
         ADSArrayBool = true;
+        LOGSarrayBool = true;
         LOGSbool = true;
         ADSarray = new List<GameObject>();
         ADSarray.Add(ADS1);
@@ -76,26 +86,209 @@ public class ActivateADSLOGS : MonoBehaviour
         ADSarray.Add(ADS10);
         ADSarray.Add(ADS11);
 
+        LOGSarray = new List<GameObject>();
+        LOGSarray.Add(logs1L);
+        LOGSarray.Add(logs2L);
+        LOGSarray.Add(logs3L);
+        LOGSarray.Add(logs4L);
+        LOGSarray.Add(logs5L);
+        LOGSarray.Add(logs6L);
+        LOGSarray.Add(logs7L);
+        LOGSarray.Add(logs8L);
+        LOGSarray.Add(logs9L);
+        LOGSarray.Add(logs1R);
+        LOGSarray.Add(logs2R);
+        LOGSarray.Add(logs3R);
+        LOGSarray.Add(logs4R);
+        LOGSarray.Add(logs5R);
+        LOGSarray.Add(logs6R);
+        LOGSarray.Add(logs7R);
+        LOGSarray.Add(logs8R);
+        LOGSarray.Add(logs9R);
+
+        LOGStextLower = false;
+        ADStextLower = true;
     }
 
-   public void ActivateArrayADS()
+    public void ActivateLOGSarray()
+
+
     {
-        if (ADSArrayBool == false)
+        if (LOGSarrayBool == false)
 
         {
-            ADSArrayBool = true;
+            LOGSarrayBool = true;
+            LOGSbool = true;
+            circleLOGS.GetComponent<Image>().color = Color.green;
+            LogstextR.SetActive(true);
+            LogstextL.SetActive(true);
+
+            if (ADStext.activeSelf == false)
+
+            {
+                LogstextR.transform.localPosition = new Vector3(-11.33704f, 0.132f, 5.78f);
+                LOGStextLower = true;
+            }
+
+            if (ADStext.activeSelf)
+            {
+
+                if (ADStextLower)
+
+                {
+
+                    LogstextR.transform.localPosition = new Vector3(-11.33704f, 0.132f, 4.68f);
+                    LOGStextLower = false;
+
+                }
+
+                else if (ADStextLower == false)
+
+                {
+                    LogstextR.transform.localPosition = new Vector3(-11.33704f, 0.132f, 5.78f);
+                    LOGStextLower = true;
+                }
+            }
 
 
 
-            foreach (GameObject g in ADSarray)
+
+            if (TDPtext.activeSelf)
+            {
+                LogstextL.transform.localPosition = new Vector3(-33.98425f, 0.17f, 13.54f);
+            }
+
+            if (TDPtext.activeSelf == false)
+            {
+                LogstextL.transform.localPosition = new Vector3(-33.98425f, 0.17f, 12.36f);
+            }
+
+
+            foreach (GameObject g in LOGSarray)
+
             {
                 if (g.transform.GetChild(0).transform.childCount == 0)
+
                 {
+
                     g.SetActive(true);
 
                 }
 
-                else return;
+                else
+
+                {
+
+                    g.SetActive(true);
+                    g.GetComponent<Renderer>().material = Invisible;
+                    g.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
+                }
+            }
+        }
+
+
+
+        else if (LOGSarrayBool)
+
+        {
+            LOGSarrayBool = false;
+            LOGSbool = false;
+            circleLOGS.GetComponent<Image>().color = Color.white;
+            LogstextR.SetActive(false);
+            LOGStextLower = false;
+            LogstextL.SetActive(false);
+
+            if (ADSbool == true && ADStextLower == false)
+
+            {
+                ADStext.transform.localPosition = new Vector3(-21.84467f, 0.08f, 5.64f);
+                ADStextLower = true;
+            }
+
+
+            foreach (GameObject g in LOGSarray)
+            {
+                if (g.transform.GetChild(0).transform.childCount == 0)
+
+                {
+
+                    g.SetActive(false);
+
+                }
+
+                else
+
+                {
+
+                    g.SetActive(true);
+                    g.GetComponent<Renderer>().material = Invisible;
+                    g.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
+                }
+
+
+
+            }
+        }
+
+
+
+    }
+
+    public void ActivateArrayADS()
+    {
+        if (ADSArrayBool == false)
+
+        {
+
+            ADSArrayBool = true;
+            ADSbool = true;
+            circleADS.GetComponent<Image>().color = Color.green;
+            ADStext.SetActive(true);
+           
+
+            if (LogstextR.activeSelf)
+
+            {
+               if (LOGStextLower)
+
+                {
+                    ADStext.transform.localPosition = new Vector3(-21.84467f, 0.08f, 4.63f);
+                    ADStextLower = false;
+                }
+
+               else if (LOGStextLower == false)
+
+               {
+                   ADStext.transform.localPosition = new Vector3(-21.84467f, 0.08f, 5.64f);
+                   ADStextLower = true;
+               }
+            }
+
+            if (LogstextR.activeSelf == false)
+
+            {
+                ADStext.transform.localPosition = new Vector3(-21.84467f, 0.08f, 5.64f);
+                ADStextLower = true;
+            }
+
+            foreach (GameObject g in ADSarray)
+            {
+                if (g.transform.GetChild(0).transform.childCount == 0)
+
+                {
+
+                    g.SetActive(true);
+
+                }
+
+                else 
+
+                {
+
+                    g.SetActive(true);
+                    g.GetComponent<Renderer>().material = Invisible;
+                    g.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
+                }
             }
         }
 
@@ -103,13 +296,39 @@ public class ActivateADSLOGS : MonoBehaviour
 
         {
             ADSArrayBool = false;
-            
+            ADSbool = false;
+            circleADS.GetComponent<Image>().color = Color.white;
+            ADStext.SetActive(false);
+            ADStextLower = false;
+
+            if (LOGSbool== true && LOGStextLower == false)
+
+            {
+                LogstextR.transform.localPosition = new Vector3(-11.33704f, 0.132f, 5.78f);
+                LOGStextLower = true;
+            }
+
 
             foreach (GameObject g in ADSarray)
-            { 
+            {
+                if (g.transform.GetChild(0).transform.childCount == 0)
+
+                {
+
+                    g.SetActive(false);
+
+                }
+
+                else
+
+                {
+
+                    g.SetActive(true);
+                    g.GetComponent<Renderer>().material = Invisible;
+                    g.transform.GetChild(0).transform.GetComponent<BoxCollider>().enabled = !enabled;
+                }
+
                 
-                g.SetActive(false);
-
                 
             }
         }
@@ -119,445 +338,8 @@ public class ActivateADSLOGS : MonoBehaviour
     }
 
 
-    public void ActivateADS()
-    {
-        ADSbool = !ADSbool;
-
-
-        if (ADSbool == true)
-        {
-            if (LogstextR.activeSelf == false)
-            {
-
-
-                ADStext.SetActive(true);
-
-            }
-
-            else
-            {
-                ADStext.SetActive(true);
-                ADStext.transform.localPosition = new Vector3(-21.84467f, 0.08f, 5.21f);
-                circleADS.GetComponent<Image>().color = Color.green;
-
-
-            }
-
-
-        }
-
-        else
-        {
-
-            ADStext.SetActive(false);
-            circleADS.GetComponent<Image>().color = Color.white;
-
-        }
-
-      /*  if (ADS1.tag == "empty" && ADS1.activeSelf == true)
-        {
-
-            ADS1.SetActive(false);
-        }
-
-        else
-        {
-
-            ADS1.SetActive(true);
-        }
-
-
-        if (ADS2.tag == "empty" && ADS2.activeSelf == true)
-        {
-
-            ADS2.SetActive(false);
-        }
-
-        else
-        {
-
-            ADS2.SetActive(true);
-        }
-
-
-
-        if (ADS3.tag == "empty" && ADS3.activeSelf == true)
-        {
-
-            ADS3.SetActive(false);
-        }
-        else
-        {
-
-            ADS3.SetActive(true);
-        }
-
-
-
-
-        if (ADS4.tag == "empty" && ADS4.activeSelf == true)
-        {
-
-            ADS4.SetActive(false);
-        }
-        else
-        {
-
-            ADS4.SetActive(true);
-        }
-
-
-
-        if (ADS5.tag == "empty" && ADS5.activeSelf == true)
-        {
-
-            ADS5.SetActive(false);
-        }
-        else
-        {
-
-            ADS5.SetActive(true);
-        }
-
-
-        if (ADS6.tag == "empty" && ADS6.activeSelf == true)
-        {
-
-            ADS6.SetActive(false);
-        }
-        else
-        {
-
-            ADS6.SetActive(true);
-        }
-
-        if (ADS7.tag == "empty" && ADS7.activeSelf == true)
-        {
-
-            ADS7.SetActive(false);
-        }
-        else
-        {
-
-            ADS7.SetActive(true);
-        }
-
-        if (ADS8.tag == "empty" && ADS8.activeSelf == true)
-        {
-
-            ADS8.SetActive(false);
-        }
-        else
-        {
-
-            ADS8.SetActive(true);
-        }
-
-        if (ADS9.tag == "empty" && ADS9.activeSelf == true)
-        {
-
-            ADS9.SetActive(false);
-        }
-        else
-        {
-
-            ADS9.SetActive(true);
-        }
-
-        if (ADS10.tag == "empty" && ADS10.activeSelf == true)
-        {
-
-            ADS10.SetActive(false);
-        }
-        else
-        {
-
-            ADS10.SetActive(true);
-        }
-
-        if (ADS11.tag == "empty" && ADS11.activeSelf == true)
-        {
-
-            ADS11.SetActive(false);
-        }
-        else
-        {
-
-            ADS11.SetActive(true);
-        }
-      */
-    }
-
-
-
-
-    public void activateLOGs()
-
-
-    {
-
-        LOGSbool = !LOGSbool;
-
-
-
-        if (LOGSbool == true)
-        {
-
-            if (ADStext.activeSelf == true)
-
-            {
-
-                LogstextR.SetActive(true);
-                circleLOGS.GetComponent<Image>().color = Color.green;
-
-
-
-            }
-
-            else if (ADStext.activeSelf == false)
-
-            {
-
-                LogstextR.SetActive(true);
-                LogstextR.transform.localPosition = new Vector3(-11.33704f, 0.132f, 5.78f);
-
-            }
-
-            if (TDPtext.activeSelf == true)
-            {
-                LogstextL.SetActive(true);
-                LogstextL.transform.localPosition = new Vector3(-33.98425f, 0.17f, 13.54f);
-            }
-
-            else if (TDPtext.activeSelf == false)
-            {
-                LogstextL.SetActive(true);
-                LogstextL.transform.localPosition = new Vector3(-33.98425f, 0.17f, 12.36f);
-
-            }
-
-        }
-
-
-        else
-        {
-            LogstextR.SetActive(false);
-            LogstextL.SetActive(false);
-            circleLOGS.GetComponent<Image>().color = Color.white;
-
-        }
-
-
-
-
-        if (logs1L.tag == "empty" && logs1L.activeSelf == true)
-        {
-
-            logs1L.SetActive(false);
-        }
-        else
-        {
-
-            logs1L.SetActive(true);
-        }
-
-        if (logs1R.tag == "empty" && logs1R.activeSelf == true)
-        {
-
-            logs1R.SetActive(false);
-        }
-        else
-        {
-
-            logs1R.SetActive(true);
-        }
-
-        if (logs2L.tag == "empty" && logs2L.activeSelf == true)
-        {
-
-            logs2L.SetActive(false);
-        }
-        else
-        {
-
-            logs2L.SetActive(true);
-        }
-
-        if (logs2R.tag == "empty" && logs2R.activeSelf == true)
-        {
-
-            logs2R.SetActive(false);
-        }
-        else
-        {
-
-            logs2R.SetActive(true);
-        }
-
-        if (logs3L.tag == "empty" && logs3L.activeSelf == true)
-        {
-
-            logs3L.SetActive(false);
-        }
-        else
-        {
-
-            logs3L.SetActive(true);
-        }
-
-        if (logs3R.tag == "empty" && logs3R.activeSelf == true)
-        {
-
-            logs3R.SetActive(false);
-        }
-        else
-        {
-
-            logs3R.SetActive(true);
-        }
-
-        if (logs4L.tag == "empty" && logs4L.activeSelf == true)
-        {
-
-            logs4L.SetActive(false);
-        }
-        else
-        {
-
-            logs4L.SetActive(true);
-        }
-
-        if (logs4R.tag == "empty" && logs4R.activeSelf == true)
-        {
-
-            logs4R.SetActive(false);
-        }
-        else
-        {
-
-            logs4R.SetActive(true);
-        }
-
-        if (logs5L.tag == "empty" && logs5L.activeSelf == true)
-        {
-
-            logs5L.SetActive(false);
-        }
-        else
-        {
-
-            logs5L.SetActive(true);
-        }
-
-        if (logs5R.tag == "empty" && logs5R.activeSelf == true)
-        {
-
-            logs5R.SetActive(false);
-        }
-        else
-        {
-
-            logs5R.SetActive(true);
-        }
-
-        if (logs6L.tag == "empty" && logs6L.activeSelf == true)
-        {
-
-            logs6L.SetActive(false);
-        }
-        else
-        {
-
-            logs6L.SetActive(true);
-        }
-
-        if (logs6R.tag == "empty" && logs6R.activeSelf == true)
-        {
-
-            logs6R.SetActive(false);
-        }
-        else
-        {
-
-            logs6R.SetActive(true);
-        }
-
-        if (logs7L.tag == "empty" && logs7L.activeSelf == true)
-        {
-
-            logs7L.SetActive(false);
-        }
-        else
-        {
-
-            logs7L.SetActive(true);
-        }
-
-        if (logs7R.tag == "empty" && logs7R.activeSelf == true)
-        {
-
-            logs7R.SetActive(false);
-        }
-        else
-        {
-
-            logs7R.SetActive(true);
-        }
-
-        if (logs8L.tag == "empty" && logs8L.activeSelf == true)
-        {
-
-            logs8L.SetActive(false);
-        }
-        else
-        {
-
-            logs8L.SetActive(true);
-        }
-
-        if (logs8R.tag == "empty" && logs8R.activeSelf == true)
-        {
-
-            logs8R.SetActive(false);
-        }
-        else
-        {
-
-            logs8R.SetActive(true);
-        }
-
-        if (logs9L.tag == "empty" && logs9L.activeSelf == true)
-        {
-
-            logs9L.SetActive(false);
-        }
-        else
-        {
-
-            logs9L.SetActive(true);
-        }
-
-        if (logs9R.tag == "empty" && logs9R.activeSelf == true)
-        {
-
-            logs9R.SetActive(false);
-        }
-        else
-        {
-
-            logs9R.SetActive(true);
-        }
-
-
-
-
-
-
-
-
-
-    }
-
+   
+    
     public void ActivateFlatfloor()
     {
         TDPbool = !TDPbool;

@@ -38,6 +38,7 @@ public class ContactDblADS : MonoBehaviour
     public static string PalletsID;
     public static string PalletsDest;
     public static string Sgl;
+   
 
     [ES3Serializable]
     public GameObject Weight1;
@@ -185,7 +186,7 @@ public class ContactDblADS : MonoBehaviour
                 {
                     LoadDoubleADSPallet();
 
-
+                  
                 }
 
 

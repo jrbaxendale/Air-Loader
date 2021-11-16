@@ -10,12 +10,7 @@ using EasyGameStudio.Jeremy;
 public class makeACP : MonoBehaviour
 {
 
-    [ES3Serializable]
-    public GameObject ADSscript;
-
-
-    [ES3Serializable]
-    public GameObject LOGSscript;
+    
 
 
     [ES3Serializable]

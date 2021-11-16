@@ -16,8 +16,7 @@ namespace ES3Types
 		{
 			var instance = (makeACP)obj;
 			
-			writer.WritePropertyByRef("ADSscript", instance.ADSscript);
-			writer.WritePropertyByRef("LOGSscript", instance.LOGSscript);
+			
 			writer.WritePropertyByRef("Weight1", instance.Weight1);
 			writer.WritePropertyByRef("Dest1", instance.Dest1);
 			writer.WritePropertyByRef("ACPID", instance.ACPID);
@@ -35,12 +34,7 @@ namespace ES3Types
 				switch(propertyName)
 				{
 					
-					case "ADSscript":
-						instance.ADSscript = reader.Read<UnityEngine.GameObject>(ES3Type_GameObject.Instance);
-						break;
-					case "LOGSscript":
-						instance.LOGSscript = reader.Read<UnityEngine.GameObject>(ES3Type_GameObject.Instance);
-						break;
+					
 					case "Weight1":
 						instance.Weight1 = reader.Read<UnityEngine.GameObject>(ES3Type_GameObject.Instance);
 						break;

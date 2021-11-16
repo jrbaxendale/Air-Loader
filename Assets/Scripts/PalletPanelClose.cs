@@ -12,6 +12,10 @@ public class PalletPanelClose : MonoBehaviour
     public TPUPalletControl TpuScript;
     public LoosePanel Lse;
     public Image circle;
+    public GameObject SingleACP;
+    public GameObject DblACP;
+    public GameObject TplACP;
+    public GameObject QdACP;
 
 
 
@@ -24,21 +28,21 @@ public class PalletPanelClose : MonoBehaviour
             TpuScript.CloseTpu();
             WhichPallet.SetActive(true); 
             circle.GetComponent<Image>().color = Color.green;
-
-
-
-
-
+            
             PalletBool = true;
             return;
         }
 
 
-        else if (PalletBool == true)
+        else if (PalletBool)
         {
             WhichPallet.SetActive(false);
             circle.GetComponent<Image>().color = Color.white;
             Debug.Log("Circle should be white");
+            SingleACP.SetActive(false);
+            DblACP.SetActive(false);
+            TplACP.SetActive(false);
+            QdACP.SetActive(false);
 
             PalletBool = false;
 
