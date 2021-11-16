@@ -43,7 +43,7 @@ public class ACP_PayloadDBL : MonoBehaviour
     public bool Added;
     public bool Initial;
     public decimal OldMoment;
-    public decimal NewMoment;
+ 
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
     public static decimal PalletWeight;
@@ -51,18 +51,18 @@ public class ACP_PayloadDBL : MonoBehaviour
     public GameObject OBJ;
     public GameObject OBJ2;
     public GameObject StartPos;
-    public GameObject FWDffe;
-    public GameObject AFTffe;
+    
     public GameObject MidFFE;
     public bool NoFFEbool;
-    public bool FwdFFEbool;
-    public bool AftFFEbool;
+   
+    
     public bool MidFFEbool;
     public Vector2 MidFfeVector2;
     public Vector2 AddedVector2;
-    public static decimal PalletTotalWeight;
-    public static decimal CentrePointDBL;
-    public static decimal CombinedWt;
+   
+    public decimal CombinedWt;
+    public decimal weightFwd;
+    public decimal weightAft;
 
 
     public bool CombinedWeightCheck()
@@ -99,9 +99,47 @@ public class ACP_PayloadDBL : MonoBehaviour
         }
     }
 
+    public bool FwdWtCheck() // checks if a value is put into the fwd wt input
+
+    {
+        OBJ = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
+       
+        var text = OBJ.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
+
+        if (string.IsNullOrEmpty(text))
+        {
+            
+            return true;
+        }
+        else
+        {
+             weightFwd = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text);
+            return false;
+        }
+    }
+
+    public bool AftWtCheck() // checks if a value is put into the aft input
+
+    {
+        OBJ2 = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+
+        var text = OBJ2.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
+
+        if (string.IsNullOrEmpty(text))
+        {
+
+            return true;
+        }
+        else
+        {
+             weightAft = Int32.Parse(OBJ2.GetComponent<TMP_InputField>().text);
+            return false;
+        }
+    }
 
 
-     public void CBPrefOrder()
+
+    public void CBPrefOrder()
 
      { 
         
@@ -136,14 +174,11 @@ public class ACP_PayloadDBL : MonoBehaviour
         Added = false;
         FlightStation0 = FlightStationZero.FS0;
         MainCanvas = GameObject.Find("MainCanvas");
-        FWDffe = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
         MidFFE = MainCanvas.transform.GetChild(2).transform.GetChild(16).gameObject;
-        AFTffe = MainCanvas.transform.GetChild(2).transform.GetChild(14).gameObject;
-
         obj = MainCanvas.transform.GetChild(2).transform.GetChild(14).gameObject; // this is the combined weight if there is one
         bool CombinedWtbool = CombinedWeightCheck();
 
-        if (CombinedWtbool) // this means there is no entry for total weight
+        if (CombinedWtbool) // this means there is no entry for total weight so this method uses individual wts
 
         {
             OBJ = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
@@ -170,7 +205,41 @@ public class ACP_PayloadDBL : MonoBehaviour
             Payload.TotalPayloadWt += palletint;
 
         }
-        
+
+        else if (CombinedWtbool == false) // so there is a total wt to use
+
+        {
+            constant = 39.37006151790835M;
+
+            Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
+
+            Locks = false;
+            weight = false;
+            location = false;
+            dg = false;
+            Checked = false;
+
+            palletint = CombinedWt;
+            Payload.TotalPayloadWt += palletint;
+
+           bool fwd = FwdWtCheck();
+           bool aft = AftWtCheck();
+
+           if (fwd == false && aft == false)
+
+           {
+               decimal tot = weightFwd + weightAft;
+
+               if (tot != palletint)
+
+               {
+
+
+               }
+           }
+
+        }
+
             CBPrefOrder(); // this checks if there is a CB mark 
         
     }
