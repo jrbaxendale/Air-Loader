@@ -516,6 +516,8 @@ public class Raycast : MonoBehaviour
         GameObject TheSelectedPanel = Instantiate(SelectedPanelDBL, MainCanvas.transform, false);
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().palletint.ToString(); // this is the pallet weight FWD
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().palletintAFT.ToString(); // this is the pallet weight AFT
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().CombinedWt.ToString(); // this is the total weight
+
         int Pos = target.gameObject.transform.GetSiblingIndex();
         GameObject Obj = target.transform.parent.GetChild(Pos + 1).transform.GetChild(0).transform.GetChild(0).transform.gameObject;
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.parent.name; // this gets the pallet position of the aft pallet of double ADS

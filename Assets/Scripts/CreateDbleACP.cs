@@ -34,6 +34,7 @@ public class CreateDbleACP : MonoBehaviour
 
     public static decimal weightint;
 
+    public TextMeshProUGUI CombinedWt;
     public void DiscardPallet()
 
     {
@@ -80,8 +81,17 @@ public class CreateDbleACP : MonoBehaviour
             TextMeshProUGUI ACPidFwd = Dblprefab1ADS.transform.GetChild(0).GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
             ACPidFwd.text = ACPID.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-            TextMeshProUGUI ACPidAft = Dblprefab1ADS.transform.GetChild(0).GetChild(5).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
+            TextMeshProUGUI ACPidAft = Dblprefab1ADS.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
             ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
+
+          /*  if (CombinedWt.text != null)
+            {
+                
+                TextMeshProUGUI CombinedWT = Dblprefab1ADS.transform.GetChild(0).GetChild(5)
+                    .GetComponent<TMPro.TextMeshProUGUI>(); // This is the pallet total weight
+                CombinedWT.text = CombinedWt.text; //
+
+            }
 
             if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
             {
@@ -102,6 +112,7 @@ public class CreateDbleACP : MonoBehaviour
                 Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
 
             }
+          */
             return;
         }
 
@@ -133,7 +144,16 @@ public class CreateDbleACP : MonoBehaviour
               TextMeshProUGUI ACPidAft = DblprefabLOGS1.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
               ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-              if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
+           /* if (CombinedWt.GetComponent<TextMeshProUGUI>().text != null)
+            {
+
+                TextMeshProUGUI CombinedWT = DblprefabLOGS1.transform.GetChild(0).GetChild(5)
+                    .GetComponent<TMPro.TextMeshProUGUI>(); // this is the Total Pallet Weight
+                CombinedWT.text = CombinedWt.GetComponent<TextMeshProUGUI>().text; //
+
+            }
+
+            if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
               {
 
 
@@ -152,6 +172,8 @@ public class CreateDbleACP : MonoBehaviour
                   Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
 
               }
+
+            */
               return;
 
 

@@ -51,7 +51,7 @@ public class ACP_PayloadDBL : MonoBehaviour
     public GameObject OBJ;
     public GameObject OBJ2;
     public GameObject StartPos;
-    
+    public decimal CombinedWt;
     public GameObject MidFFE;
     public bool NoFFEbool;
    
@@ -60,31 +60,14 @@ public class ACP_PayloadDBL : MonoBehaviour
     public Vector2 MidFfeVector2;
     public Vector2 AddedVector2;
    
-    public decimal CombinedWt;
+   
     public decimal weightFwd;
     public decimal weightAft;
+    public GameObject WeightWarning;
 
+  
 
-    public bool CombinedWeightCheck()
-
-    {
-        var text = obj.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
-
-        if (string.IsNullOrEmpty(text))
-        {
-            return true;
-        }
-        else
-        {
-           
-            CombinedWt = Int32.Parse(obj.GetComponent<TMP_InputField>().text.ToString()); // this is the total weight;
-            return false;
-        }
-
-
-    }
-
-    public bool MidFFEnullCheck()
+    public bool MidFFEnullCheck() // this detects if there is an input into the FFE cb box
 
     {
         var text = MidFFE.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
@@ -99,47 +82,10 @@ public class ACP_PayloadDBL : MonoBehaviour
         }
     }
 
-    public bool FwdWtCheck() // checks if a value is put into the fwd wt input
-
-    {
-        OBJ = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-       
-        var text = OBJ.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
-
-        if (string.IsNullOrEmpty(text))
-        {
-            
-            return true;
-        }
-        else
-        {
-             weightFwd = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text);
-            return false;
-        }
-    }
-
-    public bool AftWtCheck() // checks if a value is put into the aft input
-
-    {
-        OBJ2 = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
-
-        var text = OBJ2.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
-
-        if (string.IsNullOrEmpty(text))
-        {
-
-            return true;
-        }
-        else
-        {
-             weightAft = Int32.Parse(OBJ2.GetComponent<TMP_InputField>().text);
-            return false;
-        }
-    }
+   
 
 
-
-    public void CBPrefOrder()
+    public void CBPrefOrder() // this works out if the CB calc an be taken from a specified input
 
      { 
         
@@ -167,6 +113,7 @@ public class ACP_PayloadDBL : MonoBehaviour
 
 }
 
+  
     private void Awake()
     {
        
@@ -174,13 +121,45 @@ public class ACP_PayloadDBL : MonoBehaviour
         Added = false;
         FlightStation0 = FlightStationZero.FS0;
         MainCanvas = GameObject.Find("MainCanvas");
-        MidFFE = MainCanvas.transform.GetChild(2).transform.GetChild(16).gameObject;
+        MidFFE = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
         obj = MainCanvas.transform.GetChild(2).transform.GetChild(14).gameObject; // this is the combined weight if there is one
-        bool CombinedWtbool = CombinedWeightCheck();
 
-        if (CombinedWtbool) // this means there is no entry for total weight so this method uses individual wts
+        if (obj.GetComponent<TMP_InputField>().text != null)
+        {
+            decimal dec = Int32.Parse(obj.GetComponent<TMP_InputField>().text);
+
+            if (dec >= 0)
+            {
+                Debug.Log("COMBINED WEIGHTS");
+
+                constant = 39.37006151790835M;
+
+                Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
+
+                Locks = false;
+                weight = false;
+                location = false;
+                dg = false;
+                Checked = false;
+                
+                Debug.Log("Payload wt is ..." + Payload.TotalPayloadWt);
+                Debug.Log("Combined wt is ..." + dec);
+                gameObject.transform.GetChild(0).transform.GetChild(5).transform.GetComponent<TextMeshProUGUI>().text =
+                    dec.ToString();
+                Payload.TotalPayloadWt += dec;
+
+            }
+
+        }
+
+           
+
+        else  // this means there is no entry for total weight so this method uses individual wts
 
         {
+            Debug.Log("BOTH WEIGHTS");
+            gameObject.transform.GetChild(0).transform.GetChild(6).gameObject.SetActive(false);
+
             OBJ = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
             weightint = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text
                 .ToString()); // this is the fwd weight of the pallet
@@ -206,41 +185,9 @@ public class ACP_PayloadDBL : MonoBehaviour
 
         }
 
-        else if (CombinedWtbool == false) // so there is a total wt to use
+     
 
-        {
-            constant = 39.37006151790835M;
-
-            Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
-
-            Locks = false;
-            weight = false;
-            location = false;
-            dg = false;
-            Checked = false;
-
-            palletint = CombinedWt;
-            Payload.TotalPayloadWt += palletint;
-
-           bool fwd = FwdWtCheck();
-           bool aft = AftWtCheck();
-
-           if (fwd == false && aft == false)
-
-           {
-               decimal tot = weightFwd + weightAft;
-
-               if (tot != palletint)
-
-               {
-
-
-               }
-           }
-
-        }
-
-            CBPrefOrder(); // this checks if there is a CB mark 
+           CBPrefOrder(); // this checks if there is a CB mark 
         
     }
 
