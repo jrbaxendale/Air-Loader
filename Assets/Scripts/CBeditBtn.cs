@@ -7,7 +7,28 @@ using TMPro;
 public class CBeditBtn : MonoBehaviour
 {
     public GameObject EditCBpanel;
-    
+    public bool Bool;
+
+
+    public void MakeManualCBpanel()
+
+    {
+       if (Bool == false)
+       {
+           GameObject CBpanel = Instantiate(EditCBpanel);
+           Bool = true;
+       }
+
+       else if (Bool)
+
+       {
+            GameObject cbPanel = GameObject.Find("CBpanel(Clone)");
+            Destroy(cbPanel);
+            Bool = false;
+       }
+
+
+    }
 
 
 
