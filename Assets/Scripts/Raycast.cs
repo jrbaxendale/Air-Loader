@@ -514,8 +514,8 @@ public class Raycast : MonoBehaviour
         Debug.Log("Terror" + target.name);
         pause = true;
         GameObject TheSelectedPanel = Instantiate(SelectedPanelDBL, MainCanvas.transform, false);
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().palletint.ToString(); // this is the pallet weight FWD
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().palletintAFT.ToString(); // this is the pallet weight AFT
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().FWDweight.ToString(); // this is the pallet weight FWD
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().AFTweight.ToString(); // this is the pallet weight AFT
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().CombinedWt.ToString(); // this is the total weight
 
         int Pos = target.gameObject.transform.GetSiblingIndex();

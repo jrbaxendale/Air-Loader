@@ -33,7 +33,7 @@ public class DeleteDBL : MonoBehaviour
 
 
 
-        decimal weightint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<DBLcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadDBL>().palletint;
+        decimal weightint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<DBLcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadDBL>().CombinedWt;
         decimal palint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<DBLcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadDBL>().OldMoment;
         Payload.TotalPayloadWt -= weightint; // this minuses the weight to the total payload weight from the Payload script.
         Payload.Moment -= palint; // this minuses the moment from the payload.

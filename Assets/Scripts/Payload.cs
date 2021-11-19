@@ -74,11 +74,11 @@ public class Payload : MonoBehaviour
     public void PayloadStation() // this calcs the payload stn
     {
         if (Moment > 0)
-       
-        {
 
+        {
+            Debug.Log("PAYLOAD MOMENT IS .." + Moment);
             PayloadFStation = Moment / TotalPayloadWt;
-            Debug.Log("LOOK" + TotalPayloadWt);
+            Debug.Log("Total Payload Weight" + TotalPayloadWt);
             Debug.Log("Payload FS = " + PayloadFStation);
             PayloadFSTN = (Math.Round(PayloadFStation, 0));
             Debug.Log("PAYLOADfstn = " + PayloadFSTN);

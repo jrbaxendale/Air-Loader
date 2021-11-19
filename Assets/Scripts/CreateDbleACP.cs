@@ -50,8 +50,15 @@ public class CreateDbleACP : MonoBehaviour
 
     public void MakeDoubleACP()
     {
+        if (ActivateADSLOGS.ADSbool == ActivateADSLOGS.LOGSbool)
 
-        if (ActivateADSLOGS.ADSbool == true)
+        {
+
+            return;
+        }
+        
+
+        if (ActivateADSLOGS.ADSbool)
 
         {
 
@@ -84,39 +91,26 @@ public class CreateDbleACP : MonoBehaviour
             TextMeshProUGUI ACPidAft = Dblprefab1ADS.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
             ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-          /*  if (CombinedWt.text != null)
+            if (CombinedWt.text != null)
             {
                 
                 TextMeshProUGUI CombinedWT = Dblprefab1ADS.transform.GetChild(0).GetChild(5)
-                    .GetComponent<TMPro.TextMeshProUGUI>(); // This is the pallet total weight
-                CombinedWT.text = CombinedWt.text; //
-
+                    .GetComponent<TextMeshProUGUI>(); // This is the pallet total weight
+                CombinedWT.text = CombinedWt.text; 
+                
             }
 
-            if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
+            else
+
             {
-
-
-                weightint = Int32.Parse(InputFieldFWD.GetComponent<TMP_InputField>().text.ToString()); // this transfers the weight from the input field into the weightint variable
-
-                Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
+                Dblprefab1ADS.transform.GetChild(0).transform.GetChild(6).transform.gameObject.SetActive(false); // this turns off the "Total Weight" text on the pallet
 
             }
-
-            if (InputFieldAFT.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
-            {
-
-
-                weightint = Int32.Parse(InputFieldAFT.GetComponent<TMP_InputField>().text.ToString()); // this transfers the weight from the input field into the weightint variable
-
-                Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
-
-            }
-          */
-            return;
+            
+            
         }
 
-        else if (ActivateADSLOGS.LOGSbool == true)
+         if (ActivateADSLOGS.LOGSbool)
 
         {
               GameObject DblprefabLOGS1 = Instantiate(DblPrefabLOGS);
@@ -144,40 +138,8 @@ public class CreateDbleACP : MonoBehaviour
               TextMeshProUGUI ACPidAft = DblprefabLOGS1.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
               ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-           /* if (CombinedWt.GetComponent<TextMeshProUGUI>().text != null)
-            {
-
-                TextMeshProUGUI CombinedWT = DblprefabLOGS1.transform.GetChild(0).GetChild(5)
-                    .GetComponent<TMPro.TextMeshProUGUI>(); // this is the Total Pallet Weight
-                CombinedWT.text = CombinedWt.GetComponent<TextMeshProUGUI>().text; //
-
-            }
-
-            if (InputFieldFWD.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
-              {
-
-
-                  weightint = Int32.Parse(InputFieldFWD.GetComponent<TMP_InputField>().text.ToString()); // this transfers the weight from the input field into the weightint variable
-
-                  Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
-
-              }
-
-              if (InputFieldAFT.GetComponent<TMP_InputField>().text != null) // this checks that there is a number in the single pallet weight input field
-              {
-
-
-                  weightint = Int32.Parse(InputFieldAFT.GetComponent<TMP_InputField>().text.ToString()); // this transfers the weight from the input field into the weightint variable
-
-                  Payload.TotalPayloadWt += weightint; // this adds the weight to the total payload weight from the Payload script
-
-              }
-
-            */
-              return;
-
-
-              
+          
+            
 
         }
 

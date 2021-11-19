@@ -8,192 +8,166 @@ using JetBrains.Annotations;
 
 public class ACP_PayloadDBL : MonoBehaviour
 {
-    [SerializeField]
-    public string Title;
+    [SerializeField] public string Title;
 
-    [SerializeField]
-    public bool Locks;
+    [SerializeField] public bool Locks;
 
-    [SerializeField]
-    public bool weight;
+    [SerializeField] public bool weight;
 
-    [SerializeField]
-    public bool location;
+    [SerializeField] public bool location;
 
-    [SerializeField]
-    public bool dg;
+    [SerializeField] public bool dg;
 
-    [SerializeField]
-    public bool Checked;
+    [SerializeField] public bool Checked;
 
     public static Vector3 PalletPosition;
     public GameObject WeightPallet;
-    public TextMeshProUGUI Moment;
+    
     public TMP_Text weighttext;
-    public decimal constant;
-    public decimal palletint;
-    public decimal palletintAFT;
-    public decimal TheMoment;
+    public float constant;
+   
     public GameObject Button;
     public GameObject MainCanvas;
-    public static decimal weightint;
-    public static decimal weightintAFT;
-    public static decimal Distance;
-    public static GameObject FlightStation0;
+    public static float fwdWeight;
+    public static float aftWeight;
+    
+   
     public bool Added;
     public bool Initial;
     public decimal OldMoment;
- 
+
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
-    public static decimal PalletWeight;
+    public static float PalletWeight;
+    public GameObject CombinedWeight;
+    public GameObject FWDweight;
+    public GameObject AFTweight;
+   
+    public GameObject SpecificCB;
+    public float specificCB;
     public GameObject obj;
     public GameObject OBJ;
     public GameObject OBJ2;
     public GameObject StartPos;
     public decimal CombinedWt;
-    public GameObject MidFFE;
-    public bool NoFFEbool;
-   
-    
-    public bool MidFFEbool;
-    public Vector2 MidFfeVector2;
-    public Vector2 AddedVector2;
-   
-   
-    public decimal weightFwd;
-    public decimal weightAft;
+    public Vector2 FSOposition;
     public GameObject WeightWarning;
+    public decimal FSo;
+    public Vector2 CBadjustedPosition;
+    public Vector3 DistanceVector;
+    public float Distance;
+    public float Moment;
+    public float PalletCentreInches;
+    
+
+
+
 
   
 
-    public bool MidFFEnullCheck() // this detects if there is an input into the FFE cb box
-
-    {
-        var text = MidFFE.GetComponent<TMP_InputField>().text; // true means there is no entry in the CB field
-
-        if (string.IsNullOrEmpty(text))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-   
-
-
-    public void CBPrefOrder() // this works out if the CB calc an be taken from a specified input
-
-     { 
-        
-         MidFFEbool = MidFFEnullCheck();
-
-        // true means the value of FFE input is null
-
-
-         if (MidFFEbool)
-
-         {
-            NoFFE();
-
-
-         }
-
-         else if (MidFFEbool == false)
-
-         {
-
-            MidOnlyFFE();
-         }
-
-
-
-}
-
-  
     private void Awake()
     {
-       
 
+        constant = 39.37006151790835f;
+        Locks = false;
+        weight = false;
+        location = false;
+        dg = false;
+        Checked = false;
         Added = false;
-        FlightStation0 = FlightStationZero.FS0;
-        MainCanvas = GameObject.Find("MainCanvas");
-        MidFFE = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
-        obj = MainCanvas.transform.GetChild(2).transform.GetChild(14).gameObject; // this is the combined weight if there is one
-
-        if (obj.GetComponent<TMP_InputField>().text != null)
-        {
-            decimal dec = Int32.Parse(obj.GetComponent<TMP_InputField>().text);
-
-            if (dec >= 0)
-            {
-                Debug.Log("COMBINED WEIGHTS");
-
-                constant = 39.37006151790835M;
-
-                Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
-
-                Locks = false;
-                weight = false;
-                location = false;
-                dg = false;
-                Checked = false;
-                
-                Debug.Log("Payload wt is ..." + Payload.TotalPayloadWt);
-                Debug.Log("Combined wt is ..." + dec);
-                gameObject.transform.GetChild(0).transform.GetChild(5).transform.GetComponent<TextMeshProUGUI>().text =
-                    dec.ToString();
-                Payload.TotalPayloadWt += dec;
-
-            }
-
-        }
-
-           
-
-        else  // this means there is no entry for total weight so this method uses individual wts
-
-        {
-            Debug.Log("BOTH WEIGHTS");
-            gameObject.transform.GetChild(0).transform.GetChild(6).gameObject.SetActive(false);
-
-            OBJ = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-            weightint = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text
-                .ToString()); // this is the fwd weight of the pallet
-            PalletWeight = weightint; // this is static version of the pallet weight;
-
-            OBJ2 = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
-            weightintAFT = Int32.Parse(OBJ2.GetComponent<TMP_InputField>().text
-                    .ToString()); // this is the AFT weight of the pallet
-            palletintAFT = weightintAFT;
-
-            constant = 39.37006151790835M;
-
-            Distance = (decimal) Vector2.Distance(transform.position, FlightStation0.transform.position);
-
-            Locks = false;
-            weight = false;
-            location = false;
-            dg = false;
-            Checked = false;
-
-            palletint = weightint + weightintAFT;
-            Payload.TotalPayloadWt += palletint;
-
-        }
-
-     
-
-           CBPrefOrder(); // this checks if there is a CB mark 
         
+        FSOposition = FlightStationZero.FS0.gameObject.transform.position;
+        MainCanvas = GameObject.Find("MainCanvas");
+        SpecificCB = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
+        CombinedWeight = MainCanvas.transform.GetChild(2).transform.GetChild(14)
+            .gameObject; // this is the combined weight if there is one
+
+        if (CombinedWeight.GetComponent<TMP_InputField>().text != null) // so there is a total weight
+        {
+
+            PalletWeight = Int32.Parse(CombinedWeight.GetComponent<TMP_InputField>().text);
+
+
+        }
+        
+
+        else // this means there is no entry for total weight so this method uses individual wts
+
+        {
+           
+            
+            FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
+            AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+            fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
+            aftWeight = Int32.Parse(AFTweight.GetComponent<TMP_InputField>().text);
+            
+            PalletWeight = fwdWeight + aftWeight;
+
+            
+        }
+
+        Payload.TotalPayloadWt += (decimal)PalletWeight;
+
+        if (SpecificCB != null)
+        {
+            PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
+            specificCB = 89 - PalletCentreInches;
+            specificCB /= constant;
+            CBadjustedPosition.x = (float) specificCB + transform.position.x;
+
+        }
+
+        else if (SpecificCB == null)
+
+        {
+
+            CBadjustedPosition.x = 0;
+        }
     }
 
-    public void Update()  // this continously recalculates the moment. The MakeACP script adds the weight to the payload panel.
+    public void
+        Update() // this continously recalculates the moment. The MakeACP script adds the weight to the payload panel.
     {
-      CBPrefOrder();
+        CBadjustedPosition.x = (float)specificCB + transform.position.x;
+
+        if (Added == false) // added means the moment has been added to the payload display
+        {
+
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            Distance *= constant;
+            float moment = PalletWeight * Distance;
+            Moment = (float)(Math.Round(moment, 0));
+            Payload.Moment += (decimal)Moment;
+            OldMoment = (decimal)Moment;
+            Added = true;
+
+        }
+
+
+
+        else if (Added)
+
+        {
+            Payload.Moment -= OldMoment;
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            Distance *= constant;
+            float moment = PalletWeight * Distance;
+            Payload.Moment += (decimal)moment;
+            Moment = (float)(Math.Round(moment, 0));
+            OldMoment = (decimal)Moment;
+            Added = true;
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         if (gameObject.transform.parent != null)
         {
@@ -201,125 +175,24 @@ public class ACP_PayloadDBL : MonoBehaviour
             OriginalPosition = gameObject.transform.parent.transform.gameObject;
         }
 
-
-
-
     }
 
 
 
     public void GetTitle()
     {
-        Title = gameObject.transform.parent.transform.parent.transform.gameObject.name; // gets the name of the pallet position i.e ADS 1
+        Title = gameObject.transform.parent.transform.parent.transform.gameObject
+            .name; // gets the name of the pallet position i.e ADS 1
 
 
     }
 
-    public void NoFFE()
-    {
+   
+    
 
-        if (Added == false)
-        {
-           
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
-            Distance = Distance * constant;
-            decimal moment = palletint * Distance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            OldMoment = palint;
-            Added = true;
+     
 
+    
 
-        }
-
-
-
-        if (Added == true)
-
-        {
-
-            Payload.Moment -= OldMoment;
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
-            Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = palletint * BetterDistance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            OldMoment = palint;
-            Added = true;
-
-
-        }
-
-
-
-
-
-
-
-    }
-
-    public void MidOnlyFFE()
-    {
-       Debug.Log("MID RUNNING");
-        if (Added == false)
-        {
-            decimal PalletCentre = (decimal)transform.position.x;
-            decimal midInt = Int32.Parse(MidFFE.GetComponent<TMP_InputField>().text); // field input
-            decimal FFE = 89 - midInt;
-            Debug.Log("FFE IS... " + FFE);
-            FFE /= constant;
-            decimal DistancefromMidtoFFE = PalletCentre + FFE; // this is the distance between the pallet centre and the FFE distance
-            float dist = (float) DistancefromMidtoFFE;
-            MidFfeVector2 = new Vector2();
-            MidFfeVector2.x = (float)DistancefromMidtoFFE;
-            AddedVector2 = MidFfeVector2 + new Vector2(transform.position.x, 0);
-            Distance = (decimal)(dist - FlightStation0.transform.position.x);
-            Distance = Distance * constant;
-            decimal moment = palletint * Distance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            OldMoment = palint;
-            Added = true;
-
-
-        }
-
-
-
-        if (Added == true)
-
-        {
-
-            Payload.Moment -= OldMoment;
-            decimal midInt = Int32.Parse(MidFFE.GetComponent<TMP_InputField>().text); // field input
-            decimal PalletCentre = (decimal)transform.position.x;
-            decimal FFE = 89 - midInt;
-            FFE /= constant;
-            decimal DistancefromMidtoFFE = PalletCentre + FFE; // this is the distance between the pallet centre and the FFE distance
-            
-            MidFfeVector2 = new Vector2();
-            MidFfeVector2.x = (float)DistancefromMidtoFFE;
-            AddedVector2 = MidFfeVector2 + new Vector2(transform.position.x, 0);
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
-            Distance = Distance + FFE;
-            Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = palletint * BetterDistance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            OldMoment = palint;
-            Added = true;
-
-
-        }
-
-
-
-
-
-
-    }
-
-
+   
 }
