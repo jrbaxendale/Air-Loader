@@ -644,13 +644,7 @@ public class Raycast : MonoBehaviour
 
     }
 
-    public void GetACPpayloadDblManCBmethod()
-    {
-
-        target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().ManualFSinput();
-
-
-    }
+    
     public void CloseWhichPanels()
 
     {
