@@ -259,9 +259,9 @@ public class Raycast : MonoBehaviour
 
 
                     }
-                    
+
                 }
-                
+
             }
 
 
@@ -300,11 +300,11 @@ public class Raycast : MonoBehaviour
                 if ((hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("LOGSdbl (Clone)")))
 
                 {
-                    
+
                     if (SelectedPanelisLive == false)
 
                     {
-                        
+
                         UsingMouse = true;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
@@ -319,9 +319,9 @@ public class Raycast : MonoBehaviour
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
                     }
-                    
+
                 }
-                
+
                 if (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("TRIPLELOGS(Clone)"))
 
                 {
@@ -362,14 +362,14 @@ public class Raycast : MonoBehaviour
 
                     {
                         case false:
-                           
+
                             UsingMouse = true;
                             CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                             CreateSelectedPanelQD(); // creates a panel for the pallet selected.
 
                             break;
                         case true:
-                          
+
                             OldSelectedPanel = GameObject.Find("SelectedPanelQD(Clone)").gameObject;
                             OldSelectedPanel.transform.GetChild(0).transform.GetChild(2).GetComponent<CloseQDselectedPanel>().ExitDelete(); // this closes down the already live Selected Panel;
                             CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
@@ -389,7 +389,7 @@ public class Raycast : MonoBehaviour
 
     }
 
-    
+
 
     public void ExitFromPalletGUI()
     {
@@ -442,7 +442,7 @@ public class Raycast : MonoBehaviour
 
         SelectedPanelisLive = true;
         Debug.Log("Creating Selected Panel");
-        
+
 
         if (target == null)
 
@@ -483,7 +483,7 @@ public class Raycast : MonoBehaviour
         else if ((target != null) && (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("ADSdoubleAFT(Clone)")))
 
         {
-            
+
             pause = true;
             GameObject TheSelectedPanel = Instantiate(SelectedPanelDBL, MainCanvas.transform, false);
             TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACPpayload>().palletint.ToString();
@@ -497,7 +497,7 @@ public class Raycast : MonoBehaviour
 
         }
 
-        
+
 
     }
 
@@ -513,7 +513,7 @@ public class Raycast : MonoBehaviour
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().fwdWeight.ToString(); // this is the pallet weight FWD
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().aftWeight.ToString(); // this is the pallet weight AFT
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().PalletWeight.ToString(); // this is the total weight
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().LocalMoment.ToString(); // this is the total weight
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().LocalDistance.ToString(); // this is the total weight
 
         int Pos = target.gameObject.transform.GetSiblingIndex();
         GameObject Obj = target.transform.parent.GetChild(Pos + 1).transform.GetChild(0).transform.GetChild(0).transform.gameObject;
@@ -557,14 +557,14 @@ public class Raycast : MonoBehaviour
         int Pos = target.gameObject.transform.GetSiblingIndex();
         GameObject Obj = hit.transform.gameObject;
 
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos -1).transform.name.ToString(); // this is the FWD position
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos - 1).transform.name.ToString(); // this is the FWD position
 
-        
+
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.name.ToString(); // this is the MID position
 
-        
+
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>().text = Obj.transform.parent.transform.GetChild(Pos + 1).transform.name.ToString(); // this is the AFT position
-      
+
         PalletArray.RemoveACPfromList(hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject); // removes the target pallet from the array
         PalletArray.RemoveACPfromList(Obj);
         int TheCount = PalletArray.Palletarray.Count;
@@ -644,7 +644,13 @@ public class Raycast : MonoBehaviour
 
     }
 
+    public void GetACPpayloadDblManCBmethod()
+    {
 
+        target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().ManualFSinput();
+
+
+    }
     public void CloseWhichPanels()
 
     {

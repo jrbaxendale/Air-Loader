@@ -59,7 +59,8 @@ public class ACP_PayloadDBL : MonoBehaviour
     public float Moment;
     public float PalletCentreInches;
     public float localMoment;
-    public float LocalMoment;
+    public float LocalDistance;
+    public float distanceEdited;
     
 
 
@@ -69,7 +70,7 @@ public class ACP_PayloadDBL : MonoBehaviour
 
     private void Awake()
     {
-
+        
         constant = 39.37006151790835f;
         Locks = false;
         weight = false;
@@ -138,16 +139,14 @@ public class ACP_PayloadDBL : MonoBehaviour
         if (Added == false) // added means the moment has been added to the payload display
         {
 
-            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            
             Distance *= constant;
             float moment = PalletWeight * Distance;
             Moment = (float)(Math.Round(moment, 0));
             Payload.Moment += (decimal)Moment;
             OldMoment = (decimal)Moment;
             Added = true;
-            localMoment = Moment; // these 3 lines is what the selectpanel uses to display the CB.
-            LocalMoment = localMoment / PalletWeight;
-            LocalMoment = (float)(Math.Round(LocalMoment, 0));
+            LocalDistance = (float)(Math.Round(Distance, 0)); // this is the FS of the CB
 
         }
 
@@ -157,30 +156,18 @@ public class ACP_PayloadDBL : MonoBehaviour
 
         {
             Payload.Moment -= OldMoment;
-            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+        
             Distance *= constant;
             float moment = PalletWeight * Distance;
-
             Payload.Moment += (decimal)moment;
             Moment = (float)(Math.Round(moment, 0));
             OldMoment = (decimal)Moment;
             Added = true;
-            localMoment = Moment; // these 3 lines is what the selectpanel uses to display the CB.
-            LocalMoment = localMoment / PalletWeight;
-            LocalMoment = (float)(Math.Round(LocalMoment, 0));
+            LocalDistance = (float)(Math.Round(Distance, 0));
 
 
         }
-
-
-
-
-
-
-
-
-
-
+        
 
         if (gameObject.transform.parent != null)
         {
@@ -190,8 +177,6 @@ public class ACP_PayloadDBL : MonoBehaviour
 
     }
 
-
-
     public void GetTitle()
     {
         Title = gameObject.transform.parent.transform.parent.transform.gameObject
@@ -200,9 +185,8 @@ public class ACP_PayloadDBL : MonoBehaviour
 
     }
 
-   
-    
 
+   
      
 
     

@@ -241,4 +241,13 @@ public class MoveDBL : MonoBehaviour
 
     }
 
+    public void GetACPpayloadDblManCBmethod() // this is to allow manual adjustment of the CB on the selected Panel
+    {
+
+        Raycast.target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().ManualFSinput();
+
+
+    }
+
+
 }
