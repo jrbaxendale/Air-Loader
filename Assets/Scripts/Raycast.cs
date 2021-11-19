@@ -508,15 +508,12 @@ public class Raycast : MonoBehaviour
 
         SelectedPanelisLive = true;
         Debug.Log("Creating Selected Panel");
-
-
-
-        Debug.Log("Terror" + target.name);
         pause = true;
         GameObject TheSelectedPanel = Instantiate(SelectedPanelDBL, MainCanvas.transform, false);
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().FWDweight.ToString(); // this is the pallet weight FWD
         TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().AFTweight.ToString(); // this is the pallet weight AFT
-        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().CombinedWt.ToString(); // this is the total weight
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(10).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().PalletWeight.ToString(); // this is the total weight
+        TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform.GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = target.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<ACP_PayloadDBL>().Moment.ToString(); // this is the total weight
 
         int Pos = target.gameObject.transform.GetSiblingIndex();
         GameObject Obj = target.transform.parent.GetChild(Pos + 1).transform.GetChild(0).transform.GetChild(0).transform.gameObject;

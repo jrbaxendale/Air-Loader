@@ -28,8 +28,8 @@ public class ACP_PayloadDBL : MonoBehaviour
    
     public GameObject Button;
     public GameObject MainCanvas;
-    public static float fwdWeight;
-    public static float aftWeight;
+    public  float fwdWeight;
+    public  float aftWeight;
     
    
     public bool Added;
@@ -38,7 +38,7 @@ public class ACP_PayloadDBL : MonoBehaviour
 
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
-    public static float PalletWeight;
+    public float PalletWeight;
     public GameObject CombinedWeight;
     public GameObject FWDweight;
     public GameObject AFTweight;
@@ -82,45 +82,48 @@ public class ACP_PayloadDBL : MonoBehaviour
         CombinedWeight = MainCanvas.transform.GetChild(2).transform.GetChild(14)
             .gameObject; // this is the combined weight if there is one
 
-        if (CombinedWeight.GetComponent<TMP_InputField>().text != null) // so there is a total weight
-        {
+        FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
+        AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+        fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
+        aftWeight = Int32.Parse(AFTweight.GetComponent<TMP_InputField>().text);
 
-            PalletWeight = Int32.Parse(CombinedWeight.GetComponent<TMP_InputField>().text);
 
+        var CombinedText = CombinedWeight.GetComponent<TMP_InputField>().text;
 
-        }
-        
+            if (!string.IsNullOrWhiteSpace(CombinedText))
+            {
+            
+                PalletWeight = Int32.Parse(CombinedText);
 
-        else // this means there is no entry for total weight so this method uses individual wts
+            }
+            
 
-        {
+            else // this means there is no entry for total weight so this method uses individual wts
+
+            {
            
-            
-            FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-            AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
-            fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
-            aftWeight = Int32.Parse(AFTweight.GetComponent<TMP_InputField>().text);
-            
             PalletWeight = fwdWeight + aftWeight;
-
             
-        }
+            }
 
         Payload.TotalPayloadWt += (decimal)PalletWeight;
 
-        if (SpecificCB != null)
+        var SpecificCBtext = SpecificCB.GetComponent<TMP_InputField>().text;
+
+        if (!String.IsNullOrWhiteSpace(SpecificCBtext))
         {
             PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
             specificCB = 89 - PalletCentreInches;
             specificCB /= constant;
             CBadjustedPosition.x = (float) specificCB + transform.position.x;
+            Debug.Log("SPEC CB IS " + specificCB);
 
         }
 
-        else if (SpecificCB == null)
+        else 
 
         {
-
+            
             CBadjustedPosition.x = 0;
         }
     }
@@ -137,6 +140,7 @@ public class ACP_PayloadDBL : MonoBehaviour
             Distance *= constant;
             float moment = PalletWeight * Distance;
             Moment = (float)(Math.Round(moment, 0));
+
             Payload.Moment += (decimal)Moment;
             OldMoment = (decimal)Moment;
             Added = true;
@@ -152,6 +156,7 @@ public class ACP_PayloadDBL : MonoBehaviour
             Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
             Distance *= constant;
             float moment = PalletWeight * Distance;
+
             Payload.Moment += (decimal)moment;
             Moment = (float)(Math.Round(moment, 0));
             OldMoment = (decimal)Moment;
