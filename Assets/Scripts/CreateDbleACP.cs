@@ -34,7 +34,7 @@ public class CreateDbleACP : MonoBehaviour
 
     public static decimal weightint;
 
-    public TextMeshProUGUI CombinedWt;
+    public TMP_InputField CombinedWt;
     public void DiscardPallet()
 
     {
@@ -91,18 +91,27 @@ public class CreateDbleACP : MonoBehaviour
             TextMeshProUGUI ACPidAft = Dblprefab1ADS.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
             ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-            if (CombinedWt.text != null)
-            {
-                
-                TextMeshProUGUI CombinedWT = Dblprefab1ADS.transform.GetChild(0).GetChild(5)
-                    .GetComponent<TextMeshProUGUI>(); // This is the pallet total weight
-                CombinedWT.text = CombinedWt.text; 
-                
-            }
+            var CombinedText = CombinedWt.text;
 
-            else
+                if (!string.IsNullOrWhiteSpace(CombinedText))
+                {
+                    Debug.Log("Total Weight added");
+
+
+                    TextMeshProUGUI CombinedWT = Dblprefab1ADS.transform.GetChild(0).GetChild(5)
+                        .GetComponent<TextMeshProUGUI>(); // This is the pallet total weight
+                    CombinedWT.text = CombinedWt.text;
+
+                }
+                
+                
+            
+
+            else 
 
             {
+                Debug.Log("Total Weight not added");
+                Dblprefab1ADS.transform.GetChild(0).transform.GetChild(5).transform.gameObject.SetActive(false);
                 Dblprefab1ADS.transform.GetChild(0).transform.GetChild(6).transform.gameObject.SetActive(false); // this turns off the "Total Weight" text on the pallet
 
             }
