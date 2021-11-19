@@ -58,6 +58,8 @@ public class ACP_PayloadDBL : MonoBehaviour
     public float Distance;
     public float Moment;
     public float PalletCentreInches;
+    public float localMoment;
+    public float LocalMoment;
     
 
 
@@ -140,10 +142,12 @@ public class ACP_PayloadDBL : MonoBehaviour
             Distance *= constant;
             float moment = PalletWeight * Distance;
             Moment = (float)(Math.Round(moment, 0));
-
             Payload.Moment += (decimal)Moment;
             OldMoment = (decimal)Moment;
             Added = true;
+            localMoment = Moment; // these 3 lines is what the selectpanel uses to display the CB.
+            LocalMoment = localMoment / PalletWeight;
+            LocalMoment = (float)(Math.Round(LocalMoment, 0));
 
         }
 
@@ -161,6 +165,10 @@ public class ACP_PayloadDBL : MonoBehaviour
             Moment = (float)(Math.Round(moment, 0));
             OldMoment = (decimal)Moment;
             Added = true;
+            localMoment = Moment; // these 3 lines is what the selectpanel uses to display the CB.
+            LocalMoment = localMoment / PalletWeight;
+            LocalMoment = (float)(Math.Round(LocalMoment, 0));
+
 
         }
 
