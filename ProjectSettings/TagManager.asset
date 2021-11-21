@@ -18,6 +18,7 @@ TagManager:
   - AddQuadACP
   - ignore
   - IgnoreMe
+  - SelectedPanel
   layers:
   - Default
   - TransparentFX
