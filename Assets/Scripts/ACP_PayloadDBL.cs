@@ -50,10 +50,10 @@ public class ACP_PayloadDBL : MonoBehaviour
     public GameObject OBJ2;
     public GameObject StartPos;
     public decimal CombinedWt;
-    public Vector2 FSOposition;
+    public Vector3 FSOposition;
     public GameObject WeightWarning;
     public decimal FSo;
-    public Vector2 CBadjustedPosition;
+    public Vector3 CBadjustedPosition;
     public Vector3 DistanceVector;
     public float Distance;
     public float Moment;
@@ -61,6 +61,10 @@ public class ACP_PayloadDBL : MonoBehaviour
     public float localMoment;
     public float LocalDistance;
     public float distanceEdited;
+    public bool SpecCB;
+    public bool distanceAddedBool;
+    public Vector3 SpecCBVector;
+    public Vector3 TransferedDistanceEditedVec;
     
 
 
@@ -70,7 +74,7 @@ public class ACP_PayloadDBL : MonoBehaviour
 
     private void Awake()
     {
-        
+        distanceEdited = 0;
         constant = 39.37006151790835f;
         Locks = false;
         weight = false;
@@ -115,31 +119,36 @@ public class ACP_PayloadDBL : MonoBehaviour
 
         if (!String.IsNullOrWhiteSpace(SpecificCBtext))
         {
+            SpecCB = true;
             PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
             specificCB = 89 - PalletCentreInches;
             specificCB /= constant;
+
             CBadjustedPosition.x = (float) specificCB + transform.position.x;
             Debug.Log("SPEC CB IS " + specificCB);
 
         }
 
-        else 
+        else
 
         {
-            
-            CBadjustedPosition.x = 0;
+            Debug.Log("NO spec CB");
+
+            SpecCBVector = transform.position;
         }
     }
 
     public void
         Update() // this continously recalculates the moment. The MakeACP script adds the weight to the payload panel.
     {
-        CBadjustedPosition.x = (float)specificCB + transform.position.x;
+       DistanceChooser();
+       Debug.Log("DistanceChooser ran");
 
         if (Added == false) // added means the moment has been added to the payload display
         {
+            Debug.Log("added false running");
 
-            
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
             Distance *= constant;
             float moment = PalletWeight * Distance;
             Moment = (float)(Math.Round(moment, 0));
@@ -155,15 +164,20 @@ public class ACP_PayloadDBL : MonoBehaviour
         else if (Added)
 
         {
+            Debug.Log("added true running");
             Payload.Moment -= OldMoment;
-        
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            Debug.Log("Distance between new CB and FSO before constant is .." + Distance);
             Distance *= constant;
+            Debug.Log("distance after constant adjustment is .." + Distance);
             float moment = PalletWeight * Distance;
             Payload.Moment += (decimal)moment;
             Moment = (float)(Math.Round(moment, 0));
             OldMoment = (decimal)Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0));
+            GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform
+                .GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
 
 
         }
@@ -186,7 +200,56 @@ public class ACP_PayloadDBL : MonoBehaviour
     }
 
 
-   
+    public void DistanceChooser()
+
+    {
+        if (distanceEdited == 0) // if distance edited is enpty
+        {
+            if (SpecCB) // if specCB is being used
+            {
+                Debug.Log("SPEC CB applied");
+                Vector3 WorldVector = transform.TransformPoint(transform.position);
+                Vector3 CBvector = new Vector3(CBadjustedPosition.x, 0, 0);
+                CBadjustedPosition.x = CBvector.x + WorldVector.x;
+
+            }
+
+            else
+
+            {
+                Debug.Log("SPEC CB not applied");
+
+
+                CBadjustedPosition = transform.position;
+            }
+        }
+
+        else if (distanceEdited != 0 && distanceAddedBool == false) // distanceaddedbool refers to whether distanceedited has been already calculated
+
+        {
+            Debug.Log("distanceEdited CB applied");
+           
+            distanceEdited /= constant;
+            distanceEdited -= 22.501f; // we have to do this because a FS manually inputted assumes that FSO is at FS0 but in Unity FSO is at minus 22.501
+            Debug.Log("distanceEdited is" + distanceEdited);
+            Vector3 DistanceEditVector = new Vector3(distanceEdited, 0, 0);
+            CBadjustedPosition = DistanceEditVector;
+            TransferedDistanceEditedVec = DistanceEditVector;
+            Debug.Log("distancedEdited finished" + CBadjustedPosition.x);
+           
+            distanceAddedBool = true;
+
+
+        }
+
+        else if (distanceEdited != 0 && distanceAddedBool) // this stops us continually recalculating and adding the distanceEdited
+        {
+            CBadjustedPosition = TransferedDistanceEditedVec;
+            Debug.Log("distancedEdited finished" + CBadjustedPosition.x);
+            
+        }
+       
+    }
      
 
     

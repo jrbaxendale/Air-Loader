@@ -41,7 +41,7 @@ public class CBeditBtn : MonoBehaviour
 
 
         {
-            Destroy(gameObject.transform.parent.transform.gameObject);
+            Destroy(gameObject);
 
         }
 
@@ -53,16 +53,17 @@ public class CBeditBtn : MonoBehaviour
     public void ManualFSinput()
     {
         
-       // TMP_InputField ManualCBinput = GameObject.FindWithTag("SelectedPanel").gameObject.transform.GetChild(3).transform.GetChild(12).gameObject
-         //   .GetComponent<TMP_InputField>(); ..... THIS IS WRONG and should be the new CBedit Panel...
+        TMP_InputField ManualCBinput = gameObject.transform.GetChild(1).transform
+            .GetComponent<TMP_InputField>(); 
 
         var CBText = ManualCBinput.GetComponent<TMP_InputField>().text;
 
         if (!string.IsNullOrWhiteSpace(CBText))
         {
-
-           Raycast.target.GetComponent<ACP_PayloadDBL>().distanceEdited = Int32.Parse(CBText);
-
+            GameObject.Find("SelectedPanelDBL(Clone)").gameObject.transform.GetChild(3).gameObject.GetComponent<DBLcheckButtons>()
+                .SelectedACP.gameObject
+            .GetComponent<ACP_PayloadDBL>().distanceEdited = Int32.Parse(CBText);
+           
         }
 
       
