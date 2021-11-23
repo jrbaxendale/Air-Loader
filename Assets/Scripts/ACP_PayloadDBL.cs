@@ -75,7 +75,7 @@ public class ACP_PayloadDBL : MonoBehaviour
     private void Awake()
     {
         distanceEdited = 0;
-        constant = 39.37006151790835f;
+        constant = 39.37006151790835f; // real world is unity x constant ( as in the real world is 39 times bigger)
         Locks = false;
         weight = false;
         location = false;
@@ -124,7 +124,7 @@ public class ACP_PayloadDBL : MonoBehaviour
             specificCB = 89 - PalletCentreInches;
             specificCB /= constant;
 
-            CBadjustedPosition.x = (float) specificCB + transform.position.x;
+            CBadjustedPosition.x = specificCB + transform.position.x;
             Debug.Log("SPEC CB IS " + specificCB);
 
         }
@@ -134,7 +134,7 @@ public class ACP_PayloadDBL : MonoBehaviour
         {
             Debug.Log("NO spec CB");
 
-            SpecCBVector = transform.position;
+            CBadjustedPosition = transform.position;
         }
     }
 
@@ -208,9 +208,9 @@ public class ACP_PayloadDBL : MonoBehaviour
             if (SpecCB) // if specCB is being used
             {
                 Debug.Log("SPEC CB applied");
-                Vector3 WorldVector = transform.TransformPoint(transform.position);
-                Vector3 CBvector = new Vector3(CBadjustedPosition.x, 0, 0);
-                CBadjustedPosition.x = CBvector.x + WorldVector.x;
+                
+                Vector3 CBvector = new Vector3(specificCB, 0, 0);
+                CBadjustedPosition.x = CBvector.x + transform.position.x;
 
             }
 
