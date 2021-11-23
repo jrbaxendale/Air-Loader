@@ -25,8 +25,8 @@ public class DeleteQD : MonoBehaviour
     {
         Raycast.SelectedPanelisLive = false;
        
-        decimal weightint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<QDcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadQD>().palletint;
-        decimal palint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<QDcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadQD>().OldMoment;
+        float weightint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<QDcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadQD>().PalletWeight;
+        float palint = (float)gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<QDcheckButtons>().SelectedACP.gameObject.GetComponent<ACP_PayloadQD>().OldMoment;
         Payload.TotalPayloadWt -= weightint; // this minuses the weight to the total payload weight from the Payload script.
         Payload.Moment -= palint; // this minuses the moment from the payload.
 

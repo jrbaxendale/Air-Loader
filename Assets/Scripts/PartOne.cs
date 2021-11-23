@@ -22,22 +22,22 @@ public class PartOne : MonoBehaviour
     public GameObject EmergMomIn;
     public GameObject ExtraMomIn;
 
-    public decimal BasicAcWt;
-    public decimal CrewWt;
-    public decimal BaggageWt;
-    public decimal StewardsWt;
-    public decimal EmergWt;
-    public decimal ExtraWt;
+    public float BasicAcWt;
+    public float CrewWt;
+    public float BaggageWt;
+    public float StewardsWt;
+    public float EmergWt;
+    public float ExtraWt;
 
-    public decimal BasicAcMom;
-    public decimal CrewMom;
-    public decimal BaggageMom;
-    public decimal StewardsMom;
-    public decimal EmergMom;
-    public decimal ExtraMom;
+    public float BasicAcMom;
+    public float CrewMom;
+    public float BaggageMom;
+    public float StewardsMom;
+    public float EmergMom;
+    public float ExtraMom;
 
-    public static decimal PartOneTotalWt;
-    public static decimal PartOneTotalMom;
+    public static float PartOneTotalWt;
+    public static float PartOneTotalMom;
 
     public bool Part1Active;
     public GameObject MainCanvas;

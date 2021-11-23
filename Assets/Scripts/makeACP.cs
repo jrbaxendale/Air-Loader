@@ -34,7 +34,7 @@ public class makeACP : MonoBehaviour
 
 
     [ES3Serializable]
-    public static decimal weightint;
+    public static float weightint;
 
     public static TextMeshProUGUI weight;
     public GameObject MainCanvas;

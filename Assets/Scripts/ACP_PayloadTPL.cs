@@ -7,52 +7,67 @@ using System;
 
 public class ACP_PayloadTPL : MonoBehaviour
 {
-    [SerializeField]
-    public string Title;
+    [SerializeField] public string Title;
 
-    [SerializeField]
-    public bool Locks;
+    [SerializeField] public bool Locks;
 
-    [SerializeField]
-    public bool weight;
+    [SerializeField] public bool weight;
 
-    [SerializeField]
-    public bool location;
+    [SerializeField] public bool location;
 
-    [SerializeField]
-    public bool dg;
+    [SerializeField] public bool dg;
 
-    [SerializeField]
-    public bool Checked;
+    [SerializeField] public bool Checked;
 
     public static Vector3 PalletPosition;
     public GameObject WeightPallet;
-    public TextMeshProUGUI Moment;
+
     public TMP_Text weighttext;
-    public decimal constant;
-    public decimal palletint;
-    public decimal palletintFWD;
-    public decimal palletintMID;
-    public decimal palletintAFT;
-    public decimal TheMoment;
+    public float constant;
+
     public GameObject Button;
     public GameObject MainCanvas;
-    public static decimal weightint;
-    public static decimal weightintMID;
-    public static decimal weightintAFT;
-    public static decimal Distance;
-    public static GameObject FlightStation0;
+    public float fwdWeight;
+    public float midWeight;
+    public float aftWeight;
+
+
     public bool Added;
     public bool Initial;
-    public decimal OldMoment;
-    public decimal NewMoment;
+    public float OldMoment;
+
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
-    public static decimal PalletWeight;
+    public float PalletWeight;
+    public GameObject CombinedWeight;
+    public GameObject FWDweight;
+    public GameObject MIDweight;
+    public GameObject AFTweight;
+
+    public GameObject SpecificCB;
+    public float specificCB;
+    public GameObject obj;
     public GameObject OBJ;
     public GameObject OBJ2;
-    public GameObject OBJ3;
     public GameObject StartPos;
+    public decimal CombinedWt;
+    public Vector3 FSOposition;
+    public GameObject WeightWarning;
+    public float FSo;
+    public Vector3 CBadjustedPosition;
+    public Vector3 DistanceVector;
+    public float Distance;
+    public float Moment;
+    public float PalletCentreInches;
+    public float localMoment;
+    public float LocalDistance;
+    public float distanceEdited;
+    public bool SpecCB;
+    public bool distanceAddedBool;
+    public Vector3 SpecCBVector;
+    public Vector3 TransferedDistanceEditedVec;
+
+
 
 
 
@@ -60,78 +75,117 @@ public class ACP_PayloadTPL : MonoBehaviour
 
     private void Awake()
     {
-       Added = false;
-        FlightStation0 = FlightStationZero.FS0;
-        MainCanvas = GameObject.Find("MainCanvas");
-        OBJ = MainCanvas.transform.GetChild(3).transform.GetChild(7).gameObject;
-        weightint = Int32.Parse(OBJ.GetComponent<TMP_InputField>().text.ToString()); // this is the fwd weight of the pallet
-        Debug.Log("SOS" + weightint);
-        PalletWeight = weightint; // this is static version of the pallet weight;
-        palletintFWD = weightint; // this is the fwd weight
-
-        OBJ2 = MainCanvas.transform.GetChild(3).transform.GetChild(9).gameObject;
-        weightintMID = Int32.Parse(OBJ2.GetComponent<TMP_InputField>().text.ToString()); // this is the MID weight of the pallet
-        palletintMID = weightintMID;
-
-        OBJ3 = MainCanvas.transform.GetChild(3).transform.GetChild(13).gameObject;
-        weightintAFT = Int32.Parse(OBJ3.GetComponent<TMP_InputField>().text.ToString()); // this is the AFT weight of the pallet
-        palletintAFT = weightintAFT;
-
-
-        constant = 39.37006151790835M;
-
-        Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
-
+        distanceEdited = 0;
+        constant = 39.37006151790835f; // real world is unity x constant ( as in the real world is 39 times bigger)
         Locks = false;
         weight = false;
         location = false;
         dg = false;
         Checked = false;
+        Added = false;
 
-        palletint = weightint + weightintMID + weightintAFT;
+        FSOposition = FlightStationZero.FS0.gameObject.transform.position;
+        MainCanvas = GameObject.Find("MainCanvas");
+        SpecificCB = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
+        CombinedWeight = MainCanvas.transform.GetChild(2).transform.GetChild(14)
+            .gameObject; // this is the combined weight if there is one
+
+        FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
+        MIDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
+        AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+
+        fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
+        midWeight = Int32.Parse(MIDweight.GetComponent<TMP_InputField>().text);
+        aftWeight = Int32.Parse(AFTweight.GetComponent<TMP_InputField>().text);
 
 
+        var CombinedText = CombinedWeight.GetComponent<TMP_InputField>().text;
+
+        if (!string.IsNullOrWhiteSpace(CombinedText))
+        {
+
+            PalletWeight = Int32.Parse(CombinedText);
+
+        }
 
 
+        else // this means there is no entry for total weight so this method uses individual wts
+
+        {
+
+            PalletWeight = fwdWeight + midWeight + aftWeight;
+
+        }
+
+        Payload.TotalPayloadWt += PalletWeight;
+
+        var SpecificCBtext = SpecificCB.GetComponent<TMP_InputField>().text;
+
+        if (!String.IsNullOrWhiteSpace(SpecificCBtext))
+        {
+            SpecCB = true;
+            PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
+            specificCB = 89 - PalletCentreInches;
+            specificCB /= constant;
+
+            CBadjustedPosition.x = specificCB + transform.position.x;
+            Debug.Log("SPEC CB IS " + specificCB);
+
+        }
+
+        else
+
+        {
+            Debug.Log("NO spec CB");
+
+            CBadjustedPosition = transform.position;
+        }
     }
 
-    public void Update()  // this continously recalculates the moment. The MakeACP script adds the weight to the payload panel.
+    public void
+        Update() // this continously recalculates the moment. The MakeACP script adds the weight to the payload panel.
     {
-        if (Added == false)
+        DistanceChooser();
+        Debug.Log("DistanceChooser ran");
+
+        if (Added == false) // added means the moment has been added to the payload display
         {
+            Debug.Log("added false running");
 
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
-            Debug.Log("THE DISTANCE =  ..." + Distance);
-            Distance = Distance * constant;
-            decimal moment = palletint * Distance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            Debug.Log("FACE" + Payload.Moment);
-            OldMoment = palint;
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            Distance *= constant;
+            float moment = PalletWeight * Distance;
+            Moment = (float)(Math.Round(moment, 0));
+            Payload.Moment += Moment;
+            OldMoment = Moment;
             Added = true;
-
+            LocalDistance = (float)(Math.Round(Distance, 0)); // this is the FS of the CB
 
         }
 
 
 
-        if (Added == true)
+        else if (Added)
 
         {
-
+            Debug.Log("added true running");
             Payload.Moment -= OldMoment;
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
-            Debug.Log("THE DISTANCE =  ..." + Distance);
-            Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = palletint * BetterDistance;
-            decimal palint = (Math.Round(moment, 0));
-            Payload.Moment += palint;
-            OldMoment = palint;
+            Distance = Vector3.Distance(CBadjustedPosition, FSOposition);
+            Debug.Log("Distance between new CB and FSO before constant is .." + Distance);
+            Distance *= constant;
+            Debug.Log("distance after constant adjustment is .." + Distance);
+            float moment = PalletWeight * Distance;
+            Payload.Moment += moment;
+            Moment = (float)(Math.Round(moment, 0));
+            OldMoment = Moment;
             Added = true;
+            LocalDistance = (float)(Math.Round(Distance, 0));
+            GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform
+                .GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
 
 
         }
+
 
         if (gameObject.transform.parent != null)
         {
@@ -139,23 +193,71 @@ public class ACP_PayloadTPL : MonoBehaviour
             OriginalPosition = gameObject.transform.parent.transform.gameObject;
         }
 
-
-
-
     }
-
-
 
     public void GetTitle()
     {
-        Title = gameObject.transform.parent.transform.parent.transform.gameObject.name; // gets the name of the pallet position i.e ADS 1
+        Title = gameObject.transform.parent.transform.parent.transform.gameObject
+            .name; // gets the name of the pallet position i.e ADS 1
 
 
     }
 
 
+    public void DistanceChooser()
 
-        
+    {
+        if (distanceEdited == 0) // if distance edited is enpty
+        {
+            if (SpecCB) // if specCB is being used
+            {
+                Debug.Log("SPEC CB applied");
+
+                Vector3 CBvector = new Vector3(specificCB, 0, 0);
+                CBadjustedPosition.x = CBvector.x + transform.position.x;
+
+            }
+
+            else
+
+            {
+                Debug.Log("SPEC CB not applied");
+
+
+                CBadjustedPosition = transform.position;
+            }
+        }
+
+        else if (distanceEdited != 0 && distanceAddedBool == false) // distanceaddedbool refers to whether distanceedited has been already calculated
+
+        {
+            Debug.Log("distanceEdited CB applied");
+
+            distanceEdited /= constant;
+            distanceEdited -= 22.501f; // we have to do this because a FS manually inputted assumes that FSO is at FS0 but in Unity FSO is at minus 22.501
+            Debug.Log("distanceEdited is" + distanceEdited);
+            Vector3 DistanceEditVector = new Vector3(distanceEdited, 0, 0);
+            CBadjustedPosition = DistanceEditVector;
+            TransferedDistanceEditedVec = DistanceEditVector;
+            Debug.Log("distancedEdited finished" + CBadjustedPosition.x);
+
+            distanceAddedBool = true;
+
+
+        }
+
+        else if (distanceEdited != 0 && distanceAddedBool) // this stops us continually recalculating and adding the distanceEdited
+        {
+            CBadjustedPosition = TransferedDistanceEditedVec;
+            Debug.Log("distancedEdited finished" + CBadjustedPosition.x);
+
+        }
+
+    }
+
+
+
+
 
 
 }

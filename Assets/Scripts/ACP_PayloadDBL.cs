@@ -34,7 +34,7 @@ public class ACP_PayloadDBL : MonoBehaviour
    
     public bool Added;
     public bool Initial;
-    public decimal OldMoment;
+    public float OldMoment;
 
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
@@ -49,10 +49,10 @@ public class ACP_PayloadDBL : MonoBehaviour
     public GameObject OBJ;
     public GameObject OBJ2;
     public GameObject StartPos;
-    public decimal CombinedWt;
+    public float CombinedWt;
     public Vector3 FSOposition;
     public GameObject WeightWarning;
-    public decimal FSo;
+    public float FSo;
     public Vector3 CBadjustedPosition;
     public Vector3 DistanceVector;
     public float Distance;
@@ -113,7 +113,7 @@ public class ACP_PayloadDBL : MonoBehaviour
             
             }
 
-        Payload.TotalPayloadWt += (decimal)PalletWeight;
+        Payload.TotalPayloadWt += PalletWeight;
 
         var SpecificCBtext = SpecificCB.GetComponent<TMP_InputField>().text;
 
@@ -152,8 +152,8 @@ public class ACP_PayloadDBL : MonoBehaviour
             Distance *= constant;
             float moment = PalletWeight * Distance;
             Moment = (float)(Math.Round(moment, 0));
-            Payload.Moment += (decimal)Moment;
-            OldMoment = (decimal)Moment;
+            Payload.Moment += Moment;
+            OldMoment = Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0)); // this is the FS of the CB
 
@@ -171,9 +171,9 @@ public class ACP_PayloadDBL : MonoBehaviour
             Distance *= constant;
             Debug.Log("distance after constant adjustment is .." + Distance);
             float moment = PalletWeight * Distance;
-            Payload.Moment += (decimal)moment;
+            Payload.Moment += moment;
             Moment = (float)(Math.Round(moment, 0));
-            OldMoment = (decimal)Moment;
+            OldMoment = Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0));
             GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform

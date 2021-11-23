@@ -6,20 +6,20 @@ using System;
 
 public class Payload : MonoBehaviour
 {
-    public static decimal PaxNumber;
-    public static decimal TotalPaxWt;
-    public static decimal TotalPayloadWt;
+    public static float PaxNumber;
+    public static float TotalPaxWt;
+    public static float TotalPayloadWt;
     public TMP_Text DisplayPayloadWt;
     public TMP_Text DisplayPaxNumber;
     public TMP_Text DisplayPaxWt;
-    public static decimal payload;
+    public static float payload;
     public TMP_Text DisplayMAC;
     public TMP_Text DisplayPayloadFStn;
-    public static decimal Moment;
-    public static decimal OpMoment;
+    public static float Moment;
+    public static float OpMoment;
     public static decimal PayloadMoment;
-    public static decimal PayloadFStation;
-    public decimal PayloadFSTN;
+    public static float PayloadFStation;
+    public float PayloadFSTN;
 
 
     public static bool ADS1title;
@@ -29,14 +29,14 @@ public class Payload : MonoBehaviour
     public static bool ADS1dg;
 
     public TMP_Text DisplayZFWWt;
-    public static decimal ZFWeight;
-    public static decimal OpWeight;
+    public static float ZFWeight;
+    public static float OpWeight;
 
     public TMP_Text DisplayZFWMom;
-    public static decimal ZFWstation;
-    public static decimal OpWtStation;
-    public static decimal ZFWmoment;
-    public static decimal ZFWMAC;
+    public static float ZFWstation;
+    public static float OpWtStation;
+    public static float ZFWmoment;
+    public static float ZFWMAC;
     public TMP_Text OpWtOutout;
     public TMP_Text OpWtMoOutput;
 
@@ -80,7 +80,7 @@ public class Payload : MonoBehaviour
             PayloadFStation = Moment / TotalPayloadWt;
             Debug.Log("Total Payload Weight" + TotalPayloadWt);
             Debug.Log("Payload FS = " + PayloadFStation);
-            PayloadFSTN = (Math.Round(PayloadFStation, 0));
+            PayloadFSTN = (float)Math.Round(PayloadFStation, 0);
             Debug.Log("PAYLOADfstn = " + PayloadFSTN);
             DisplayPayloadFStn.text = PayloadFSTN.ToString();
         }
@@ -92,7 +92,7 @@ public class Payload : MonoBehaviour
 
             PayloadFStation = 0;
             Debug.Log("Payload FS = " + PayloadFStation);
-            PayloadFSTN = (Math.Round(PayloadFStation, 0));
+            PayloadFSTN = (float)Math.Round(PayloadFStation, 0);
             Debug.Log("PAYLOADfstn = " + PayloadFSTN);
             DisplayPayloadFStn.text = PayloadFSTN.ToString();
         }
@@ -121,10 +121,10 @@ public class Payload : MonoBehaviour
         {
 
             ZFWstation = ZFWmoment / ZFWeight;
-            ZFWMAC = ZFWstation - 793.6m;
-            ZFWMAC /= 309.5m;
+            ZFWMAC = ZFWstation - 793.6f;
+            ZFWMAC /= 309.5f;
             ZFWMAC *= 100;
-            decimal MACD = Math.Round(ZFWMAC, 2);
+            float MACD = (float)Math.Round(ZFWMAC, 2);
             DisplayMAC.text = MACD.ToString();
 
         }
@@ -151,7 +151,7 @@ public class Payload : MonoBehaviour
 
 
             OpWtStation = OpMoment / OpWeight;
-            decimal OpWs = Math.Round(OpWtStation, 0);
+            float OpWs = (float)Math.Round(OpWtStation, 0);
             OpWtMoOutput.text = OpWs.ToString();
 
         }
