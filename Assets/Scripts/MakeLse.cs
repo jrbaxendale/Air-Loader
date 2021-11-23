@@ -10,7 +10,7 @@ public class MakeLse : MonoBehaviour
    
     public GameObject Lseprefab;
     public GameObject MainCanvas;
-    public static decimal weightint;
+    public static float weightint;
 
 
 

@@ -11,18 +11,18 @@ public class CrewBagCalcs : MonoBehaviour
     public TextMeshProUGUI WeightDisplay;
     public TextMeshProUGUI FSdisplay;
 
-    public decimal constant;
-    public decimal palletint;
-    public decimal TheMoment;
+    public float constant;
+    public float palletint;
+    public float TheMoment;
 
     public GameObject MainCanvas;
-    public static decimal weightint;
-    public static decimal Distance;
+    public static float weightint;
+    public static float Distance;
     public static GameObject FlightStation0;
     public bool Added;
 
-    public decimal OldMoment;
-    public decimal NewMoment;
+    public float OldMoment;
+    public float NewMoment;
 
     public void Awake()
     {
@@ -34,9 +34,9 @@ public class CrewBagCalcs : MonoBehaviour
         weightint = Int32.Parse(obj.GetComponent<TMP_InputField>().text.ToString()); //This converts the weight text OBJ from the input field into a number
         WeightDisplay.text = weightint.ToString(); // this displays the weight in the tpu ui;
 
-        constant = 39.37006151790835M; // this converts from Unity measurements to inches.
+        constant = 39.37006151790835f; // this converts from Unity measurements to inches.
 
-        Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
+        Distance = Vector2.Distance(transform.position, FlightStation0.transform.position);
 
 
     }
@@ -46,11 +46,11 @@ public class CrewBagCalcs : MonoBehaviour
         if (Added == false)
         {
 
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = weightint * BetterDistance;
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = weightint * BetterDistance;
             Debug.Log("Added false moment ..." + moment);
             PartOne.PartOneTotalMom += moment;
             OldMoment = moment;
@@ -67,11 +67,11 @@ public class CrewBagCalcs : MonoBehaviour
         {
 
             PartOne.PartOneTotalMom -= OldMoment;
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = weightint * BetterDistance;
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = weightint * BetterDistance;
             Debug.Log("Added true moment ..." + moment);
             PartOne.PartOneTotalMom += moment;
             OldMoment = moment;

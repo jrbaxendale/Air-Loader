@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class ATGL : MonoBehaviour
 {
     public GameObject FlightStation0;
-    public static decimal Distance;
-    public decimal constant;
-    public decimal ATGLWeight;
+    public static float Distance;
+    public float constant;
+    public float ATGLWeight;
     public bool Added;
-    public decimal OldMoment;
+    public float OldMoment;
     public GameObject ATGLpallet;
-    public decimal moment;
-    public decimal palint;
+    public float moment;
+    public float palint;
     public Image circle;
    
 
@@ -41,7 +41,7 @@ public class ATGL : MonoBehaviour
             PartOne.PartOneTotalWt += ATGLWeight;
             Distance = 391;
             moment = ATGLWeight * Distance;
-            palint = (Math.Round(moment, 0));
+            palint = (float)Math.Round(moment, 0);
             PartOne.PartOneTotalMom += palint;
             OldMoment = palint;
             circle.GetComponent<Image>().color = Color.green;
@@ -59,7 +59,7 @@ public class ATGL : MonoBehaviour
             PartOne.PartOneTotalWt -= ATGLWeight;
             Distance = 391;
             moment = ATGLWeight * Distance;
-            palint = (Math.Round(moment, 0));
+            palint = (float)Math.Round(moment, 0);
             PartOne.PartOneTotalMom = PartOne.PartOneTotalMom - palint;
             Added = false;
             circle.GetComponent<Image>().color = Color.white;

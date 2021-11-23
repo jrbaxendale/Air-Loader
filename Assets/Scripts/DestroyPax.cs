@@ -8,8 +8,8 @@ public class DestroyPax : MonoBehaviour
     public  bool PaxWeight210;
     public  bool PaxWeight230;
     public  bool PaxWeight250;
-    public  decimal ThisPassengerWt;
-    public decimal ThisPassengerMoment;
+    public  float ThisPassengerWt;
+    public float ThisPassengerMoment;
 
      void Awake()
     {

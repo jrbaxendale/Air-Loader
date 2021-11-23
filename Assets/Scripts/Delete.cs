@@ -18,8 +18,8 @@ public class Delete : MonoBehaviour
     {
         Raycast.SelectedPanelisLive = false;
 
-        decimal weightint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<PalletCheckButtons>().SelectedACP.gameObject.GetComponent<ACPpayload>().palletint;
-        decimal palint = gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<PalletCheckButtons>().SelectedACP.gameObject.GetComponent<ACPpayload>().OldMoment;
+        float weightint = (float)gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<PalletCheckButtons>().SelectedACP.gameObject.GetComponent<ACPpayload>().palletint;
+        float palint = (float)gameObject.transform.parent.transform.GetChild(3).gameObject.GetComponent<PalletCheckButtons>().SelectedACP.gameObject.GetComponent<ACPpayload>().OldMoment;
         Payload.TotalPayloadWt -= weightint; // this minuses the weight to the total payload weight from the Payload script.
         Payload.Moment -= palint; // this minuses the moment from the payload.
 

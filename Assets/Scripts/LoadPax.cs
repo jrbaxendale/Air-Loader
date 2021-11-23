@@ -8,14 +8,14 @@ public class LoadPax : MonoBehaviour
     public GameObject paxprefaboriginal;
     public bool bool1;
     public static Material colour;
-    public static decimal PaxWeight;
+    public static float PaxWeight;
     public Material red;
     public Material green;
     public Material blue;
     public Material cyan;
     public static GameObject FlightStation0;
-    public static decimal Distance;
-    public decimal constant;
+    public static float Distance;
+    public float constant;
     public static bool PaxWeight200;
     public static bool PaxWeight210;
     public static bool PaxWeight230;
@@ -90,7 +90,7 @@ public class LoadPax : MonoBehaviour
         gameObject.tag = "selectable";
         colour = green;
         FlightStation0 = FlightStationZero.FS0.gameObject;
-        constant = 39.37006151790835M;
+        constant = 39.37006151790835f;
 
 
     }
@@ -152,10 +152,10 @@ public class LoadPax : MonoBehaviour
                Payload.TotalPayloadWt += PaxWeight;
                 
 
-               Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+               Distance = transform.position.x - FlightStation0.transform.position.x;
                Distance = Distance * constant;
-               decimal moment = PaxWeight * Distance;
-               decimal paxint = (Math.Round(moment, 0));
+               float moment = PaxWeight * Distance;
+               float paxint = (float)Math.Round(moment, 0);
                Payload.Moment += paxint;
                mypaxprefab.GetComponent<DestroyPax>().ThisPassengerMoment = paxint;
 
@@ -180,11 +180,11 @@ public class LoadPax : MonoBehaviour
             Payload.PaxNumber += 1;
             Payload.TotalPaxWt += PaxWeight;
 
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = PaxWeight * BetterDistance;
-            decimal paxint = (Math.Round(moment, 0));
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = PaxWeight * BetterDistance;
+            float paxint = (float)Math.Round(moment, 0);
             Payload.Moment += paxint;
             Payload.TotalPayloadWt += PaxWeight;
             mypaxprefab.GetComponent<DestroyPax>().ThisPassengerMoment = paxint;

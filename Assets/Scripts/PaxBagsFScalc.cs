@@ -11,18 +11,18 @@ public class PaxBagsFScalc : MonoBehaviour
     public TextMeshProUGUI WeightDisplay;
     public TextMeshProUGUI FSdisplay;
 
-    public decimal constant;
-    public decimal palletint;
-    public decimal TheMoment;
+    public float constant;
+    public float palletint;
+    public float TheMoment;
 
     public GameObject MainCanvas;
-    public static decimal weightint;
-    public static decimal Distance;
+    public static float weightint;
+    public static float Distance;
     public static GameObject FlightStation0;
     public bool Added;
 
-    public decimal OldMoment;
-    public decimal NewMoment;
+    public float OldMoment;
+    public float NewMoment;
 
     public void Awake()
     {
@@ -33,9 +33,9 @@ public class PaxBagsFScalc : MonoBehaviour
         weightint = Int32.Parse(obj.GetComponent<TMP_InputField>().text.ToString()); //This converts the weight text OBJ from the input field into a number
         WeightDisplay.text = weightint.ToString(); // this displays the weight on the Pax Bag object;
 
-        constant = 39.37006151790835M; // this converts from Unity measurements to inches.
+        constant = 39.37006151790835f; // this converts from Unity measurements to inches.
 
-        Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
+        Distance = Vector2.Distance(transform.position, FlightStation0.transform.position);
 
 
     }
@@ -45,11 +45,11 @@ public class PaxBagsFScalc : MonoBehaviour
         if (Added == false)
         {
 
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE Loose addedfalse DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = weightint * BetterDistance;
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = weightint * BetterDistance;
             Debug.Log("Added Loose addedfalse false moment ..." + moment);
             Payload.Moment += moment;
             OldMoment = moment;
@@ -66,11 +66,11 @@ public class PaxBagsFScalc : MonoBehaviour
         {
 
             Payload.Moment -= OldMoment;
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE added loose true DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = weightint * BetterDistance;
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = weightint * BetterDistance;
             Debug.Log("Added loose true moment ..." + moment);
             Payload.Moment += moment;
             OldMoment = moment;

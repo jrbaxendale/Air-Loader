@@ -16,7 +16,7 @@ public class MakeCrewBags : MonoBehaviour
     public TPUPalletControl Tpu;
     public GameObject CrewBagsprefab;
     public GameObject MainCanvas;
-    public static decimal Bagweightint;
+    public static float Bagweightint;
     public Image circle;
 
 

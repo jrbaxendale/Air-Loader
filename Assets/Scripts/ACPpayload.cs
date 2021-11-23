@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEditor.UIElements;
+using UnityEngine.Rendering;
 
 public class ACPpayload : MonoBehaviour
 {
@@ -29,21 +31,21 @@ public class ACPpayload : MonoBehaviour
     public  GameObject  WeightPallet;
     public TextMeshProUGUI Moment;
     public TMP_Text weighttext;
-    public decimal constant;
-    public decimal palletint;
-    public decimal TheMoment;
+    public float constant;
+    public float palletint;
+    public float TheMoment;
     public GameObject Button;
     public GameObject MainCanvas;
-    public static decimal weightint;
-    public static decimal Distance;
+    public static float weightint;
+    public static float Distance;
     public static GameObject FlightStation0;
     public bool Added;
     public bool Initial;
-    public decimal OldMoment;
-    public decimal NewMoment;
+    public float OldMoment;
+    public float NewMoment;
     public GameObject OriginalPosition;
     public GameObject CurrentPosition;
-    public static decimal PalletWeight;
+    public static float PalletWeight;
     public GameObject StartPos;
 
 
@@ -60,9 +62,9 @@ public class ACPpayload : MonoBehaviour
         PalletWeight = weightint; // this is static version of the pallet weight;
      
 
-        constant = 39.37006151790835M;
+        constant = 39.37006151790835f;
 
-        Distance = (decimal)Vector2.Distance(transform.position, FlightStation0.transform.position);
+        Distance = Vector2.Distance(transform.position, FlightStation0.transform.position);
      
         Locks = false;
         weight = false;
@@ -82,11 +84,11 @@ public class ACPpayload : MonoBehaviour
         if (Added == false)
         {
 
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal moment = palletint * Distance;
-            decimal palint = (Math.Round(moment, 0));
+            float moment = palletint * Distance;
+            float palint = (float)Math.Round(moment, 0);
             Payload.Moment += palint;
             OldMoment = palint;
             Added = true;
@@ -101,12 +103,12 @@ public class ACPpayload : MonoBehaviour
         {
               
             Payload.Moment -= OldMoment;
-            Distance = (decimal)(transform.position.x - FlightStation0.transform.position.x);
+            Distance = transform.position.x - FlightStation0.transform.position.x;
             Debug.Log("THE DISTANCE =  ..." + Distance);
             Distance = Distance * constant;
-            decimal BetterDistance = Math.Round(Distance, 0);
-            decimal moment = palletint * BetterDistance;
-            decimal palint = (Math.Round(moment, 0));
+            float BetterDistance = (float)Math.Round(Distance, 0);
+            float moment = palletint * BetterDistance;
+            float palint = (float)Math.Round(moment, 0);
             Payload.Moment += palint;
             OldMoment = palint;
             Added = true;

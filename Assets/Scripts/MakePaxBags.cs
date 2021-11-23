@@ -9,7 +9,7 @@ public class MakePaxBags : MonoBehaviour
 
     public GameObject PaxBagsprefab;
     public GameObject MainCanvas;
-    public static decimal Bagweightint;
+    public static float Bagweightint;
 
     public void MakePAXbags()
     {
