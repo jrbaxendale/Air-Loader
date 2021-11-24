@@ -86,13 +86,13 @@ public class ACP_PayloadTPL : MonoBehaviour
 
         FSOposition = FlightStationZero.FS0.gameObject.transform.position;
         MainCanvas = GameObject.Find("MainCanvas");
-        SpecificCB = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
-        CombinedWeight = MainCanvas.transform.GetChild(2).transform.GetChild(14)
+        SpecificCB = MainCanvas.transform.GetChild(3).transform.GetChild(16).gameObject;
+        CombinedWeight = MainCanvas.transform.GetChild(3).transform.GetChild(18)
             .gameObject; // this is the combined weight if there is one
 
-        FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-        MIDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-        AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+        FWDweight = MainCanvas.transform.GetChild(3).transform.GetChild(7).gameObject;
+        MIDweight = MainCanvas.transform.GetChild(3).transform.GetChild(9).gameObject;
+        AFTweight = MainCanvas.transform.GetChild(3).transform.GetChild(13).gameObject;
 
         fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
         midWeight = Int32.Parse(MIDweight.GetComponent<TMP_InputField>().text);
@@ -125,7 +125,20 @@ public class ACP_PayloadTPL : MonoBehaviour
         {
             SpecCB = true;
             PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
-            specificCB = 89 - PalletCentreInches;
+
+            if (gameObject.name.Contains("ADS")) // update these numbers for triples
+            {
+                specificCB = 89 - PalletCentreInches;
+
+            }
+
+            else if (gameObject.name.Contains("LOG"))
+            {
+                specificCB = 89 - PalletCentreInches; // update this number
+
+            }
+
+
             specificCB /= constant;
 
             CBadjustedPosition.x = specificCB + transform.position.x;
@@ -180,8 +193,8 @@ public class ACP_PayloadTPL : MonoBehaviour
             OldMoment = Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0));
-            GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform
-                .GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
+            GameObject.Find("SelectedPanelTPL").gameObject.transform.GetChild(3).gameObject.transform
+                .GetChild(14).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
 
 
         }

@@ -90,7 +90,7 @@ public class MakeQd : MonoBehaviour
 
             int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
 
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3 + weightint4;
+           
             
 
         }
@@ -138,7 +138,7 @@ public class MakeQd : MonoBehaviour
             int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
 
 
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3 + weightint4;
+            
             
 
         }

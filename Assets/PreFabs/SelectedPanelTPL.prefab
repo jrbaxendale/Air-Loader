@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8824038359498241868}
         m_TargetAssemblyTypeName: CBeditBtn, Assembly-CSharp
         m_MethodName: MakeManualCBpanel
         m_Mode: 1

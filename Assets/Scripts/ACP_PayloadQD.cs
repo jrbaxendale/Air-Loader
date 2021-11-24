@@ -89,14 +89,14 @@ public class ACP_PayloadQD : MonoBehaviour
 
         FSOposition = FlightStationZero.FS0.gameObject.transform.position;
         MainCanvas = GameObject.Find("MainCanvas");
-        SpecificCB = MainCanvas.transform.GetChild(2).transform.GetChild(12).gameObject;
-        CombinedWeight = MainCanvas.transform.GetChild(2).transform.GetChild(14)
+        SpecificCB = MainCanvas.transform.GetChild(4).transform.GetChild(20).gameObject;
+        CombinedWeight = MainCanvas.transform.GetChild(4).transform.GetChild(22)
             .gameObject; // this is the combined weight if there is one
 
-        FWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-        MIDFWDweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-        MIDAFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(4).gameObject;
-        AFTweight = MainCanvas.transform.GetChild(2).transform.GetChild(1).gameObject;
+        FWDweight = MainCanvas.transform.GetChild(4).transform.GetChild(9).gameObject;
+        MIDFWDweight = MainCanvas.transform.GetChild(4).transform.GetChild(11).gameObject;
+        MIDAFTweight = MainCanvas.transform.GetChild(4).transform.GetChild(14).gameObject;
+        AFTweight = MainCanvas.transform.GetChild(4).transform.GetChild(16).gameObject;
 
         fwdWeight = Int32.Parse(FWDweight.GetComponent<TMP_InputField>().text);
         midfwdWeight = Int32.Parse(MIDFWDweight.GetComponent<TMP_InputField>().text);
@@ -130,8 +130,20 @@ public class ACP_PayloadQD : MonoBehaviour
         {
             SpecCB = true;
             PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
-            specificCB = 89 - PalletCentreInches;
-            specificCB /= constant;
+
+            if (gameObject.name.Contains("ADS")) // update these numbers for Qds
+            {
+                specificCB = 89 - PalletCentreInches;
+
+            }
+
+            else if (gameObject.name.Contains("LOG"))
+            {
+                specificCB = 89 - PalletCentreInches; 
+
+            }
+
+                specificCB /= constant;
 
             CBadjustedPosition.x = specificCB + transform.position.x;
             Debug.Log("SPEC CB IS " + specificCB);
@@ -185,8 +197,8 @@ public class ACP_PayloadQD : MonoBehaviour
             OldMoment = Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0));
-            GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform
-                .GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
+            GameObject.Find("SelectedPanelQD").gameObject.transform.GetChild(3).gameObject.transform
+                .GetChild(16).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
 
 
         }

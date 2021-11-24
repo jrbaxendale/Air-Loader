@@ -83,7 +83,7 @@ public class MakeTPl : MonoBehaviour
 
             int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
 
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3;
+          
 
 
 
@@ -124,7 +124,7 @@ public class MakeTPl : MonoBehaviour
 
             int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
 
-            Payload.TotalPayloadWt += weightint1 + weightint2 + weightint3;
+            
 
             
 

@@ -121,7 +121,19 @@ public class ACP_PayloadDBL : MonoBehaviour
         {
             SpecCB = true;
             PalletCentreInches = Int32.Parse(SpecificCB.GetComponent<TMP_InputField>().text);
-            specificCB = 89 - PalletCentreInches;
+
+            if (gameObject.name.Contains("ADS"))
+            {
+                specificCB = 89 - PalletCentreInches;
+
+            }
+
+            else if (gameObject.name.Contains("LOG"))
+            {
+                specificCB = 89 - PalletCentreInches; // update this number
+
+            }
+
             specificCB /= constant;
 
             CBadjustedPosition.x = specificCB + transform.position.x;
@@ -176,7 +188,7 @@ public class ACP_PayloadDBL : MonoBehaviour
             OldMoment = Moment;
             Added = true;
             LocalDistance = (float)(Math.Round(Distance, 0));
-            GameObject.FindGameObjectWithTag("SelectedPanel").gameObject.transform.GetChild(3).gameObject.transform
+            GameObject.Find("SelectedPanelDBL").gameObject.transform.GetChild(3).gameObject.transform
                 .GetChild(12).gameObject.GetComponent<TextMeshProUGUI>().text = LocalDistance.ToString();
 
 
