@@ -135,7 +135,7 @@ public class Raycast : MonoBehaviour
 
                     {
                         Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanel(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel = GameObject.Find("SelectedPanel(Clone)").gameObject.transform.GetChild(2).gameObject;
                         OldSelectedPanel.GetComponent<ExitBtnDelete>().ExitDelete(); // this closes down the already live Selected Panel;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanel(); // creates a panel for the pallet selected.
@@ -162,7 +162,7 @@ public class Raycast : MonoBehaviour
 
                     {
                         Debug.Log("ACTUALLYHERE");
-                        OldSelectedPanel = GameObject.Find("SelectedPanelDBL(Clone)").gameObject.transform.GetChild(1).gameObject;
+                        OldSelectedPanel = GameObject.Find("SelectedPanelDBL(Clone)").gameObject.transform.GetChild(2).gameObject;
                         OldSelectedPanel.GetComponent<ExitBtnDelete>().ExitDelete(); // this closes down the already live Selected Panel;
                         CloseWhichPanels(); // closes the Which Pallet Panel and the Single Panel.
                         CreateSelectedPanelDBL(); // creates a panel for the pallet selected.
@@ -462,6 +462,17 @@ public class Raycast : MonoBehaviour
             int TheCount = PalletArray.Palletarray.Count;
             GetComponent<PalletArray>().ChangeColourDark(); // all the other pallets are in this array and will turn dark coloured
 
+            if (hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject.GetComponent<ACPpayload>().dg) // checks if pallet is labelled dg
+
+            {
+                TextMeshProUGUI dgtext = TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform
+                    .GetChild(6).gameObject
+                    .GetComponent<TextMeshProUGUI>(); 
+                     dgtext.color = new Color(255, 0, 0); // turns the dg status to red
+                     Debug.Log("DG TEXT TO RED");
+
+
+            }
         }
 
         else if ((target != null) && (hit.collider.transform.GetChild(0).transform.GetChild(0).transform.name.Equals("ADSdouble(Clone)")))
