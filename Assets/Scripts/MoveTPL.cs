@@ -9,7 +9,9 @@ public class MoveTPL : MonoBehaviour
     public bool placed = false;
     public bool col;
     public Collision othertransform;
+#pragma warning disable CS0414 // The field 'MoveTPL.dragging' is assigned but its value is never used
     private bool dragging = false;
+#pragma warning restore CS0414 // The field 'MoveTPL.dragging' is assigned but its value is never used
     private float distance;
     private Rigidbody thisBody;
     private Collider thisCollider;

@@ -8,7 +8,9 @@ using UnityEngine.AddressableAssets;
 public class DropDown1 : MonoBehaviour
 {
     [SerializeField]
+#pragma warning disable CS0649 // Field 'DropDown1.Vehicle' is never assigned to, and will always have its default value null
     AssetReferenceGameObject Vehicle;
+#pragma warning restore CS0649 // Field 'DropDown1.Vehicle' is never assigned to, and will always have its default value null
     public TextMeshProUGUI m_Text;
     public GameObject TiedownPoints;
 

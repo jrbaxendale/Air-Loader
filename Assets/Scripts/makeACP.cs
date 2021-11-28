@@ -109,11 +109,11 @@ public class makeACP : MonoBehaviour
                 ACPprefab1.transform.localEulerAngles = new Vector3(-90, 90, 0); // This sets the orientation of the instantiated pallet
                 PalletArray.AddACPtoList(ACPprefab1); // This is for the colour change of all items during pallet inspection
 
-                if (DGButtonSgl.DGbool == true)
+                if (DGButtonSgl.DGbool)
                 {
 
                     ACPprefab1.transform.GetChild(2).transform.gameObject.SetActive(true);
-
+                    ACPprefab1.GetComponent<ACPpayload>().dg = true;
                 }
 
 

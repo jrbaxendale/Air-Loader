@@ -4,13 +4,17 @@ using UnityEngine;
 
 class DragDrop : MonoBehaviour
 {
+#pragma warning disable CS0649 // Field 'DragDrop.mainfloorblock' is never assigned to, and will always have its default value null
     public GameObject mainfloorblock;
+#pragma warning restore CS0649 // Field 'DragDrop.mainfloorblock' is never assigned to, and will always have its default value null
 
 
     private bool dragging = false;
     private float distance;
 
+#pragma warning disable CS0649 // Field 'DragDrop.loaded' is never assigned to, and will always have its default value false
     public bool loaded;
+#pragma warning restore CS0649 // Field 'DragDrop.loaded' is never assigned to, and will always have its default value false
 
 
 

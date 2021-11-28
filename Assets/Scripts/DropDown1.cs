@@ -20,7 +20,9 @@ public class DropDown : MonoBehaviour
         });
         
 
+#pragma warning disable CS8321 // The local function 'DropdownValueChanged' is declared but never used
         void DropdownValueChanged(Dropdown change)
+#pragma warning restore CS8321 // The local function 'DropdownValueChanged' is declared but never used
         {
             m_Text.text = "New Value : " + change.value;
         }

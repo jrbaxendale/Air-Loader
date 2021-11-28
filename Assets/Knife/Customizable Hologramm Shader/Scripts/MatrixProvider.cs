@@ -8,8 +8,12 @@ namespace Knife.HologramEffect
     public class MatrixProvider : MonoBehaviour
     {
         [SerializeField] private string propertyName = "_CustomMatrix";
+#pragma warning disable CS0649 // Field 'MatrixProvider.targetRenderers' is never assigned to, and will always have its default value null
         [SerializeField] private Renderer[] targetRenderers;
+#pragma warning restore CS0649 // Field 'MatrixProvider.targetRenderers' is never assigned to, and will always have its default value null
+#pragma warning disable CS0649 // Field 'MatrixProvider.eliminateRootBoneMatrix' is never assigned to, and will always have its default value false
         [SerializeField] private bool eliminateRootBoneMatrix;
+#pragma warning restore CS0649 // Field 'MatrixProvider.eliminateRootBoneMatrix' is never assigned to, and will always have its default value false
 
         private MaterialPropertyBlock materialPropertyBlock;
 

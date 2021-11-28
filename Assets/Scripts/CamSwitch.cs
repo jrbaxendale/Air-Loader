@@ -6,7 +6,9 @@ public class CamSwitch : MonoBehaviour
 {
     [SerializeField]
 
+#pragma warning disable CS0649 // Field 'CamSwitch.action' is never assigned to, and will always have its default value null
     private InputAction action;
+#pragma warning restore CS0649 // Field 'CamSwitch.action' is never assigned to, and will always have its default value null
 
     private Animator animator;
     public bool Cam2 = true;

@@ -15,7 +15,9 @@ public class CamMove : MonoBehaviour
     public GameObject WeightButton;
     public GameObject LocationButton;
     public GameObject DangerousGoodsBtn;
+#pragma warning disable CS0414 // The field 'CamMove.rotationSpeed' is assigned but its value is never used
     float rotationSpeed = 4f;
+#pragma warning restore CS0414 // The field 'CamMove.rotationSpeed' is assigned but its value is never used
     public GameObject target;
     public static float smoothTime = 0.9f;
     public static Vector3 velocity = Vector3.zero;

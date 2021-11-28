@@ -16,7 +16,9 @@ public class MouseDrag : MonoBehaviour
     public float distanceMin = .5f;
     public float distanceMax = 15f;
 
+#pragma warning disable CS0108 // 'MouseDrag.rigidbody' hides inherited member 'Component.rigidbody'. Use the new keyword if hiding was intended.
     private Rigidbody rigidbody;
+#pragma warning restore CS0108 // 'MouseDrag.rigidbody' hides inherited member 'Component.rigidbody'. Use the new keyword if hiding was intended.
 
     float x = 0.0f;
     float y = 0.0f;

@@ -6,7 +6,9 @@ namespace Michsky.UI.Zone
     {
         [Header("RESOURCES")]
         [SerializeField]
+#pragma warning disable CS0649 // Field 'TooltipManagerDesktop.UICamera' is never assigned to, and will always have its default value null
         private Camera UICamera;
+#pragma warning restore CS0649 // Field 'TooltipManagerDesktop.UICamera' is never assigned to, and will always have its default value null
         public GameObject tooltipObject;
         public GameObject tooltipContent;
         public RectTransform tooltipHelper;

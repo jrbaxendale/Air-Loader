@@ -13,7 +13,9 @@ namespace Michsky.UI.Zone
         public GameObject frameCursor;
 
         [Header("INPUT")]
+#pragma warning disable CS0108 // 'VirtualCursor.eventSystem' hides inherited member 'BaseInputModule.eventSystem'. Use the new keyword if hiding was intended.
         public EventSystem eventSystem;
+#pragma warning restore CS0108 // 'VirtualCursor.eventSystem' hides inherited member 'BaseInputModule.eventSystem'. Use the new keyword if hiding was intended.
         public string horizontalAxis = "Horizontal";
         public string verticalAxis = "Vertical";
 
@@ -41,7 +43,9 @@ namespace Michsky.UI.Zone
             FRAME
         }
 
+#pragma warning disable CS0114 // 'VirtualCursor.Start()' hides inherited member 'UIBehaviour.Start()'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         void Start()
+#pragma warning restore CS0114 // 'VirtualCursor.Start()' hides inherited member 'UIBehaviour.Start()'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         {
             cursorObj = this.GetComponent<RectTransform>();
             pointer = new PointerEventData(eventSystem);

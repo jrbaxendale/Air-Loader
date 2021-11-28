@@ -68,12 +68,16 @@ public class MobileBlur : MonoBehaviour
 
     protected bool support()
     {
+#pragma warning disable CS0618 // 'SystemInfo.supportsImageEffects' is obsolete: 'supportsImageEffects always returns true, no need to call it'
         if (SystemInfo.supportsImageEffects == false)
+#pragma warning restore CS0618 // 'SystemInfo.supportsImageEffects' is obsolete: 'supportsImageEffects always returns true, no need to call it'
         {
             Debug.LogWarning("SystemInfo.supportsImageEffects == false", this);
             return false;
         }
+#pragma warning disable CS0618 // 'SystemInfo.supportsRenderTextures' is obsolete: 'supportsRenderTextures always returns true, no need to call it'
         if (SystemInfo.supportsRenderTextures == false)
+#pragma warning restore CS0618 // 'SystemInfo.supportsRenderTextures' is obsolete: 'supportsRenderTextures always returns true, no need to call it'
         {
             Debug.LogWarning("SystemInfo.supportsRenderTextures == false", this);
             return false;

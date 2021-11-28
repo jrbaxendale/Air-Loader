@@ -7,9 +7,15 @@ namespace Knife.HologramEffect
 {
     public class Demo : MonoBehaviour
     {
+#pragma warning disable CS0649 // Field 'Demo.groups' is never assigned to, and will always have its default value null
         [SerializeField] private GameObjectsGroup[] groups;
+#pragma warning restore CS0649 // Field 'Demo.groups' is never assigned to, and will always have its default value null
+#pragma warning disable CS0649 // Field 'Demo.previousButton' is never assigned to, and will always have its default value null
         [SerializeField] private Button previousButton;
+#pragma warning restore CS0649 // Field 'Demo.previousButton' is never assigned to, and will always have its default value null
+#pragma warning disable CS0649 // Field 'Demo.nextButton' is never assigned to, and will always have its default value null
         [SerializeField] private Button nextButton;
+#pragma warning restore CS0649 // Field 'Demo.nextButton' is never assigned to, and will always have its default value null
 
         private int currentGroup;
 
@@ -68,7 +74,9 @@ namespace Knife.HologramEffect
         [System.Serializable]
         private class GameObjectsGroup
         {
+#pragma warning disable CS0649 // Field 'Demo.GameObjectsGroup.gameObjects' is never assigned to, and will always have its default value null
             [SerializeField] private GameObject[] gameObjects;
+#pragma warning restore CS0649 // Field 'Demo.GameObjectsGroup.gameObjects' is never assigned to, and will always have its default value null
 
             public void SetActive(bool enabled)
             {
