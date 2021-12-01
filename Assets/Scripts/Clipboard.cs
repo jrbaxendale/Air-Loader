@@ -58,20 +58,12 @@ public class Clipboard : MonoBehaviour
                 ACPindex = i - 1;
                 ULDname = data[2][ACPindex];
                 ULDname.Trim();
-
-                if (data[i][0].Trim().Equals(data[2][ACPindex].Trim())) // this checks the first column for the uldid 
-
-                {
-                    StartingIndex = i;
-                    ULDchar = data[i][0].ToCharArray(); // this takes the ULD name so we can convert to a char array and find the next pallet number
-                    int IntArray = Int32.Parse(ULDchar[3].ToString());
-                    IntArray += 1;
-                    char j = (char)IntArray;
-                    ULDchar[3] = j; // this is the next ULD number e.g we have gone from 'ULD1' to ULD2'.
-                    SearchFirstColumnForStart();
-                     SearchFirstColumnforEnd();
-                     CreateULDarray();
-                }
+                
+                SearchFirstColumnForStart();
+                SearchFirstColumnforEnd();
+                CreateULDarray();
+                    
+                
 
             }
 
@@ -84,12 +76,12 @@ public class Clipboard : MonoBehaviour
     public void SearchFirstColumnForStart()
 
     {
-           
+        Debug.Log("Searching for First Column");
 
         for ( var i = 0 ; i < data.Length; i++)
         {
 
-            if (data[i][0].Trim().Equals(data[2][ACPindex].Trim())) // this checks the first column for the uldid 
+            if (data[i][0].Trim() == (data[2][ACPindex].Trim())) // this checks the first column for the uldid 
 
             {
                 StartingIndex = i;
@@ -109,10 +101,10 @@ public class Clipboard : MonoBehaviour
     public void SearchFirstColumnforEnd()
 
     {
-
+        Debug.Log("Searching for Final Column");
         for (var i = 0; i < data.Length; i++)
         {
-            if (data[i][0].Trim().Equals(ULDchar.ToString().Trim())) // this checks data row 0 for ULD name
+            if (data[i][0].Trim() == (ULDchar.ToString().Trim())) // this checks data row 0 for ULD name
             {
                 EndingIndex = i;
                 i = data.Length; // this stops the rest of the search
@@ -126,8 +118,8 @@ public class Clipboard : MonoBehaviour
     public void CreateULDarray()
 
     {
-       
-        ULDarray = new string[13][];
+        Debug.Log("Creating Final Array");
+        ULDarray = new string[14][];
         ULDarray[0] = new string[10];
         ULDarray[1] = new string[10];
         ULDarray[2] = new string[10];
