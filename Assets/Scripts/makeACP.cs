@@ -107,6 +107,8 @@ public class makeACP : MonoBehaviour
                 TMPro.TextMeshProUGUI ACPin = ACPID.GetComponent<TextMeshProUGUI>(); // ACPID is the Pallet ID number input field for a single pallet
                 ACPid.text = ACPin.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
                 ACPprefab1.transform.localEulerAngles = new Vector3(-90, 90, 0); // This sets the orientation of the instantiated pallet
+                ACPprefab1.GetComponent<ACPpayload>().ACPID = MainCanvas.transform.GetChild(5).transform.GetChild(5)
+                    .transform.gameObject.GetComponent<TMP_InputField>().text;
                 PalletArray.AddACPtoList(ACPprefab1); // This is for the colour change of all items during pallet inspection
 
                 if (DGButtonSgl.DGbool)

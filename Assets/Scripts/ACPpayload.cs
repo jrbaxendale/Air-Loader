@@ -47,6 +47,7 @@ public class ACPpayload : MonoBehaviour
     public GameObject CurrentPosition;
     public static float PalletWeight;
     public GameObject StartPos;
+    public string ACPID;
 
 
 
