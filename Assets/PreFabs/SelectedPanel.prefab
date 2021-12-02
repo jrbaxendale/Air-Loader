@@ -30,6 +30,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6757e6a10fb18d24e89219fe2480a8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ACPID1: 
+  ACPindex: 0
+  StartingIndex: 0
+  EndingIndex: 0
+  ULDchar: 
+  ULDname: 
+  ULDstring: 
+  LINE20: {fileID: 0}
+  LINE21: {fileID: 0}
+  LINE22: {fileID: 0}
+  LINE23: {fileID: 0}
+  LINE24: {fileID: 0}
+  LINE30: {fileID: 0}
+  LINE31: {fileID: 0}
+  LINE32: {fileID: 0}
+  LINE33: {fileID: 0}
+  LINE34: {fileID: 0}
+  LINE40: {fileID: 0}
+  LINE41: {fileID: 0}
+  LINE42: {fileID: 0}
+  LINE43: {fileID: 0}
+  LINE44: {fileID: 0}
+  NOTOCscreen: {fileID: 0}
+  BlurScreen: {fileID: 0}
+  NOTOCline: {fileID: 6871512478659580756, guid: 6d48266af8398d24eb13c4cf3d59f7dd, type: 3}
 --- !u!114 &8442100509458339762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,10 +1116,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
@@ -1102,7 +1131,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3774974795612992687}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3774974795612992687}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
@@ -1110,11 +1147,23 @@ PrefabInstance:
       value: CheckforPalletRef
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActivateDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Clipboard, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Clipboard, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 947788624756754221, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1981889403678601056, guid: 64e888541d705de439952a6ca2974d17, type: 3}
