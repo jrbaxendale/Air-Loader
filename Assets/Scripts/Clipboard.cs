@@ -29,7 +29,7 @@ public class Clipboard : MonoBehaviour
     public  GameObject Container;
     
 
-    public static void ActivateDisplay()
+    public void ActivateDisplay()
 
     {
         NOTOCscreen = GameObject.Find("NotocDisplay");
