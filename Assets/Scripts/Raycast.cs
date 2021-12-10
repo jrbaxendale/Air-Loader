@@ -82,7 +82,7 @@ public class Raycast : MonoBehaviour
         pause = false;
         TouchCounter = 0;
         UsingMouse = false;
-        Orange = new Color(243, 132, 0);
+        Orange = new Color(251, 98, 0);
 
     }
 
@@ -468,9 +468,9 @@ public class Raycast : MonoBehaviour
             if (hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject.GetComponent<ACPpayload>().dg) // checks if pallet is labelled dg
 
             {
-                TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Image>().color =
-                    Orange;
-                TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Button>().onClick.AddListener(MainCanvas.GetComponent<Clipboard>().);
+               // TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Image>().color =
+                   // Orange;
+               // TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Button>().onClick.AddListener(MainCanvas.GetComponent<Clipboard>().);
 
 
 

@@ -90,8 +90,25 @@ public class MakeQd : MonoBehaviour
 
             int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
 
-           
-            
+            QdprefabLOGS.GetComponent<ACP_PayloadQD>().ACPID1 = Maincanvas.transform.GetChild(4).transform.GetChild(10)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            QdprefabLOGS.GetComponent<ACP_PayloadQD>().ACPID2 = Maincanvas.transform.GetChild(4).transform.GetChild(12)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            QdprefabLOGS.GetComponent<ACP_PayloadQD>().ACPID3 = Maincanvas.transform.GetChild(4).transform.GetChild(13)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            QdprefabLOGS.GetComponent<ACP_PayloadQD>().ACPID4 = Maincanvas.transform.GetChild(4).transform.GetChild(15)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            if(gameObject.transform.parent.GetChild(24).gameObject.GetComponent<DGButtonSgl>().DGbool)
+            {
+
+                // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                QdprefabLOGS.GetComponent<ACP_PayloadQD>().dg = true;
+            }
+
 
         }
 
@@ -137,9 +154,24 @@ public class MakeQd : MonoBehaviour
 
             int weightint4 = int.Parse(InputField4.GetComponent<TMP_InputField>().text);
 
+            QdprefabADS1.GetComponent<ACP_PayloadQD>().ACPID1 = Maincanvas.transform.GetChild(4).transform.GetChild(10)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
 
-            
-            
+            QdprefabADS1.GetComponent<ACP_PayloadQD>().ACPID2 = Maincanvas.transform.GetChild(4).transform.GetChild(12)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            QdprefabADS1.GetComponent<ACP_PayloadQD>().ACPID3 = Maincanvas.transform.GetChild(4).transform.GetChild(13)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            QdprefabADS1.GetComponent<ACP_PayloadQD>().ACPID4 = Maincanvas.transform.GetChild(4).transform.GetChild(15)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            if (gameObject.transform.parent.GetChild(24).gameObject.GetComponent<DGButtonSgl>().DGbool)
+            {
+
+                // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                QdprefabADS1.GetComponent<ACP_PayloadQD>().dg = true;
+            }
 
         }
 

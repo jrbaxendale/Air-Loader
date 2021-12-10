@@ -35,6 +35,7 @@ public class CreateDbleACP : MonoBehaviour
     public static decimal weightint;
 
     public TMP_InputField CombinedWt;
+    public GameObject MainCanvas;
     public void DiscardPallet()
 
     {
@@ -50,6 +51,7 @@ public class CreateDbleACP : MonoBehaviour
 
     public void MakeDoubleACP()
     {
+       MainCanvas = GameObject.Find("MainCanvas");
         if (ActivateADSLOGS.ADSbool == ActivateADSLOGS.LOGSbool)
 
         {
@@ -90,6 +92,19 @@ public class CreateDbleACP : MonoBehaviour
 
             TextMeshProUGUI ACPidAft = Dblprefab1ADS.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
             ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
+
+            Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().ACPID1 = MainCanvas.transform.GetChild(2).transform.GetChild(8)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().ACPID2 = MainCanvas.transform.GetChild(2).transform.GetChild(0)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            if (gameObject.transform.parent.GetChild(17).gameObject.GetComponent<DGButtonSgl>().DGbool)
+            {
+
+               // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().dg = true;
+            }
 
             var CombinedText = CombinedWt.text;
 
@@ -147,8 +162,18 @@ public class CreateDbleACP : MonoBehaviour
               TextMeshProUGUI ACPidAft = DblprefabLOGS1.transform.GetChild(0).GetChild(4).GetComponent<TMPro.TextMeshProUGUI>();  // ACPID is the Pallet ID number input field for a single pallet
               ACPidAft.text = ACPIDaft.text; //this transfers the Pallet ID string from the input field to the instantiated pallets ID field
 
-          
-            
+              DblprefabLOGS1.GetComponent<ACP_PayloadDBL>().ACPID1 = MainCanvas.transform.GetChild(2).transform.GetChild(8)
+                  .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+              DblprefabLOGS1.GetComponent<ACP_PayloadDBL>().ACPID2 = MainCanvas.transform.GetChild(2).transform.GetChild(0)
+                  .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+              if (gameObject.transform.parent.GetChild(17).gameObject.GetComponent<DGButtonSgl>().DGbool)
+            {
+
+                  // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                  DblprefabLOGS1.GetComponent<ACP_PayloadDBL>().dg = true;
+              }
 
         }
 

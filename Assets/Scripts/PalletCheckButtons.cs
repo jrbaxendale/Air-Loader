@@ -26,7 +26,7 @@ public class PalletCheckButtons : MonoBehaviour
 
     private void Awake()
     {
-        Orange = new Color(243, 132, 0);
+        Orange = new Color(251, 98, 0);
         SelectedACP = Raycast.hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject;
         Debug.Log("The pallet is ..." + Raycast.hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject);
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Raycast.target.name; // this is the position
@@ -169,8 +169,10 @@ public class PalletCheckButtons : MonoBehaviour
     public void DGCheck()
 
     {
-        ActivateDisplay();
+       
         var v = transform.GetChild(5).transform.gameObject.GetComponent<Clipboard>();
+        v.ACPID1 = SelectedACP.GetComponent<ACPpayload>().ACPID;
+        v.ActivateDisplay();
         v.CheckforPalletRef();
 
        // SelectedACP.GetComponent<ACPpayload>().dg = true;
@@ -206,32 +208,7 @@ public class PalletCheckButtons : MonoBehaviour
     }
 
 
-    public void ActivateDisplay() // this activates the NOTOC sheet
-
-    {
-        NOTOCscreen = GameObject.Find("NotocDisplay");
-        BlurScreen = GameObject.Find("BlurGlass2");
-        NOTOCscreen.GetComponent<Canvas>().enabled = enabled;
-        BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
-        MainCanvas = GameObject.Find("MainCanvas");
-        MainCanvas.GetComponent<Canvas>().enabled = !enabled;
-        Container = GameObject.Find("Content");
-        Container.SetActive(true);
-
-    }
-
-    public void DeactivateDisplay() // this deactivates the notoc display
-
-    {
-        NOTOCscreen = GameObject.Find("NotocDisplay");
-        BlurScreen = GameObject.Find("BlurGlass2");
-        NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
-        BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
-        MainCanvas = GameObject.Find("MainCanvas");
-        MainCanvas.GetComponent<Canvas>().enabled = enabled;
-        Container = GameObject.Find("Content");
-        Container.SetActive(false);
-    }
+   
     
 
 }

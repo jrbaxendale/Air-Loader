@@ -66,6 +66,9 @@ public class ACP_PayloadTPL : MonoBehaviour
     public bool distanceAddedBool;
     public Vector3 SpecCBVector;
     public Vector3 TransferedDistanceEditedVec;
+    public string ACPID1;
+    public string ACPID2;
+    public string ACPID3;
 
 
 

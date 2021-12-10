@@ -7,7 +7,7 @@ using System;
 public class DGButtonSgl : MonoBehaviour
 {
    
-    public static bool DGbool;
+    public bool DGbool;
     void Awake()
     {
         Toggle Btn = gameObject.GetComponent<Toggle>();
@@ -17,7 +17,7 @@ public class DGButtonSgl : MonoBehaviour
 
     }
 
-    public static void DG() 
+    public  void DG() 
 
     {
        if (DGbool == false)

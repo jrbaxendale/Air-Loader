@@ -65,12 +65,13 @@ public class ACP_PayloadDBL : MonoBehaviour
     public bool distanceAddedBool;
     public Vector3 SpecCBVector;
     public Vector3 TransferedDistanceEditedVec;
-    
+    public string ACPID1;
+    public string ACPID2;
 
 
 
 
-  
+
 
     private void Awake()
     {

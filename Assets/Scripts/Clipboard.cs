@@ -92,8 +92,8 @@ public class Clipboard : MonoBehaviour
         
     {
         Debug.Log("Checking for ACPID");
-        ACPID1 = Raycast.target.transform.GetChild(0).transform.GetChild(0)
-            .gameObject.GetComponent<ACPpayload>().ACPID; // this is the ID of a pallet
+       // ACPID1 = Raycast.target.transform.GetChild(0).transform.GetChild(0)
+          //  .gameObject.GetComponent<ACPpayload>().ACPID; // this is the ID of a pallet
         
         for (var i = 0; i < data[2].Length; i++)
         {

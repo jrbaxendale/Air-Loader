@@ -13,11 +13,13 @@ public class TPLcheckButtons : MonoBehaviour
     public GameObject SelectedACP;
     public int index;
     public GameObject AftPallet;
+    public Color Orange;
 
 
 
     private void Awake()
     {
+        Orange = new Color(251, 98, 0);
         SelectedACP = Raycast.target.transform.GetChild(0).transform.GetChild(0).transform.gameObject;
         Debug.Log("The pallet is ..." + Raycast.hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject);
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Raycast.target.name; // this is the fwd position
@@ -101,18 +103,18 @@ public class TPLcheckButtons : MonoBehaviour
         if (SelectedACP.GetComponent<ACP_PayloadTPL>().dg == false)
         {
 
-            transform.GetChild(9).gameObject.GetComponent<Button>().enabled = enabled;
-            transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.red;
-            transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
+            transform.GetChild(9).gameObject.GetComponent<Button>().interactable = false;
+            // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.red;
+            // transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
 
         }
 
-        else if (SelectedACP.GetComponent<ACP_PayloadTPL>().dg == true)
+        else if (SelectedACP.GetComponent<ACP_PayloadTPL>().dg)
         {
 
-            transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
-            transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;
-            transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+            transform.GetChild(9).gameObject.GetComponent<Button>().enabled = enabled;
+            transform.GetChild(9).gameObject.GetComponent<Image>().color = Orange;
+            //transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
 
         }
 
@@ -163,10 +165,16 @@ public class TPLcheckButtons : MonoBehaviour
     public void DGCheck()
 
     {
-        SelectedACP.GetComponent<ACP_PayloadTPL>().dg = true;
-        transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
-        transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;
-        transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+
+        var v = transform.GetChild(5).transform.gameObject.GetComponent<Clipboard>();
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadTPL>().ACPID1;
+        v.ActivateDisplay();
+        v.CheckforPalletRef();
+        
+       // SelectedACP.GetComponent<ACP_PayloadTPL>().dg = true;
+       // transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
+       // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;
+       // transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
 
     }
 

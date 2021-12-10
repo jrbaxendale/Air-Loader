@@ -83,11 +83,21 @@ public class MakeTPl : MonoBehaviour
 
             int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
 
-          
+            TPlprefabLOGS.GetComponent<ACP_PayloadTPL>().ACPID1 = Maincanvas.transform.GetChild(3).transform.GetChild(8)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
 
+            TPlprefabLOGS.GetComponent<ACP_PayloadTPL>().ACPID2 = Maincanvas.transform.GetChild(3).transform.GetChild(10)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
 
+            TPlprefabLOGS.GetComponent<ACP_PayloadTPL>().ACPID3 = Maincanvas.transform.GetChild(3).transform.GetChild(12)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
 
+            if (gameObject.transform.parent.GetChild(20).gameObject.GetComponent<DGButtonSgl>().DGbool)
+            {
 
+                // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                TPlprefabLOGS.GetComponent<ACP_PayloadTPL>().dg = true;
+            }
         }
 
 
@@ -124,9 +134,22 @@ public class MakeTPl : MonoBehaviour
 
             int weightint3 = Int32.Parse(InputField3.GetComponent<TMP_InputField>().text.ToString());
 
-            
+            TplprefabADS1.GetComponent<ACP_PayloadTPL>().ACPID1 = Maincanvas.transform.GetChild(3).transform.GetChild(8)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+            TplprefabADS1.GetComponent<ACP_PayloadTPL>().ACPID2 = Maincanvas.transform.GetChild(3).transform.GetChild(10)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
 
             
+                TplprefabADS1.GetComponent<ACP_PayloadTPL>().ACPID3 = Maincanvas.transform.GetChild(3).transform.GetChild(12)
+                .transform.gameObject.GetComponent<TMP_InputField>().text;
+
+                if(gameObject.transform.parent.GetChild(20).gameObject.GetComponent<DGButtonSgl>().DGbool)
+                {
+
+                    // Dblprefab1ADS.transform.GetChild(2).transform.gameObject.SetActive(true);
+                    TplprefabADS1.GetComponent<ACP_PayloadTPL>().dg = true;
+                }
 
 
 

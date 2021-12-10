@@ -111,7 +111,7 @@ public class makeACP : MonoBehaviour
                     .transform.gameObject.GetComponent<TMP_InputField>().text;
                 PalletArray.AddACPtoList(ACPprefab1); // This is for the colour change of all items during pallet inspection
 
-                if (DGButtonSgl.DGbool)
+                if (gameObject.transform.parent.GetChild(7).gameObject.GetComponent<DGButtonSgl>().DGbool)
                 {
 
                     ACPprefab1.transform.GetChild(2).transform.gameObject.SetActive(true);
@@ -211,7 +211,7 @@ public class makeACP : MonoBehaviour
 
 
 
-                if (DGButtonSgl.DGbool == true)
+               if (gameObject.transform.parent.GetChild(7).gameObject.GetComponent<DGButtonSgl>().DGbool)
                 {
 
                     ACPprefab1.transform.GetChild(2).transform.gameObject.SetActive(true);
