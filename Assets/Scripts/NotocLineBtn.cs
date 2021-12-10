@@ -8,16 +8,16 @@ public class NotocLineBtn : MonoBehaviour
 {
   public void NOTOCchecked()
   {
-      TextMeshProUGUI a = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-      a.color = Color.green;
+      TextMeshProUGUI a = gameObject.transform.parent.GetChild(0).GetComponent<TextMeshProUGUI>();
+        a.color = Color.green;
       TextMeshProUGUI b = gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-      b.color = Color.green;
+        b.color = Color.green;
       TextMeshProUGUI c = gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-      c.color = Color.green;
+        c.color = Color.green;
       TextMeshProUGUI d = gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-      d.color = Color.green;
-      TextMeshProUGUI e = gameObject.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-      e.color = Color.green;
+        d.color = Color.green;
+      TextMeshProUGUI e = gameObject.transform.parent.GetChild(4).GetComponent<TextMeshProUGUI>();
+        e.color = Color.green;
       gameObject.transform.GetChild(5).GetComponent<Button>().interactable = false;
 
     }
