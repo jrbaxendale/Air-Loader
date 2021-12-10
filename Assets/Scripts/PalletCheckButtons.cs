@@ -9,20 +9,29 @@ public class PalletCheckButtons : MonoBehaviour
 {
 
 
-    public GameObject MainCanvas;
+
     public Material GreenPallet;
     public Material BluePallet;
     public GameObject SelectedACP;
-    
+    public Color Orange;
+    public GameObject NOTOCscreen;
+    public GameObject BlurScreen;
+    public GameObject NOTOCline;
+    public GameObject MainCanvas;
+    public GameObject Container;
+
+
+
 
 
     private void Awake()
     {
+        Orange = new Color(243, 132, 0);
         SelectedACP = Raycast.hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject;
         Debug.Log("The pallet is ..." + Raycast.hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject);
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Raycast.target.name; // this is the position
         InitialCheck();
-        
+
     }
 
     private void Update()
@@ -98,42 +107,42 @@ public class PalletCheckButtons : MonoBehaviour
         if (SelectedACP.GetComponent<ACPpayload>().dg == false)
         {
 
-            transform.GetChild(5).gameObject.GetComponent<Button>().enabled = enabled;
-            transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.red;
-            transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
+            transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
+            //transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.red;
+            // transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
 
         }
 
-        else if (SelectedACP.GetComponent<ACPpayload>().dg == true)
+        else if (SelectedACP.GetComponent<ACPpayload>().dg)
         {
 
-            transform.GetChild(5).gameObject.GetComponent<Button>().enabled = !enabled;
-            transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.green;
-            transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+            transform.GetChild(5).gameObject.GetComponent<Button>().enabled = enabled;
+            transform.GetChild(5).gameObject.GetComponent<Image>().color = Orange;
+            //transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
 
         }
 
 
 
         Debug.Log("Initial Check Complete");
-       
+
     }
 
-   
+
 
     public void WeightCheck()
 
     {
-       if (SelectedACP.GetComponent<ACPpayload>().weight == false)
-        
-        { 
+        if (SelectedACP.GetComponent<ACPpayload>().weight == false)
+
+        {
             SelectedACP.GetComponent<ACPpayload>().weight = true;
             transform.GetChild(2).gameObject.GetComponent<Button>().enabled = !enabled;
             transform.GetChild(2).gameObject.GetComponent<Image>().color = Color.green;
             transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
         }
 
-       
+
 
     }
 
@@ -160,27 +169,31 @@ public class PalletCheckButtons : MonoBehaviour
     public void DGCheck()
 
     {
-        SelectedACP.GetComponent<ACPpayload>().dg = true;
-        transform.GetChild(5).gameObject.GetComponent<Button>().enabled = !enabled;
-        transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.green;
-        transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+        ActivateDisplay();
+        var v = transform.GetChild(5).transform.gameObject.GetComponent<Clipboard>();
+        v.CheckforPalletRef();
+
+       // SelectedACP.GetComponent<ACPpayload>().dg = true;
+       // transform.GetChild(5).gameObject.GetComponent<Button>().enabled = !enabled;
+       //  transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.green;
+        //transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
 
     }
 
     public void FinalCheck()
 
     {
-      if (SelectedACP.GetComponent<ACPpayload>().weight == true &&
-          SelectedACP.GetComponent<ACPpayload>().location == true &&
-          SelectedACP.GetComponent<ACPpayload>().Locks == true &&
-          SelectedACP.GetComponent<ACPpayload>().dg == true)
+        if (SelectedACP.GetComponent<ACPpayload>().weight == true &&
+            SelectedACP.GetComponent<ACPpayload>().location == true &&
+            SelectedACP.GetComponent<ACPpayload>().Locks == true &&
+            SelectedACP.GetComponent<ACPpayload>().dg == true)
 
         {
             SelectedACP.GetComponent<ACPpayload>().Checked = true;
             SelectedACP.GetComponent<Renderer>().material = GreenPallet;
         }
 
-      else
+        else
         {
             SelectedACP.GetComponent<ACPpayload>().Checked = false;
             SelectedACP.GetComponent<Renderer>().material = BluePallet;
@@ -191,5 +204,34 @@ public class PalletCheckButtons : MonoBehaviour
 
 
     }
+
+
+    public void ActivateDisplay() // this activates the NOTOC sheet
+
+    {
+        NOTOCscreen = GameObject.Find("NotocDisplay");
+        BlurScreen = GameObject.Find("BlurGlass2");
+        NOTOCscreen.GetComponent<Canvas>().enabled = enabled;
+        BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
+        MainCanvas = GameObject.Find("MainCanvas");
+        MainCanvas.GetComponent<Canvas>().enabled = !enabled;
+        Container = GameObject.Find("Content");
+        Container.SetActive(true);
+
+    }
+
+    public void DeactivateDisplay() // this deactivates the notoc display
+
+    {
+        NOTOCscreen = GameObject.Find("NotocDisplay");
+        BlurScreen = GameObject.Find("BlurGlass2");
+        NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
+        BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
+        MainCanvas = GameObject.Find("MainCanvas");
+        MainCanvas.GetComponent<Canvas>().enabled = enabled;
+        Container = GameObject.Find("Content");
+        Container.SetActive(false);
+    }
+    
 
 }

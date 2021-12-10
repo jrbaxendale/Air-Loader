@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 public class Raycast : MonoBehaviour
@@ -71,6 +72,7 @@ public class Raycast : MonoBehaviour
     public GameObject SelectedPanelDBL;
     public GameObject SelectedPanelTPL;
     public GameObject SelectedPanelQD;
+    public Color Orange;
 
 
 
@@ -80,6 +82,7 @@ public class Raycast : MonoBehaviour
         pause = false;
         TouchCounter = 0;
         UsingMouse = false;
+        Orange = new Color(243, 132, 0);
 
     }
 
@@ -465,11 +468,18 @@ public class Raycast : MonoBehaviour
             if (hit.transform.GetChild(0).transform.GetChild(0).transform.gameObject.GetComponent<ACPpayload>().dg) // checks if pallet is labelled dg
 
             {
+                TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Image>().color =
+                    Orange;
+                TheSelectedPanel.transform.GetChild(3).transform.GetChild(5).gameObject.GetComponent<Button>().onClick.AddListener(MainCanvas.GetComponent<Clipboard>().);
+
+
+
+
                 TextMeshProUGUI dgtext = TheSelectedPanel.gameObject.transform.GetChild(3).gameObject.transform
                     .GetChild(6).gameObject
                     .GetComponent<TextMeshProUGUI>(); 
                      dgtext.color = new Color(255, 0, 0); // turns the dg status to red
-                     Debug.Log("DG TEXT TO RED");
+                     
 
 
             }

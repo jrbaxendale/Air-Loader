@@ -5,7 +5,8 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using Object = System.Object;
+using UnityEngine.UI;
+
 
 
 public class Clipboard : MonoBehaviour
@@ -21,66 +22,72 @@ public class Clipboard : MonoBehaviour
     public static TextMeshProUGUI[][] DisplayArray;
     public string ULDname;
     public string ULDstring;
-    public static TextMeshProUGUI LINE00;
-    public static TextMeshProUGUI LINE01;
-    public static TextMeshProUGUI LINE02;
-    public static TextMeshProUGUI LINE03;
-    public static TextMeshProUGUI LINE04;
-    public static TextMeshProUGUI LINE10;
-    public static TextMeshProUGUI LINE11;
-    public static TextMeshProUGUI LINE12;
-    public static TextMeshProUGUI LINE13;
-    public static TextMeshProUGUI LINE14;
-    public TextMeshProUGUI LINE20;
-    public TextMeshProUGUI LINE21;
-    public TextMeshProUGUI LINE22;
-    public TextMeshProUGUI LINE23;
-    public TextMeshProUGUI LINE24;
-    public TextMeshProUGUI LINE30;
-    public TextMeshProUGUI LINE31;
-    public TextMeshProUGUI LINE32;
-    public TextMeshProUGUI LINE33;
-    public TextMeshProUGUI LINE34;
-    public TextMeshProUGUI LINE40;
-    public TextMeshProUGUI LINE41;
-    public TextMeshProUGUI LINE42;
-    public TextMeshProUGUI LINE43;
-    public TextMeshProUGUI LINE44;
-    public GameObject NOTOCscreen;
-    public GameObject BlurScreen;
-    public GameObject NOTOCline;
+    public  GameObject NOTOCscreen;
+    public  GameObject BlurScreen;
+    public  GameObject NOTOCline;
+    public  GameObject MainCanvas;
+    public  GameObject Container;
     
 
-    public void ActivateDisplay()
+    public static void ActivateDisplay()
 
     {
         NOTOCscreen = GameObject.Find("NotocDisplay");
         BlurScreen = GameObject.Find("BlurGlass2");
         NOTOCscreen.GetComponent<Canvas>().enabled = enabled;
         BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
+        MainCanvas = GameObject.Find("MainCanvas");
+        MainCanvas.GetComponent<Canvas>().enabled = !enabled;
+        Container = GameObject.Find("Content");
+        Container.SetActive(true);
+
     }
 
-    
+    public void DeactivateDisplay()
+
+    {
+        NOTOCscreen = GameObject.Find("NotocDisplay");
+        BlurScreen = GameObject.Find("BlurGlass2");
+        NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
+        BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
+        MainCanvas = GameObject.Find("MainCanvas");
+        MainCanvas.GetComponent<Canvas>().enabled = enabled;
+        Container = GameObject.Find("Content");
+        Container.SetActive(false);
+    }
+
     public void ImportNOTOC()
 
     {
-        data = new string[30][];
-        string filePath = @"C:\Users\jrbax\OneDrive\Desktop\test.txt";
-        StreamReader sr = new StreamReader(filePath);
-        var lines = new List<string[]>();
-        int Row = 0;
-        while (!sr.EndOfStream)
+        if (File.Exists(@"C:\Users\jrbax\OneDrive\Desktop\test.txt"))
         {
-            string[] Line = sr.ReadLine().Split(',');
-            lines.Add(Line);
-            Row++;
            
+            data = new string[30][];
+            string filePath = @"C:\Users\jrbax\OneDrive\Desktop\test.txt";
+            StreamReader sr = new StreamReader(filePath);
+            var lines = new List<string[]>();
+            int Row = 0;
+            while (!sr.EndOfStream)
+            {
+                string[] Line = sr.ReadLine().Split(',');
+                lines.Add(Line);
+                Row++;
+
+            }
+
+            data = lines.ToArray();
+            Debug.Log("NOTOC IMPORTED");
         }
 
-         data = lines.ToArray();
-        Debug.Log("NOTOC IMPORTED");
+        else if (!File.Exists(@"C:\Users\jrbax\OneDrive\Desktop\test.txt"))
+
+        {
+            Debug.Log("No NOTOC FOUND");
+
+        }
     }
 
+   
     public void CheckforPalletRef()
         
     {
@@ -153,7 +160,7 @@ public class Clipboard : MonoBehaviour
 
     {
         Debug.Log("Creating Final Array");
-        GameObject NOTOCparent = GameObject.Find("NotocDisplay");
+        Container = GameObject.Find("Content");
         var q = EndingIndex - StartingIndex;
         ULDarray = new string[q][]; // this creates an array the exact size required
         var j = 0;
@@ -167,10 +174,10 @@ public class Clipboard : MonoBehaviour
         int count = 0;
         foreach (var a in ULDarray)
         {
-            GameObject NotocLine = Instantiate(NOTOCline, NOTOCparent.transform.GetChild(0).transform);
-            NotocLine.transform.localPosition = new Vector3(NotocLine.transform.localPosition.x, count * -120,
+            GameObject NotocLine = Instantiate(NOTOCline, Container.transform);
+            NotocLine.transform.localPosition = new Vector3(NotocLine.transform.localPosition.x, count * -20,
                 NotocLine.transform.localPosition.z);
-            NotocLine.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = a[0];
+            NotocLine.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
             NotocLine.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = a[1];
             NotocLine.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = a[2];
             NotocLine.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = a[3];
