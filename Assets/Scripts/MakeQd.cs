@@ -175,7 +175,7 @@ public class MakeQd : MonoBehaviour
 
         }
 
-
+        gameObject.transform.parent.GetChild(24).gameObject.GetComponent<DGButtonSgl>().DGbool = false;
     }
 
 

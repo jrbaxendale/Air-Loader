@@ -170,7 +170,12 @@ public class QDcheckButtons : MonoBehaviour
         v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadQD>().ACPID1;
         v.ActivateDisplay();
         v.CheckforPalletRef();
-        
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadQD>().ACPID2;
+        v.CheckforPalletRef();
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadQD>().ACPID3;
+        v.CheckforPalletRef();
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadQD>().ACPID4;
+        v.CheckforPalletRef();
         //SelectedACP.GetComponent<ACP_PayloadQD>().dg = true;
         // transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
         // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;

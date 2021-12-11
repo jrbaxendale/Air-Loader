@@ -221,6 +221,8 @@ public class makeACP : MonoBehaviour
 
 
             gameObject.GetComponent<Button>().interactable = false;
+            gameObject.transform.parent.GetChild(7).gameObject.GetComponent<DGButtonSgl>().DGbool = false; // this resets the dgbool
+
         }
 
 

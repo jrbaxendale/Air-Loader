@@ -28,10 +28,12 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
     public  GameObject MainCanvas;
     public  GameObject Container;
     public int NotocButtonCount;
+    public GameObject PalletButton;
 
     public void Awake()
     {
         NotocButtonCount = 0;
+        PalletButton = Resources.Load("Prefabs/PalletIDBtn") as GameObject;
 
     }
     public void ActivateDisplay()
@@ -40,8 +42,6 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
         NOTOCscreen = GameObject.Find("NotocDisplay");
         BlurScreen = GameObject.Find("BlurGlass2");
         NOTOCscreen.GetComponent<Canvas>().enabled = enabled;
-        NOTOCscreen.gameObject.transform.GetChild(0).transform.GetChild(4).transform.gameObject
-            .GetComponent<Text>().text = ACPID1;
         BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
         MainCanvas = GameObject.Find("MainCanvas");
         MainCanvas.GetComponent<Canvas>().enabled = !enabled;
@@ -126,6 +126,9 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
                 SearchFirstColumnForStart();
                 SearchFirstColumnforEnd();
                 CreateULDarray();
+                GameObject PalletBtn = Instantiate(PalletButton, NOTOCscreen.transform.GetChild(0).transform);
+                PalletBtn.GetComponent<TextMeshProUGUI>().text = ACPID1;
+
             }
             
         }
@@ -211,7 +214,7 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
 
 
 
-        public void CheckAllNOTOCs()
+        public void CheckAllNOTOCs() // The notoc parent buttons run this
         {
 
             if (NotocButtonCount == ULDarray.Length)

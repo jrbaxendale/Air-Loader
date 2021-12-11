@@ -3,7 +3,13 @@ guid: 6757e6a10fb18d24e89219fe2480a8a4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - NOTOCscreen: {instanceID: 0}
+  - BlurScreen: {instanceID: 0}
+  - NOTOCline: {instanceID: 0}
+  - MainCanvas: {instanceID: 0}
+  - Container: {instanceID: 0}
+  - PalletButton: {fileID: 2673212968993333331, guid: 31ba2d63405550d4ea2ebeba5bc2b121, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

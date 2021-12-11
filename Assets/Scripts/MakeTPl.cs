@@ -157,7 +157,7 @@ public class MakeTPl : MonoBehaviour
 
         }
 
-
+        gameObject.transform.parent.GetChild(20).gameObject.GetComponent<DGButtonSgl>().DGbool = false;
     }
 
 

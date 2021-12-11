@@ -171,11 +171,15 @@ public class TPLcheckButtons : MonoBehaviour
         v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadTPL>().ACPID1;
         v.ActivateDisplay();
         v.CheckforPalletRef();
-        
-       // SelectedACP.GetComponent<ACP_PayloadTPL>().dg = true;
-       // transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
-       // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;
-       // transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadTPL>().ACPID2;
+        v.CheckforPalletRef();
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadTPL>().ACPID3;
+        v.CheckforPalletRef();
+
+        // SelectedACP.GetComponent<ACP_PayloadTPL>().dg = true;
+        // transform.GetChild(9).gameObject.GetComponent<Button>().enabled = !enabled;
+        // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.green;
+        // transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
 
     }
 

@@ -171,8 +171,9 @@ public class DBLcheckButtons : MonoBehaviour
         v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadDBL>().ACPID1;
         v.ActivateDisplay();
         v.CheckforPalletRef();
+        v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadDBL>().ACPID2;
+        v.CheckforPalletRef();
 
-        
         // SelectedACP.GetComponent<ACP_PayloadDBL>().dg = true;
         //  transform.GetChild(7).gameObject.GetComponent<Button>().enabled = !enabled;
         // transform.GetChild(7).gameObject.GetComponent<Image>().color = Color.green;

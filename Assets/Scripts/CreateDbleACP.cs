@@ -177,6 +177,7 @@ public class CreateDbleACP : MonoBehaviour
 
         }
 
+         gameObject.transform.parent.GetChild(17).gameObject.GetComponent<DGButtonSgl>().DGbool = false;
     }
           
 }
