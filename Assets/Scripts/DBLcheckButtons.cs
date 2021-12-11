@@ -104,8 +104,9 @@ public class DBLcheckButtons : MonoBehaviour
         {
 
             transform.GetChild(7).gameObject.GetComponent<Button>().interactable = false;
-           // transform.GetChild(7).gameObject.GetComponent<Image>().color = Color.red;
-           // transform.GetChild(7).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
+            SelectedACP.GetComponent<ACP_PayloadDBL>().dg = true;
+            // transform.GetChild(7).gameObject.GetComponent<Image>().color = Color.red;
+            // transform.GetChild(7).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
 
         }
 

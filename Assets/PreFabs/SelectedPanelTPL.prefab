@@ -1697,6 +1697,7 @@ MonoBehaviour:
   SelectedACP: {fileID: 0}
   index: 0
   AftPallet: {fileID: 0}
+  Orange: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4945155492092285984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +1981,7 @@ GameObject:
   - component: {fileID: 8824038359498241868}
   m_Layer: 5
   m_Name: SelectedPanelTPL
-  m_TagString: Untagged
+  m_TagString: DG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

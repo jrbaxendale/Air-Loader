@@ -108,6 +108,7 @@ public class PalletCheckButtons : MonoBehaviour
         {
 
             transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
+            SelectedACP.GetComponent<ACPpayload>().dg = true;
             //transform.GetChild(5).gameObject.GetComponent<Image>().color = Color.red;
             // transform.GetChild(5).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
 

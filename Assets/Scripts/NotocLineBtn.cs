@@ -10,15 +10,20 @@ public class NotocLineBtn : MonoBehaviour
   {
       TextMeshProUGUI a = gameObject.transform.parent.GetChild(0).GetComponent<TextMeshProUGUI>();
         a.color = Color.green;
-      TextMeshProUGUI b = gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+      TextMeshProUGUI b = gameObject.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>();
         b.color = Color.green;
-      TextMeshProUGUI c = gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+      TextMeshProUGUI c = gameObject.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>();
         c.color = Color.green;
-      TextMeshProUGUI d = gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+      TextMeshProUGUI d = gameObject.transform.parent.GetChild(3).GetComponent<TextMeshProUGUI>();
         d.color = Color.green;
       TextMeshProUGUI e = gameObject.transform.parent.GetChild(4).GetComponent<TextMeshProUGUI>();
         e.color = Color.green;
-      gameObject.transform.GetChild(5).GetComponent<Button>().interactable = false;
+      gameObject.transform.GetComponent<Button>().interactable = false;
 
-    }
+      GameObject.FindWithTag("DG").gameObject.GetComponent<Clipboard>().NotocButtonCount += 1;
+      GameObject.FindWithTag("DG").gameObject.GetComponent<Clipboard>().CheckAllNOTOCs();
+     
+
+
+  }
 }

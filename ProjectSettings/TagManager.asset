@@ -19,6 +19,7 @@ TagManager:
   - ignore
   - IgnoreMe
   - SelectedPanel
+  - DG
   layers:
   - Default
   - TransparentFX

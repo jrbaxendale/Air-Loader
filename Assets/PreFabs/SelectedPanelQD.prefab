@@ -593,6 +593,7 @@ MonoBehaviour:
   SelectedACP: {fileID: 0}
   index: 0
   AftPallet: {fileID: 0}
+  Orange: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2777490874287806578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1086,7 @@ GameObject:
   - component: {fileID: 2819392224408508206}
   m_Layer: 5
   m_Name: SelectedPanelQD
-  m_TagString: Untagged
+  m_TagString: DG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

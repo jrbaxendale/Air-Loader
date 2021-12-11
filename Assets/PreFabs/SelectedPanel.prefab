@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1932729453135680960}
   m_Layer: 5
   m_Name: SelectedPanel
-  m_TagString: Untagged
+  m_TagString: SelectedPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1672,6 +1672,10 @@ PrefabInstance:
     - target: {fileID: 3558345352860564536, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558345352860564536, guid: 64e888541d705de439952a6ca2974d17, type: 3}
+      propertyPath: m_TagString
+      value: DG
       objectReference: {fileID: 0}
     - target: {fileID: 5281598372236744343, guid: 64e888541d705de439952a6ca2974d17, type: 3}
       propertyPath: m_LocalScale.x

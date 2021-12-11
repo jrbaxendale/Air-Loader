@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 
 
-public class Clipboard : MonoBehaviour
+public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
 {
 
     public static string[][] data;
@@ -27,14 +27,21 @@ public class Clipboard : MonoBehaviour
     public  GameObject NOTOCline;
     public  GameObject MainCanvas;
     public  GameObject Container;
-    
+    public int NotocButtonCount;
 
+    public void Awake()
+    {
+        NotocButtonCount = 0;
+
+    }
     public void ActivateDisplay()
 
     {
         NOTOCscreen = GameObject.Find("NotocDisplay");
         BlurScreen = GameObject.Find("BlurGlass2");
         NOTOCscreen.GetComponent<Canvas>().enabled = enabled;
+        NOTOCscreen.gameObject.transform.GetChild(0).transform.GetChild(4).transform.gameObject
+            .GetComponent<Text>().text = ACPID1;
         BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
         MainCanvas = GameObject.Find("MainCanvas");
         MainCanvas.GetComponent<Canvas>().enabled = !enabled;
@@ -46,14 +53,26 @@ public class Clipboard : MonoBehaviour
     public void DeactivateDisplay()
 
     {
+       
+        
         NOTOCscreen = GameObject.Find("NotocDisplay");
-        BlurScreen = GameObject.Find("BlurGlass2");
-        NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
-        BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
         MainCanvas = GameObject.Find("MainCanvas");
-        MainCanvas.GetComponent<Canvas>().enabled = enabled;
         Container = GameObject.Find("Content");
-        Container.SetActive(false);
+        BlurScreen = GameObject.Find("BlurGlass2");
+
+        if (NOTOCscreen.gameObject.transform.GetChild(1).gameObject.activeSelf)
+        {
+            return;
+
+        }
+
+       
+        
+            NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
+            BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
+            MainCanvas.GetComponent<Canvas>().enabled = enabled;
+            Container.SetActive(false);
+        
     }
 
     public void ImportNOTOC()
@@ -187,7 +206,63 @@ public class Clipboard : MonoBehaviour
        
     }
 
-   
+    
+
+
+
+
+        public void CheckAllNOTOCs()
+        {
+
+            if (NotocButtonCount == ULDarray.Length)
+            {
+              NOTOCscreen.transform.GetChild(1).gameObject.SetActive(true);
+            GameObject.FindWithTag("DG").gameObject.GetComponent<Image>().color = Color.green;
+            var p = GameObject.FindWithTag("DG").gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+            p.color = Color.green;
+
+            switch (Raycast.target.name)
+            {
+
+                case "ACP(Clone)":
+                    Raycast.target.GetComponent<ACPpayload>().dg = true;
+                    break;
+
+                case "ADSdouble(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadDBL>().dg = true;
+                    break;
+
+                case "LOGSdbl(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadDBL>().dg = true;
+                    break;
+
+                case "TripleLOGS(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadTPL>().dg = true;
+                    break;
+
+                case "TRIPLEADS(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadTPL>().dg = true;
+                    break;
+
+                case "QUADADS(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadQD>().dg = true;
+                    break;
+
+                case "QUADLOGSbase(Clone)":
+                    Raycast.target.GetComponent<ACP_PayloadQD>().dg = true;
+                    break;
+
+            }
+
+
+        }
+       
+
+        }
+    
+
+
+
 
 }
 

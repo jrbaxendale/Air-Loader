@@ -104,6 +104,7 @@ public class TPLcheckButtons : MonoBehaviour
         {
 
             transform.GetChild(9).gameObject.GetComponent<Button>().interactable = false;
+            SelectedACP.GetComponent<ACP_PayloadTPL>().dg = true;
             // transform.GetChild(9).gameObject.GetComponent<Image>().color = Color.red;
             // transform.GetChild(9).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
 
