@@ -95,9 +95,11 @@ public class CreateDbleACP : MonoBehaviour
 
             Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().ACPID1 = MainCanvas.transform.GetChild(2).transform.GetChild(8)
                 .transform.gameObject.GetComponent<TMP_InputField>().text;
+            
 
             Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().ACPID2 = MainCanvas.transform.GetChild(2).transform.GetChild(0)
                 .transform.gameObject.GetComponent<TMP_InputField>().text;
+            Debug.Log("DBLPREFADS = " + Dblprefab1ADS.GetComponent<ACP_PayloadDBL>().ACPID2);
 
             if (gameObject.transform.parent.GetChild(17).gameObject.GetComponent<DGButtonSgl>().DGbool)
             {

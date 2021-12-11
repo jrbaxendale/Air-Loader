@@ -167,7 +167,7 @@ public class DBLcheckButtons : MonoBehaviour
 
     {
         
-        var v = transform.GetChild(5).transform.gameObject.GetComponent<Clipboard>();
+        var v = transform.GetChild(7).transform.gameObject.GetComponent<Clipboard>();
         v.ACPID1 = SelectedACP.GetComponent<ACP_PayloadDBL>().ACPID1;
         v.ActivateDisplay();
         v.CheckforPalletRef();

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class NotocLineBtn : MonoBehaviour
 {
+    public bool CheckedBool;
   public void NOTOCchecked()
   {
       TextMeshProUGUI a = gameObject.transform.parent.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -20,7 +21,8 @@ public class NotocLineBtn : MonoBehaviour
         e.color = Color.green;
       gameObject.transform.GetComponent<Button>().interactable = false;
 
-      GameObject.FindWithTag("DG").gameObject.GetComponent<Clipboard>().NotocButtonCount += 1;
+      CheckedBool = true;
+     GameObject.FindWithTag("DG").gameObject.GetComponent<Clipboard>().NotocButtonCount += 1;
       GameObject.FindWithTag("DG").gameObject.GetComponent<Clipboard>().CheckAllNOTOCs();
      
 
