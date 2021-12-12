@@ -19,27 +19,35 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
     public int StartingIndex;
     public int EndingIndex;
     public char[] ULDchar;
-    public static string[][] ULDarray;
+    public string[][] ULDarray;
     public List<GameObject> CheckedArray;
     public static TextMeshProUGUI[][] DisplayArray;
     public string ULDname;
     public string ULDstring;
-    public  GameObject NOTOCscreen;
-    public  GameObject BlurScreen;
-    public  GameObject NOTOCline;
-    public  GameObject MainCanvas;
-    public  GameObject Container;
+    public GameObject NOTOCscreen;
+    public GameObject BlurScreen;
+    public GameObject NOTOCline;
+    public GameObject MainCanvas;
+    public GameObject Container;
     public int NotocButtonCount;
     public GameObject PalletButton;
     public int BtnNumbers;
+    List<Transform> TheList;
+    GameObject NOTOCholder;
+    List<GameObject> ButtonList;
 
     public void Awake()
     {
         NotocButtonCount = 0;
         BtnNumbers = 0;
+        TheList = new List<Transform>();
+        NOTOCholder = new GameObject();
+        ButtonList = new List<GameObject>();
+
 
 
     }
+
     public void ActivateDisplay()
 
     {
@@ -49,7 +57,7 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
         BlurScreen.GetComponent<MeshRenderer>().enabled = enabled;
         MainCanvas = GameObject.Find("MainCanvas");
         MainCanvas.GetComponent<Canvas>().enabled = !enabled;
-        Container = GameObject.Find("Content");
+        Container = GameObject.Find("Viewport").transform.GetChild(0).transform.gameObject;
         Container.SetActive(true);
 
     }
@@ -58,10 +66,26 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
 
     {
        
-        
-        NOTOCscreen = GameObject.Find("NotocDisplay");
-        MainCanvas = GameObject.Find("MainCanvas");
+        NOTOCholder.name = "NOTOCholder";
         Container = GameObject.Find("Content");
+        Debug.Log("Container count ==" + Container.transform.childCount);
+
+        foreach (Transform child in Container.transform)
+        {
+            TheList.Add(child);
+
+
+        }
+
+        foreach (Transform t in TheList)
+        {
+            t.SetParent(NOTOCholder.transform);
+
+        }
+                
+                
+            NOTOCscreen = GameObject.Find("NotocDisplay");
+        MainCanvas = GameObject.Find("MainCanvas");
         BlurScreen = GameObject.Find("BlurGlass2");
 
         if (NOTOCscreen.gameObject.transform.GetChild(1).gameObject.activeSelf)
@@ -70,13 +94,16 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
 
         }
 
-       
         
+
+        
+            
             NOTOCscreen.GetComponent<Canvas>().enabled = !enabled;
             BlurScreen.GetComponent<MeshRenderer>().enabled = !enabled;
             MainCanvas.GetComponent<Canvas>().enabled = enabled;
-            Container.SetActive(false);
+            // Container.SetActive(false);
         
+      
     }
 
     public void ImportNOTOC()
@@ -84,7 +111,7 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
     {
         if (File.Exists(@"C:\Users\jrbax\OneDrive\Desktop\test.txt"))
         {
-           
+
             data = new string[30][];
             string filePath = @"C:\Users\jrbax\OneDrive\Desktop\test.txt";
             StreamReader sr = new StreamReader(filePath);
@@ -110,14 +137,14 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
         }
     }
 
-   
+
     public void CheckforPalletRef()
-        
+
     {
         Debug.Log("Checking for ACPID");
-       
 
-        
+
+
         for (var i = 0; i < data[2].Length; i++)
         {
             if (data[2][i].Contains(ACPID1)) // this checks data row 2 for the acpid
@@ -126,32 +153,62 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
                 ACPindex = i - 1;
                 ULDname = data[2][ACPindex];
                 ULDname.Trim();
-                
-               
+
+
                 PalletButton = Resources.Load("Pallet ID Btn") as GameObject;
                 NOTOCline = Resources.Load("NotocParent") as GameObject;
-                GameObject PalletBtn = Instantiate(PalletButton, NOTOCscreen.transform.GetChild(0).transform);
-                PalletBtn.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ACPID1;
-                BtnNumbers += 1;
-                PositionBtns(PalletBtn);
+
+                if (!ButtonList.Contains(GameObject.Find(ACPID1)))// create buttons and add to list
+                {
+                    GameObject PalletBtn = Instantiate(PalletButton, NOTOCscreen.transform.GetChild(0).transform); // a pallet button is created for every dg ref in NOTOC but the process stops here
+                    PalletBtn.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ACPID1;
+                    PalletBtn.name = ACPID1;
+                    BtnNumbers += 1;
+                    PositionBtns(PalletBtn);
+                    ButtonList.Add(PalletBtn);
+
+                }
+               
 
                 if (ULDarray == null)
                 {
+                    Debug.Log("ULD array is null ");
                     SearchFirstColumnForStart();
                     SearchFirstColumnforEnd();
                     CreateULDarray();
                 }
 
-                else if (ULDarray != null)
+                if (ULDarray != null)
 
                 {
-                    CheckULDarray();
+                    Debug.Log("ULD array is not null ");
+                    Container = GameObject.Find("Content");
+                    Debug.Log("Notoc Holder count ==" + NOTOCholder.transform.childCount);
+                    Debug.Log("The List count ==" + TheList.Count);
+                    NOTOCholder = GameObject.Find("NOTOCholder");
+
+                    foreach (Transform child in NOTOCholder.transform)
+                    {
+                        TheList.Add(child);
+
+
+                    }
+
+                    foreach (Transform t in TheList)
+                    {
+                        t.SetParent(Container.transform);
+
+                    }
+
+
+
+                    // CheckULDarray();
 
                 }
             }
-            
+
         }
-        
+
     }
 
     public void SearchFirstColumnForStart()
@@ -159,7 +216,7 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
     {
         Debug.Log("Searching for First Column");
 
-        for ( var i = 0 ; i < data.Length; i++)
+        for (var i = 0; i < data.Length; i++)
         {
 
             if (data[i][0].Trim() == (data[2][ACPindex].Trim())) // this checks the first column for the uldid 
@@ -172,11 +229,11 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
                 char j = IntArray.ToString()[0];
                 ULDchar[3] = j; // this is the next ULD number e.g we have gone from 'ULD1' to ULD2'.
                 ULDstring = string.Concat(ULDchar[0], ULDchar[1], ULDchar[2], ULDchar[3]);
-               
+
             }
-            
+
         }
-        
+
     }
 
     public void SearchFirstColumnforEnd()
@@ -187,14 +244,14 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
         {
             if (data[i][0].Trim() == (ULDstring.Trim())) // this checks data row 0 for ULD name
             {
-               Debug.Log("ULDstring search = " + ULDstring);
+                Debug.Log("ULDstring search = " + ULDstring);
                 EndingIndex = i;
                 i = data.Length; // this stops the rest of the search
             }
 
 
         }
-        
+
     }
 
     public void CreateULDarray()
@@ -205,51 +262,53 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
         Container = GameObject.Find("Content");
         var q = EndingIndex - StartingIndex;
 
-      
-        
-            ULDarray = new string[q][]; // this creates an array the exact size required
-            CheckedArray = new List<GameObject>(); // this holds the details of which notoc lines have been checked;
-            var j = 0;
-            for (var i = StartingIndex; i < EndingIndex; i++)
-            {
-                ULDarray[j] = new string[5];
-                ULDarray[j] = data[i]; // this cuts out the relevent part of the data array into the ULD array;
-                j++;
-            }
 
-            int count = 0;
-            foreach (var a in ULDarray)
-            {
-                GameObject NotocLine = Instantiate(NOTOCline, Container.transform);
-                
-                NotocLine.transform.localPosition = new Vector3(NotocLine.transform.localPosition.x, count * -20,
-                    NotocLine.transform.localPosition.z);
-                NotocLine.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
-                NotocLine.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = a[1];
-                NotocLine.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = a[2];
-                NotocLine.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = a[3];
-                NotocLine.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = a[4];
-                CheckedArray.Add(NotocLine); // this is to hold a record so we can see if each has been checked
-                count++;
-            }
-        
-            
+
+        ULDarray = new string[q][]; // this creates an array the exact size required
+        CheckedArray = new List<GameObject>(); // this holds the details of which notoc lines have been checked;
+       
+        var j = 0;
+        for (var i = StartingIndex; i < EndingIndex; i++)
+        {
+            ULDarray[j] = new string[5];
+            ULDarray[j] = data[i]; // this cuts out the relevent part of the data array into the ULD array;
+            j++;
+        }
+
+        int count = 0;
+        foreach (var a in ULDarray)
+        {
+            GameObject NotocLine = Instantiate(NOTOCline, Container.transform);
+
+            NotocLine.transform.localPosition = new Vector3(NotocLine.transform.localPosition.x, count * -20,
+                NotocLine.transform.localPosition.z);
+            NotocLine.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            NotocLine.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = a[1];
+            NotocLine.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = a[2];
+            NotocLine.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = a[3];
+            NotocLine.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = a[4];
+            CheckedArray.Add(NotocLine); // this is to hold a record so we can see if each has been checked
+            count++;
+        }
+
+
 
     }
 
-    
 
 
 
 
-        public void CheckAllNOTOCs() // The notoc parent buttons run this
+
+    public void CheckAllNOTOCs() // The notoc parent buttons run this
+    {
+
+        if (NotocButtonCount == ULDarray.Length)
         {
-
-            if (NotocButtonCount == ULDarray.Length)
-            {
-              NOTOCscreen.transform.GetChild(1).gameObject.SetActive(true);
+            NOTOCscreen.transform.GetChild(1).gameObject.SetActive(true);
             GameObject.FindWithTag("DG").gameObject.GetComponent<Image>().color = Color.green;
-            var p = GameObject.FindWithTag("DG").gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+            var p = GameObject.FindWithTag("DG").gameObject.transform.GetChild(0).gameObject
+                .GetComponent<TextMeshProUGUI>();
             p.color = Color.green;
 
             switch (Raycast.target.name)
@@ -287,40 +346,43 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
 
 
         }
-       
-
-        }
 
 
-        public void PositionBtns(GameObject Btn)
+    }
+
+
+    public void PositionBtns(GameObject Btn)
+    {
+        switch (BtnNumbers)
         {
-            switch (BtnNumbers)
-            {
 
             case 1:
                 break;
 
             case 2:
-                Btn.transform.localPosition = new Vector3(Btn.transform.localPosition.x + 360, Btn.transform.localPosition.y, Btn.transform.localPosition.z);
+                Btn.transform.localPosition = new Vector3(Btn.transform.localPosition.x + 360,
+                    Btn.transform.localPosition.y, Btn.transform.localPosition.z);
                 break;
 
             case 3:
-                 Btn.transform.localPosition = new Vector3(Btn.transform.position.x + 720, Btn.transform.position.y, Btn.transform.position.z);
-                 break;
-
-            case 4:
-                Btn.transform.localPosition = new Vector3(Btn.transform.position.x + 1080, Btn.transform.position.y, Btn.transform.position.z);
+                Btn.transform.localPosition = new Vector3(Btn.transform.position.x + 720, Btn.transform.position.y,
+                    Btn.transform.position.z);
                 break;
 
-            }
+            case 4:
+                Btn.transform.localPosition = new Vector3(Btn.transform.position.x + 1080, Btn.transform.position.y,
+                    Btn.transform.position.z);
+                break;
+
+        }
 
     }
 
+    
+    public void CheckULDarray() // checks if notoc lines have already been checked and display them
+    {
 
-        public void CheckULDarray() // checks if notoc lines have already been checked and display them
-        {
-
-            int count = 0;
+        int count = 0;
         foreach (var a in CheckedArray)
         {
             if (a.GetComponent<NotocLineBtn>().CheckedBool)
@@ -342,16 +404,36 @@ public class Clipboard : MonoBehaviour // this has all the NOTOC stuff on
                 h.color = Color.green;
                 count++;
             }
-           
-            
+
+            else if (a.GetComponent<NotocLineBtn>().CheckedBool == false)
+            {
+                GameObject NotocLine = Instantiate(NOTOCline, Container.transform);
+
+                a.transform.localPosition = new Vector3(NotocLine.transform.localPosition.x, count * -20,
+                    NotocLine.transform.localPosition.z);
+                TextMeshProUGUI d = NotocLine.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                d.color = Color.white;
+                TextMeshProUGUI e = NotocLine.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                e.color = Color.white;
+                TextMeshProUGUI f = NotocLine.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                f.color = Color.white;
+                TextMeshProUGUI g = NotocLine.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+                g.color = Color.white;
+                TextMeshProUGUI h = NotocLine.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+                h.color = Color.white;
+                count++;
+
+
+            }
 
         }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+    }
 }
     
     
